@@ -2,10 +2,12 @@ from pico2d import *
 open_canvas(1280,600)
 grass = load_image('map03_3.png')
 character = load_image('running1.png')
+heart = load_image('heart2.png')
 
 frame=0
 x=800
 toggle = True
+state = 4
 
 while (x>-800):
     events = get_events()
@@ -18,6 +20,10 @@ while (x>-800):
 
     clear_canvas()
     grass.draw(x,300)
+    if(state == 4):
+        for pos in [940,1040,1140,1240]:
+            heart.draw(pos,550)
+
     if toggle == False:
         y=250
         character.clip_draw(frame * 160, 0, 160, 160, 90, y)
