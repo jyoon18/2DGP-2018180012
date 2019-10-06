@@ -21,6 +21,7 @@ while (x>-800):
 
     clear_canvas()
     grass.draw(x,300)
+
     if(state == 4):
         for pos in [940,1040,1140,1240]:
             heart.draw(pos,550)
