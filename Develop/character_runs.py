@@ -3,6 +3,7 @@ open_canvas(1280,600)
 grass = load_image('map03_3.png')
 character = load_image('running1.png')
 heart = load_image('heart2.png')
+jump = load_image('up_attack.png')
 
 frame=0
 x=800
@@ -26,8 +27,10 @@ while (x>-800):
 
     if toggle == False:
         y=250
-        character.clip_draw(frame * 160, 0, 160, 160, 90, y)
-        frame = (frame + 1) % 4
+        #jump.clip_draw(frame * 160, 0, 160, 160, 90, y)
+        #frame = (frame + 1) % 4
+        jump.draw(90,y)
+        delay(0.1)
         toggle=True
     elif (toggle == True):
         character.clip_draw(frame * 160, 0, 160, 160, 90, 90)
