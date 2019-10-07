@@ -4,11 +4,14 @@ grass = load_image('map03_3.png')
 character = load_image('running1.png')
 heart = load_image('heart2.png')
 jump = load_image('up_attack.png')
+boss = load_image('boss.png')
 
 frame=0
+frame_boss = 0
 x=800
 toggle = True
 state = 4
+
 
 while (x>-800):
     events = get_events()
@@ -28,14 +31,18 @@ while (x>-800):
 
     if toggle == False:
         y=250
-        #jump.clip_draw(frame * 160, 0, 160, 160, 90, y)
-        #frame = (frame + 1) % 4
         jump.draw(90,y)
-        delay(0.1)
+        #delay(0.1)
         toggle=True
     elif (toggle == True):
+        ypos = 200
+        judge_height = 2
         character.clip_draw(frame * 160, 0, 160, 160, 90, 90)
         frame = (frame + 1) % 4
+    boss.clip_draw(frame_boss * 316, 0, 290, 230, 950, ypos)
+    frame_boss = (frame_boss + 1) % 3
+
+
     update_canvas()
     x-=2
     get_events()
