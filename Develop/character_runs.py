@@ -10,8 +10,8 @@ frame=0
 frame_boss = 0
 x=800
 toggle = True
+toggle_j = True
 state = 4
-
 
 while (x>-800):
     events = get_events()
@@ -21,27 +21,30 @@ while (x>-800):
         elif event.type == SDL_KEYDOWN:
             if event.key == SDLK_f:
                 toggle = False
+            elif event.key == SDLK_j:
+                toggle_j = False
 
     clear_canvas()
     grass.draw(x,300)
-
     if(state == 4):
         for pos in [940,1040,1140,1240]:
             heart.draw(pos,550)
 
     if toggle == False:
-        y=250
-        jump.draw(90,y)
-        #delay(0.1)
+        y = 200
+        jump.draw(150,y)
+        y = 200 + 200 * math.sin(1*math.pi)
         toggle=True
+    elif toggle_j == False:
+        jump.draw(150, 90)
+        toggle_j = True
     elif (toggle == True):
-        ypos = 200
         judge_height = 2
         character.clip_draw(frame * 160, 0, 160, 160, 90, 90)
         frame = (frame + 1) % 4
-    boss.clip_draw(frame_boss * 316, 0, 290, 230, 950, ypos)
+    ypos = 200
+    boss.clip_draw(frame_boss * 316, 0, 290, 230, 1050, ypos)
     frame_boss = (frame_boss + 1) % 3
-
 
     update_canvas()
     x-=2
