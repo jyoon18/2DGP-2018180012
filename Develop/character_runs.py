@@ -40,11 +40,11 @@ def heart_display():
 
 
 toggle = True
-toggle_j=True
+toggle_j = True
 
 while (x>-800):
 
-    get_event()
+    get_events()
 
     clear_canvas()
     moving_grass()
