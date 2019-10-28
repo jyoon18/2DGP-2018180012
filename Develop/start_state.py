@@ -35,7 +35,7 @@ def update():
 def draw():
     global image           # kpu_credit을 보여줌
     clear_canvas()
-    image.draw(400,300)
+    image.draw(640,300)
     update_canvas()
     pass
 

@@ -34,7 +34,7 @@ def handle_events():
     pass
 def draw():
     clear_canvas()
-    image.draw(400,300)         # 메인화면을 그려라!
+    image.draw(640,300)         # 메인화면을 그려라!
     update_canvas()
     pass
 

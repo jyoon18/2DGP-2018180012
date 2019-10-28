@@ -16,44 +16,45 @@ maps = None
 class Maps:
     def __init__(self):
         self.image = load_image('map02_3.png')
+        self.x, self.y = 640,0
         self.frame = 0
     def draw(self):
-        self.image.clip_draw(self.frame * 100, 0, 1600, 630, self.x, 300)
+        self.image.draw(self.x,300)
 
     def update(self):
-        self.frame = (self.frame + 1) % 8
         self.x -= 1
 
 class Character:
     def __init__(self):
-        self.x, self.y = 0, 90
+        self.x, self.y = 90, 90
         self.frame = 0
         self.image = load_image('running1.png')
-        
-
     def update(self):
-        self.frame = (self.frame + 1) % 8
-        self.x += self.dir
-        if self.x >= 800:
-            self.dir = -1
-        elif self.x <= 0:
-            self.dir = 1
+        self.image.draw(150, 200)
 
     def draw(self):
-        self.image.clip_draw(self.frame * 100, 0, 100, 100, self.x, self.y)
+        self.image.clip_draw(self.frame * 160, 0, 160, 160, self.x, self.y)
+        self.frame = (self.frame + 1) % 4
 
-# 게임에 들어갈 때 초기화를 해준다
-# boy와 grass를 초기화 해준다!
+    def UPattack(self):
+        self.image = load_image('up_attack.png')
+
+
+    def Usualattack(self):
+        self.image = load_image('up_attack.png')
+        self.draw(150,90)
+
 def enter():
     global character, maps
+    character = Character()
+    maps = Maps()
     pass
 
-# 게임이 종료될 때를 위해서
-# boy와 grass를 없애준다
+
 def exit():
-    global boy, grass
-    del(boy)
-    del(grass)
+    global character, maps
+    del(character)
+    del(maps)
     pass
 
 
@@ -72,19 +73,28 @@ def handle_events():
             game_framework.quit()
         elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:    # 타이틀 상태에서 esc키를 누르면 타이틀로 넘어가게
             game_framework.change_state(title_state)
+        elif event.type == SDL_KEYDOWN and event.key == SDLK_f:
+            character.UPattack()
+        elif event.type == SDL_KEYDOWN and event.key == SDLK_j:
+            character.Usualattack()
+
+
     pass
 
 #
 def update():
-
+    character.update()
+    maps.update()
     pass
 
 
 def draw():
     clear_canvas()
-    grass.draw()            # 풀을 그리고..
-    boy.draw()              # 소년도 그려주고....
+    maps.draw()            # 풀을 그리고..
+    character.draw()              # 소년도 그려주고....
     update_canvas()         # 업데이트된 상태도 보여주고....
+
+    delay(0.1)
     pass
 
 
