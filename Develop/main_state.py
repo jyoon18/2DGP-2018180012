@@ -5,10 +5,7 @@ import os
 from pico2d import *
 
 import game_framework
-import title_state          # esc키를 눌렀을 때 타이틀 화면으로 넘어가기 위해 타이틀 상태를 받아온다
-import pause_two            # p키를 눌렀을 때 반짝거리는 pause상태를 나타내주기 위해 받아온다
-#import pause_state
-
+import title_state
 
 name = "MainState"
 
