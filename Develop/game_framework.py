@@ -45,20 +45,20 @@ stack = None
 def change_state(state):
     global stack
     if (len(stack) > 0):
-        # execute the current state's exit function         # 현재 상태를 삭제
+        # execute the current state's exit function
         stack[-1].exit()
         # remove the current state
         stack.pop()
-    stack.append(state)                             # 새로운 state를 추가해주고
-    state.enter()                                   # state의 enter로 진입시켜준다
+    stack.append(state)
+    state.enter()
 
 
 
 def push_state(state):
     global stack
     if (len(stack) > 0):
-        stack[-1].pause()                   # 현재 상태를 저장하고 새로운 상태로 넘어간다
-    stack.append(state)                     # push_state는 전에 있는 상태가 남아있는 그런 함수임
+        stack[-1].pause()
+    stack.append(state)
     state.enter()
 
 
@@ -85,14 +85,14 @@ def quit():
 def run(start_state):
     global running, stack
     running = True
-    stack = [start_state]               # start_state를 담고 있는 스택을 생성시킨다
+    stack = [start_state]
     start_state.enter()
     while (running):
-        stack[-1].handle_events()       # 현재 상태에대한 게임 루프를 진행시킵니다
+        stack[-1].handle_events()
         stack[-1].update()
         stack[-1].draw()
     # repeatedly delete the top of the stack
-    while (len(stack) > 0):             # 스택의 가장 위부터 지워줍니다 stack이 0값보다 크면
+    while (len(stack) > 0):
         stack[-1].exit()
         stack.pop()
 
