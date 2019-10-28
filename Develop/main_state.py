@@ -12,6 +12,66 @@ name = "MainState"
 character = None
 maps = None
 
+J_DOWN, J_UP, F_DOWN, F_UP = range(4)
+
+key_event_table = {
+    (SDL_KEYDOWN, SDLK_f): F_DOWN,
+    (SDL_KEYUP, SDLK_f): F_UP,
+    (SDL_KEYDOWN, SDLK_j): J_DOWN,
+    (SDL_KEYUP, SDLK_j): J_UP
+}
+
+class IdleState:
+    @staticmethod
+    def enter(character, event):
+        if event == J_DOWN:
+            character.toggle = 1
+        elif event == J_UP:
+            character.toggle = 0
+        elif event == F_DOWN:
+            character.toggle = 2
+        elif event == F_UP:
+            character.toggle == 0
+        character.image = load_image('running1.png')
+
+    @staticmethod
+    def exit(character, event):
+        pass
+
+    @staticmethod
+    def do(character):
+        character.frame = (character.frame + 1) % 4
+
+    @staticmethod
+    def draw(character):
+        if character.toggle == 0:
+            character.image.clip_draw(character.frame * 160, 0, 160, 160, character.x, character.y)
+        elif character.toggle == 1:
+            character.attack_image.draw(180, 200)
+        elif character.toggle == 2:
+            character.attack_image.draw(180, 90)
+
+class AttackState:
+    @staticmethod
+    def enter(character, event):
+        if event == J_DOWN:
+            character.toggle = 1
+        elif event == J_UP:
+            character.toggle = 0
+        elif event == F_DOWN:
+            character.toggle = 2
+        elif event == F_UP:
+            character.toggle == 0
+
+    @staticmethod
+    def exit(character, event):
+        pass
+
+    @staticmethod
+    def do(character):
+        character.frame = (character.frame + 1) % 4
+
+
 
 class Maps:
     def __init__(self):
@@ -29,20 +89,15 @@ class Character:
         self.x, self.y = 90, 90
         self.frame = 0
         self.image = load_image('running1.png')
+        self.toggle = 0
+        self.attack_image = load_image('up_attack.png')
+
     def update(self):
-        self.image.draw(150, 200)
+        self.frame = (self.frame + 1) % 4
 
     def draw(self):
         self.image.clip_draw(self.frame * 160, 0, 160, 160, self.x, self.y)
-        self.frame = (self.frame + 1) % 4
 
-    def UPattack(self):
-        self.image = load_image('up_attack.png')
-
-
-    def Usualattack(self):
-        self.image = load_image('up_attack.png')
-        self.draw(150,90)
 
 def enter():
     global character, maps
