@@ -12,6 +12,7 @@ name = "MainState"
 
 character = None
 maps = None
+boss = None
 
 class Maps:
     def __init__(self):
@@ -19,7 +20,7 @@ class Maps:
         self.x, self.y = 640,0
         self.frame = 0
     def draw(self):
-        self.image.draw(self.x,300)
+        self.image.draw(self.x, self.y)
 
     def update(self):
         self.x -= 1
@@ -43,21 +44,34 @@ class Character:
         self.attack_image.draw(180, 200)
 
     def Down(self):
-
         self.attack_image.draw(180, 90)
 
 
+class Boss:
+    def __init__(self):
+        self.x, self.y = 1050, 200
+        self.frame = 0
+        self.image = load_image('boss.png')
+
+    def update(self):
+        self.frame = (self.frame + 1) % 3
+
+    def draw(self):
+        self.image.clip_draw(self.frame * 316, 0, 290, 230, self.x, self.y)
+
 def enter():
-    global character, maps
+    global character, maps, boss
     character = Character()
     maps = Maps()
+    boss = Boss()
     pass
 
 
 def exit():
-    global character, maps
+    global character, maps, boss
     del(character)
     del(maps)
+    del(boss)
     pass
 
 
@@ -90,6 +104,7 @@ def handle_events():
 def update():
     character.update()
     maps.update()
+    boss.update()
     pass
 
 
@@ -109,6 +124,7 @@ def draw():
 
     else:
         character.draw()
+    boss.draw()
 
     update_canvas()
 
