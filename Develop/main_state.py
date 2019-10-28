@@ -13,7 +13,6 @@ name = "MainState"
 character = None
 maps = None
 
-
 class Maps:
     def __init__(self):
         self.image = load_image('map02_3.png')
@@ -26,13 +25,13 @@ class Maps:
         self.x -= 1
 
 class Character:
+    global toggle
+    toggle = 0
     def __init__(self):
         self.x, self.y = 90, 90
         self.frame = 0
         self.attack_image = load_image('up_attack.png')
         self.image = load_image('running1.png')
-        self.toggle = 0
-
 
     def update(self):
         self.frame = (self.frame + 1) % 4
@@ -41,10 +40,10 @@ class Character:
         self.image.clip_draw(self.frame * 160, 0, 160, 160, self.x, self.y)
 
     def Up(self):
-        self.toggle = 1
         self.attack_image.draw(180, 200)
+
     def Down(self):
-        self.toggle = 2
+
         self.attack_image.draw(180, 90)
 
 
@@ -71,6 +70,7 @@ def resume():
 
 
 def handle_events():
+    global toggle
     events = get_events()
     for event in events:
         if event.type == SDL_QUIT:          # 윈도우 창 x를 누르면 종료되게
@@ -79,8 +79,10 @@ def handle_events():
             game_framework.change_state(title_state)
         elif event.type == SDL_KEYDOWN and event.key == SDLK_f:
             character.Up()
+            toggle = 1
         elif event.type == SDL_KEYDOWN and event.key == SDLK_j:
             character.Down()
+            toggle = 2
 
     pass
 
@@ -92,13 +94,24 @@ def update():
 
 
 def draw():
+    global toggle
+
     clear_canvas()
     maps.draw()
-    character.draw()
+
+    if toggle == 1:
+        character.Up()
+        toggle = 0
+
+    elif toggle == 2:
+        character.Down()
+        toggle = 0
+
+    else:
+        character.draw()
+
     update_canvas()
 
-    character.Down()
-    character.Up()
 
     delay(0.1)
     pass
