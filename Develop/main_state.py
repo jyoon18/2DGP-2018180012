@@ -13,6 +13,15 @@ name = "MainState"
 character = None
 maps = None
 boss = None
+aim = None
+
+class Aim:
+    def __init__(self):
+        self.image = load_image('aim.png')
+        self.x, self.y = 0,0
+    def draw(self):
+        self.image.draw(200,200)
+        self.image.draw(200,70)
 
 class Maps:
     def __init__(self):
@@ -60,18 +69,20 @@ class Boss:
         self.image.clip_draw(self.frame * 316, 0, 290, 230, self.x, self.y)
 
 def enter():
-    global character, maps, boss
+    global aim, character, maps, boss
     character = Character()
     maps = Maps()
     boss = Boss()
+    aim = Aim()
     pass
 
 
 def exit():
-    global character, maps, boss
+    global aim, character, maps, boss
     del(character)
     del(maps)
     del(boss)
+    del(aim)
     pass
 
 
@@ -125,7 +136,7 @@ def draw():
     else:
         character.draw()
     boss.draw()
-
+    aim.draw()
     update_canvas()
 
 
