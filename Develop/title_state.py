@@ -1,6 +1,7 @@
 import game_framework               # game_framework와 main_state를 받아온다
 import main_state
 from pico2d import *
+import character_select_state
 
 
 name = "TitleState"
@@ -30,7 +31,7 @@ def handle_events():
             if(event.type, event.key) == (SDL_KEYDOWN, SDLK_ESCAPE):            # title화면이었을 때도 esc키를 눌렀을 때도 게임이 끝나게 설정
                 game_framework.quit()
             elif(event.type, event.key) == (SDL_KEYDOWN, SDLK_SPACE):           # space키를 누르면 main_state로 넘겨줌
-                game_framework.change_state(main_state)
+                game_framework.change_state(character_select_state)
     pass
 def draw():
     clear_canvas()
