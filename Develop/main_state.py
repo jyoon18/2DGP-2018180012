@@ -7,7 +7,7 @@ from pico2d import *
 import game_framework
 import title_state
 
-from character import Character
+from character2 import Character
 from aim_pty import Aim
 from map import Maps
 from boss_moving import Boss
