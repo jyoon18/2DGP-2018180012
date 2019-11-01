@@ -19,6 +19,8 @@ aims = None
 maps = None
 bosses = None
 
+toggle = 0
+
 def enter():
     global charac, aims, maps, bosses
     charac = Character()
@@ -48,7 +50,7 @@ def resume():
 
 def handle_events():
     global toggle
-    toggle = 0
+
     events = get_events()
     for event in events:
         if event.type == SDL_QUIT:          # 윈도우 창 x를 누르면 종료되게
@@ -57,9 +59,10 @@ def handle_events():
             game_framework.change_state(title_state)
         elif event.type == SDL_KEYDOWN and event.key == SDLK_f:
             charac.Up()
+            toggle = 1
         elif event.type == SDL_KEYDOWN and event.key == SDLK_j:
             charac.Down()
-
+            toggle = 2
     pass
 
 
@@ -74,13 +77,18 @@ def update():
 
 def draw():
     global toggle
-    toggle = 0
 
     clear_canvas()
     maps.draw()
 
-    
-    charac.draw()
+    if toggle == 1:
+        charac.Up()
+        toggle = 0
+    elif toggle == 2:
+        charac.Down()
+        toggle = 0
+    else:
+        charac.draw()
 
     bosses.draw()
     aims.draw()

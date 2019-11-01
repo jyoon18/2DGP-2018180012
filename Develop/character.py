@@ -1,4 +1,5 @@
 from pico2d import *
+import game_framework
 
 class Character:
     def __init__(self):
@@ -18,4 +19,5 @@ class Character:
 
     def Down(self):
         self.attack_image.draw(180, 90)
+
 
