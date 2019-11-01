@@ -57,10 +57,8 @@ def handle_events():
             game_framework.change_state(title_state)
         elif event.type == SDL_KEYDOWN and event.key == SDLK_f:
             charac.Up()
-            toggle = 1
         elif event.type == SDL_KEYDOWN and event.key == SDLK_j:
             charac.Down()
-            toggle = 2
 
     pass
 
@@ -81,16 +79,8 @@ def draw():
     clear_canvas()
     maps.draw()
 
-    if toggle == 1:
-        charac.Up()
-        toggle = 0
-
-    elif toggle == 2:
-        charac.Down()
-        toggle = 0
-
-    else:
-        charac.draw()
+    
+    charac.draw()
 
     bosses.draw()
     aims.draw()
