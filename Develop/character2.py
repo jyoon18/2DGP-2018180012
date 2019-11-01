@@ -1,7 +1,7 @@
 from pico2d import *
 import game_framework
 
-class Character:
+class Character2:
     def __init__(self):
         self.x, self.y = 90, 160
         self.frame = 0

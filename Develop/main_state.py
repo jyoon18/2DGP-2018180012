@@ -7,10 +7,14 @@ from pico2d import *
 import game_framework
 import title_state
 
-from character2 import Character
+from character1 import Character1
+from character2 import Character2
 from aim_pty import Aim
 from map import Maps
 from boss_moving import Boss
+
+from jelly import Small_Jelly_lv1
+from jelly import Big_Jelly_lv1
 
 name = "MainState"
 
@@ -19,24 +23,33 @@ aims = None
 maps = None
 bosses = None
 
+Bjelly = None
+Sjelly = None
+
 toggle = 0
 
 def enter():
-    global charac, aims, maps, bosses
-    charac = Character()
+    global charac2, aims, maps, bosses, Bjelly, Sjelly
+    charac2 = Character2()
     aims = Aim()
     maps = Maps()
     bosses = Boss()
+
+    Bjelly = Big_Jelly_lv1()
+    Sjelly = Small_Jelly_lv1()
     pass
 
 
 def exit():
-    global charac, aims, maps, bosses
+    global charac2, aims, maps, bosses
 
-    del (charac)
+    del (charac2)
     del (maps)
     del (bosses)
     del (aims)
+
+    del Bjelly
+    del Sjelly
     pass
 
 
@@ -58,18 +71,18 @@ def handle_events():
         elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:    # 타이틀 상태에서 esc키를 누르면 타이틀로 넘어가게
             game_framework.change_state(title_state)
         elif event.type == SDL_KEYDOWN and event.key == SDLK_f:
-            charac.Up()
+            charac2.Up()
             toggle = 1
         elif event.type == SDL_KEYDOWN and event.key == SDLK_j:
-            charac.Down()
+            charac2.Down()
             toggle = 2
     pass
 
 
 def update():
-    global charac, aims, maps, bosses
+    global charac2, aims, maps, bosses
 
-    charac.update()
+    charac2.update()
     maps.update()
     bosses.update()
     pass
@@ -82,13 +95,13 @@ def draw():
     maps.draw()
 
     if toggle == 1:
-        charac.Up()
+        charac2.Up()
         toggle = 0
     elif toggle == 2:
-        charac.Down()
+        charac2.Down()
         toggle = 0
     else:
-        charac.draw()
+        charac2.draw()
 
     bosses.draw()
     aims.draw()
