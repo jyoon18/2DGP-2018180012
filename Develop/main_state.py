@@ -6,80 +6,28 @@ from pico2d import *
 
 import game_framework
 import title_state
-import pause_state
+
+import character
+import aim_pty
+import map
+import boss_moving
 
 name = "MainState"
 
-character = None
+Character = None
 maps = None
 boss = None
 aim = None
 
-class Aim:
-    def __init__(self):
-        self.image = load_image('aim.png')
-        self.x, self.y = 0,0
-    def draw(self):
-        self.image.draw(200,200)
-        self.image.draw(200,70)
-
-class Maps:
-    def __init__(self):
-        self.image = load_image('map02_3.png')
-        self.x, self.y = 640,300
-        self.frame = 0
-    def draw(self):
-        self.image.draw(self.x, self.y)
-
-    def update(self):
-        self.x -= 1
-
-class Character:
-    global toggle
-    toggle = 0
-    def __init__(self):
-        self.x, self.y = 90, 90
-        self.frame = 0
-        self.attack_image = load_image('up_attack.png')
-        self.image = load_image('running1.png')
-
-    def update(self):
-        self.frame = (self.frame + 1) % 4
-
-    def draw(self):
-        self.image.clip_draw(self.frame * 160, 0, 160, 160, self.x, self.y)
-
-    def Up(self):
-        self.attack_image.draw(180, 200)
-
-    def Down(self):
-        self.attack_image.draw(180, 90)
-
-
-class Boss:
-    def __init__(self):
-        self.x, self.y = 1050, 200
-        self.frame = 0
-        self.image = load_image('boss.png')
-
-    def update(self):
-        self.frame = (self.frame + 1) % 3
-
-    def draw(self):
-        self.image.clip_draw(self.frame * 316, 0, 290, 230, self.x, self.y)
 
 def enter():
-    global aim, character, maps, boss
-    character = Character()
-    maps = Maps()
-    boss = Boss()
-    aim = Aim()
+
     pass
 
 
 def exit():
-    global aim, character, maps, boss
-    del(character)
+    global Character, maps, boss, aim
+    del(Character)
     del(maps)
     del(boss)
     del(aim)
@@ -113,6 +61,7 @@ def handle_events():
 
 #
 def update():
+    global Character, maps, boss
     character.update()
     maps.update()
     boss.update()
