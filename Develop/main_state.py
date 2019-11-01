@@ -42,6 +42,7 @@ def enter():
 
 def exit():
     global charac2, aims, maps, bosses
+    global Bjelly, Sjelly
 
     del (charac2)
     del (maps)
@@ -81,10 +82,14 @@ def handle_events():
 
 def update():
     global charac2, aims, maps, bosses
+    global Bjelly, Sjelly
 
     charac2.update()
     maps.update()
     bosses.update()
+
+    Bjelly.update()
+    Sjelly.update()
     pass
 
 
@@ -103,6 +108,8 @@ def draw():
     else:
         charac2.draw()
 
+    Sjelly.draw()
+    Bjelly.draw()
     bosses.draw()
     aims.draw()
     update_canvas()
