@@ -7,30 +7,29 @@ from pico2d import *
 import game_framework
 import title_state
 
-import character
-import aim_pty
-import map
-import boss_moving
+from character import Character
+from aim_pty import Aim
+from map import Maps
+from boss_moving import Boss
 
 name = "MainState"
 
-Character = None
-maps = None
-boss = None
-aim = None
 
 
 def enter():
-
+    Character()
+    Aim()
+    Maps()
+    Boss()
     pass
 
 
 def exit():
-    global Character, maps, boss, aim
-    del(Character)
-    del(maps)
-    del(boss)
-    del(aim)
+
+    del (Character)
+    del (Maps)
+    del (Boss)
+    del (Aim)
     pass
 
 
@@ -51,20 +50,19 @@ def handle_events():
         elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:    # 타이틀 상태에서 esc키를 누르면 타이틀로 넘어가게
             game_framework.change_state(title_state)
         elif event.type == SDL_KEYDOWN and event.key == SDLK_f:
-            character.Up()
+            Character().Up()
             toggle = 1
         elif event.type == SDL_KEYDOWN and event.key == SDLK_j:
-            character.Down()
+            Character().Down()
             toggle = 2
 
     pass
 
 #
 def update():
-    global Character, maps, boss
-    character.update()
-    maps.update()
-    boss.update()
+    Character().update()
+    Maps().update()
+    Boss().update()
     pass
 
 
@@ -72,20 +70,20 @@ def draw():
     global toggle
 
     clear_canvas()
-    maps.draw()
+    Maps().draw()
 
     if toggle == 1:
-        character.Up()
+        Character().Up()
         toggle = 0
 
     elif toggle == 2:
-        character.Down()
+        Character().Down()
         toggle = 0
 
     else:
-        character.draw()
-    boss.draw()
-    aim.draw()
+        Character().draw()
+    Boss().draw()
+    Aim().draw()
     update_canvas()
 
 

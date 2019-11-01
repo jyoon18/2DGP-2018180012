@@ -1,8 +1,6 @@
 from pico2d import *
 
 class Character:
-    global toggle
-    toggle = 0
     def __init__(self):
         self.x, self.y = 90, 90
         self.frame = 0
@@ -21,26 +19,3 @@ class Character:
     def Down(self):
         self.attack_image.draw(180, 90)
 
-def enter():
-    global character
-    character = Character()
-
-def exit():
-    global character
-    del character
-
-def update():
-    global character
-    character.update()
-
-def draw():
-    global character
-    character.draw()
-
-def Up():
-    global character
-    character.Up()
-
-def Down():
-    global character
-    character.Down()
