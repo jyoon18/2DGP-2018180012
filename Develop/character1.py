@@ -5,8 +5,8 @@ class Character1:
     def __init__(self):
         self.x, self.y = 90, 90
         self.frame = 0
-        self.attack_image = load_image('up_attack.png')
-        self.image = load_image('running1.png')
+        self.attack_image = load_image('used_image/up_attack.png')
+        self.image = load_image('used_image/running1.png')
 
     def update(self):
         self.frame = (self.frame + 1) % 4

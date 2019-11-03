@@ -12,7 +12,7 @@ class Select1:
     def __init__(self):
         self.x, self.y = 400, 200
         self.frame = 0
-        self.image = load_image('character1_select_animation.png')
+        self.image = load_image('used_image/character1_select_animation.png')
 
     def update(self):
         self.frame = (self.frame + 1) % 8
@@ -24,7 +24,7 @@ class Select2:
     def __init__(self):
         self.x, self.y = 800, 300
         self.frame = 0
-        self.image = load_image('character2_select_animation.png')
+        self.image = load_image('used_image/character2_select_animation.png')
 
     def update(self):
         self.frame = (self.frame + 1) % 8
