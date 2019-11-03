@@ -9,7 +9,7 @@ logo_time = 0.0
 
 def enter():
     global image
-    image = load_image('kpu_credit.png')
+    image = load_image('used_image/kpu_credit.png')
     pass
 
 # 게임 상태에서 나갈 때 종료화

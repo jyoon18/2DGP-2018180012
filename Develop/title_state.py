@@ -11,7 +11,7 @@ image = None
 # title의 이미지를 보여줌
 def enter():
     global image
-    image = load_image('title.png')
+    image = load_image('used_image/title.png')
     pass
 
 # 게임을 종료할 때, image를 삭제해줌

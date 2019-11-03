@@ -5,7 +5,7 @@ class Small_Jelly_lv1:
     def __init__(self):
         self.x, self.y = 1000, 200
         self.speed = 24
-        self.image = load_image('Level1_jelly.png')
+        self.image = load_image('used_image/Level1_jelly.png')
         self.frame = 0
 
     def update(self):
@@ -19,7 +19,7 @@ class Big_Jelly_lv1:
     def __init__(self):
         self.x, self.y = 1000, 90
         self.speed = 12
-        self.image = load_image('big_bullet2.png')
+        self.image = load_image('used_image/big_bullet2.png')
         self.frame = 0
 
     def update(self):

@@ -4,7 +4,7 @@ class Boss:
     def __init__(self):
         self.x, self.y = 1050, 200
         self.frame = 0
-        self.image = load_image('boss.png')
+        self.image = load_image('used_image/boss.png')
 
     def update(self):
         self.frame = (self.frame + 1) % 3

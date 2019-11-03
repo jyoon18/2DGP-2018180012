@@ -35,7 +35,7 @@ class Select2:
 
 def enter():
     global image, character1, character2
-    image = load_image('character_select_window.png')
+    image = load_image('used_image/character_select_window.png')
     character1 = Select1()
     character2 = Select2()
 
