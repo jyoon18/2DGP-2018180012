@@ -92,7 +92,6 @@ def update():
     Sjelly.update()
     pass
 
-
 def draw():
     global toggle
 
