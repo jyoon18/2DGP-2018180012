@@ -54,14 +54,6 @@ def exit():
     pass
 
 
-def pause():
-    pass
-
-
-def resume():
-    pass
-
-
 def handle_events():
     global toggle
 
