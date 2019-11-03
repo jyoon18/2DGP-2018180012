@@ -30,6 +30,8 @@ class Big_Jelly_lv1:
         self.image.clip_draw(self.frame * 160, 0, 160, 160, self.x, self.y)
 
 
+
+
 def draw_curve(p1, p2, p3, p4):
     for i in range(0, 50, 2):
         t = i / 100
