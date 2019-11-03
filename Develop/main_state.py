@@ -39,7 +39,6 @@ def enter():
     Sjelly = Small_Jelly_lv1()
     pass
 
-
 def exit():
     global charac2, aims, maps, bosses
     global Bjelly, Sjelly
@@ -99,7 +98,7 @@ def draw():
     else:
         charac2.draw()
 
-    Sjelly.draw()
+    Sjelly.curve_draw()
     Bjelly.draw()
     bosses.draw()
     aims.draw()
