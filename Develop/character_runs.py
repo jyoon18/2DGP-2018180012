@@ -11,7 +11,7 @@ frame_boss = 0
 x=800
 
 def get_event():
-    global toggle
+    global up_attack_decision
     global toggle_j
     events = get_events()
     for event in events:
@@ -39,7 +39,7 @@ def heart_display():
 
 
 #
-toggle = True
+up_attack_decision = True
 toggle_j = True
 
 while (x>-800):
@@ -54,15 +54,15 @@ while (x>-800):
     frame_boss = (frame_boss + 1) % 3
 
 
-    if toggle == False:
+    if up_attack_decision == False:
         y = 200
         jump.draw(150,y)
         y = 200 + 200 * math.sin(1*math.pi)
-        toggle=True
+        up_attack_decision=True
     elif toggle_j == False:
         jump.draw(150, 90)
         toggle_j = True
-    elif (toggle == True):
+    elif (up_attack_decision == True):
         judge_height = 2
         character.clip_draw(frame * 160, 0, 160, 160, 90, 90)
         frame = (frame + 1) % 4

@@ -5,6 +5,7 @@ import os
 from pico2d import *
 
 import game_framework
+import game_world
 import title_state
 
 from character1 import Character1
@@ -18,7 +19,7 @@ from jelly import Big_Jelly_lv1
 
 name = "MainState"
 
-charac2 = None
+character_ = None
 aims = None
 maps = None
 bosses = None
@@ -26,35 +27,42 @@ bosses = None
 Bjelly = None
 Sjelly = None
 
-toggle = 0
+up_attack_decision = 0
 
 def enter():
-    global charac2, aims, maps, bosses, Bjelly, Sjelly
-    charac2 = Character2()
+    global character_, aims, maps, bosses, Bjelly, Sjelly
+    character_ = Character2()
     aims = Aim()
     maps = Maps()
     bosses = Boss()
 
     Bjelly = Big_Jelly_lv1()
     Sjelly = Small_Jelly_lv1()
+
+    game_world.add_object(maps, 0)
+    game_world.add_object(aims, 0)
+    game_world.add_object(character_, 1)
+    game_world.add_object(bosses, 1)
+    game_world.add_object(Bjelly, 1)
+    game_world.add_object(Sjelly, 1)
     pass
 
 def exit():
-    global charac2, aims, maps, bosses
-    global Bjelly, Sjelly
+    #global character_, aims, maps, bosses
+    #global Bjelly, Sjelly
+    #del character_
+    #del maps
+    #del bosses
+    #del aims
+    #del Bjelly
+    #del Sjelly
 
-    del charac2
-    del maps
-    del bosses
-    del aims
-
-    del Bjelly
-    del Sjelly
+    game_world.clear()
     pass
 
 
 def handle_events():
-    global toggle
+    global up_attack_decision
 
     events = get_events()
     for event in events:
@@ -63,45 +71,31 @@ def handle_events():
         elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:    # 타이틀 상태에서 esc키를 누르면 타이틀로 넘어가게
             game_framework.change_state(title_state)
         elif event.type == SDL_KEYDOWN and event.key == SDLK_f:
-            charac2.Up()
-            toggle = 1
+            up_attack_decision = 1
         elif event.type == SDL_KEYDOWN and event.key == SDLK_j:
-            charac2.Down()
-            toggle = 2
+            up_attack_decision = 2
     pass
 
 
 def update():
-    global charac2, aims, maps, bosses
-    global Bjelly, Sjelly
+    #global character_, aims, maps, bosses
+    #global Bjelly, Sjelly
+    #character_.update()
+    #maps.update()
+    #bosses.update()
+    #Bjelly.update()
+    #Sjelly.update()
 
-    charac2.update()
-    maps.update()
-    bosses.update()
-
-    Bjelly.update()
-    Sjelly.update()
+    for game_object in game_world.all_objects():
+        game_object.update()
     pass
 
 def draw():
-    global toggle
+    global up_attack_decision
 
     clear_canvas()
-    maps.draw()
-
-    if toggle == 1:
-        charac2.Up()
-        toggle = 0
-    elif toggle == 2:
-        charac2.Down()
-        toggle = 0
-    else:
-        charac2.draw()
-
-    Sjelly.draw()
-    Bjelly.draw()
-    bosses.draw()
-    aims.draw()
+    for game_object in game_world.all_objects():
+        game_object.draw()
     update_canvas()
 
 

@@ -1,5 +1,7 @@
 from pico2d import *
 import game_framework
+import game_world
+
 
 class Character1:
     def __init__(self):
