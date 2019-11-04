@@ -31,7 +31,7 @@ up_attack_decision = 0
 
 def enter():
     global character_, aims, maps, bosses, Bjelly, Sjelly
-    character_ = Character2()
+    character_ = Character1()
     aims = Aim()
     maps = Maps()
     bosses = Boss()
