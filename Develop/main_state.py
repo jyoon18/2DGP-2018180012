@@ -98,7 +98,7 @@ def draw():
     else:
         charac2.draw()
 
-    Sjelly.curve_draw((1000,200),(773,400),(498,200),(180,200))
+    Sjelly.draw()
     Bjelly.draw()
     bosses.draw()
     aims.draw()
