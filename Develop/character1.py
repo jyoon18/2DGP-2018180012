@@ -14,13 +14,10 @@ key_event_table = {
 }
 
 class IdleState:
+
     @staticmethod
     def enter(character1, event):
-        if event == F_DOWN:
-            character1.toggle = 1
-        elif event == J_DOWN:
-            character1.toggle = 2
-        elif event == F_UP:
+        if event == F_UP:
             character1.toggle = 0
         elif event == J_UP:
             character1.toggle = 0
@@ -35,12 +32,7 @@ class IdleState:
 
     @staticmethod
     def draw(character1):
-        if character1.toggle == 1:
-            character1.attack_image(180, 200)
-        elif character1.toggle == 2:
-            character1.attack_image(180, 90)
-        else:
-            character1.image.clip_draw(character1.frame * 160, 0, 160, 160, character1.x, character1.y)
+        character1.image.clip_draw(character1.frame * 160, 0, 160, 160, character1.x, character1.y)
 
 class AttackState:
     @staticmethod
@@ -49,35 +41,35 @@ class AttackState:
             character1.toggle = 1
         elif event == J_DOWN:
             character1.toggle = 2
-        elif event == F_UP:
-            character1.toggle = 0
-        elif event == J_UP:
-            character1.toggle = 0
+
     @staticmethod
     def exit(character1, event):
-        character1.frame = (character1.frame + 1) % 4
         pass
 
     @staticmethod
     def do(character1):
-        pass
+        character1.x = 180
+        if character1.toggle == 1:
+            character1.y = 200
+        elif character1.toggle == 2:
+            character1.y = 90
+        else:
+            character1.x, character1.y = 90, 90
 
     @staticmethod
     def draw(character1):
         if character1.toggle == 1:
-            character1.attack_image(180, 200)
+            character1.attack_image(character1.x, character1.y)
         elif character1.toggle == 2:
-            character1.attack_image(180, 90)
-        else:
-            character1.image.clip_draw(character1.frame * 160, 0, 160, 160, character1.x, character1.y)
+            character1.attack_image(character1.x, character1.y)
 
 
 next_state_table = {
-    IdleState: {F_UP: AttackState, F_DOWN: AttackState,
-                J_UP: AttackState, J_DOWN: AttackState},
+    IdleState: {F_UP: IdleState, F_DOWN: AttackState,
+                J_UP: IdleState, J_DOWN: AttackState},
 
-    AttackState: {F_UP: IdleState, F_DOWN: IdleState,
-                  J_UP: IdleState, J_DOWN: IdleState}
+    AttackState: {F_UP: IdleState, F_DOWN: AttackState,
+                  J_UP: IdleState, J_DOWN: AttackState}
 }
 
 class Character1:
