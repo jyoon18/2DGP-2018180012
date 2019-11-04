@@ -13,6 +13,42 @@ key_event_table = {
     (SDL_KEYUP, SDLK_j): J_UP
 }
 
+class IdleState:
+    @staticmethod
+    def enter(character1, event):
+        if event == F_DOWN:
+            character1.x, character1.y = 180, 200
+        elif event == J_DOWN:
+            character1.x, character1.y = 180, 90
+
+    @staticmethod
+    def exit(character1, event):
+        pass
+
+    @staticmethod
+    def do(character1):
+        character1.frame = (character1.frame + 1) % 4
+
+    @staticmethod
+    def draw(character1):
+        character1.image.clip_draw(character1.frame * 160, 0, 160, 160, character1.x, character1.y)
+
+class AttackState:
+    @staticmethod
+    def enter(character1, event):
+        if event == F_DOWN:
+            
+        elif event == J_DOWN:
+            character1.x, character1.y = 180, 90
+
+    @staticmethod
+    def exit(character1, event):
+        pass
+
+    @staticmethod
+    def draw(character1):
+
+
 class Character1:
     def __init__(self):
         self.x, self.y = 90, 90
