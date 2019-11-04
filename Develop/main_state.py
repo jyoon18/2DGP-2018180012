@@ -18,7 +18,7 @@ from jelly import Big_Jelly_lv1
 
 name = "MainState"
 
-charac = None
+charac2 = None
 aims = None
 maps = None
 bosses = None
@@ -43,10 +43,10 @@ def exit():
     global charac2, aims, maps, bosses
     global Bjelly, Sjelly
 
-    del (charac2)
-    del (maps)
-    del (bosses)
-    del (aims)
+    del charac2
+    del maps
+    del bosses
+    del aims
 
     del Bjelly
     del Sjelly
