@@ -2,6 +2,16 @@ from pico2d import *
 import game_framework
 import game_world
 
+# character event
+
+F_DOWN, F_UP, J_DOWN, J_UP = range(4)
+
+key_event_table = {
+    (SDL_KEYDOWN, SDLK_f): F_DOWN,
+    (SDL_KEYUP, SDLK_f): F_UP,
+    (SDL_KEYDOWN, SDLK_j): J_DOWN,
+    (SDL_KEYUP, SDLK_j): J_UP
+}
 
 class Character1:
     def __init__(self):
