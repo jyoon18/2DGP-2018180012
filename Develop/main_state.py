@@ -19,7 +19,7 @@ from jelly import Big_Jelly_lv1
 
 name = "MainState"
 
-character_ = None
+character1 = None
 aims = None
 maps = None
 bosses = None
@@ -30,8 +30,8 @@ Sjelly = None
 up_attack_decision = 0
 
 def enter():
-    global character_, aims, maps, bosses, Bjelly, Sjelly
-    character_ = Character1()
+    global character1, aims, maps, bosses, Bjelly, Sjelly
+    character1 = Character1()
     aims = Aim()
     maps = Maps()
     bosses = Boss()
@@ -41,7 +41,7 @@ def enter():
 
     game_world.add_object(maps, 0)
     game_world.add_object(aims, 0)
-    game_world.add_object(character_, 1)
+    game_world.add_object(character1, 1)
     game_world.add_object(bosses, 1)
     game_world.add_object(Bjelly, 1)
     game_world.add_object(Sjelly, 1)
@@ -70,10 +70,9 @@ def handle_events():
             game_framework.quit()
         elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:    # 타이틀 상태에서 esc키를 누르면 타이틀로 넘어가게
             game_framework.change_state(title_state)
-        elif event.type == SDL_KEYDOWN and event.key == SDLK_f:
-            up_attack_decision = 1
-        elif event.type == SDL_KEYDOWN and event.key == SDLK_j:
-            up_attack_decision = 2
+        elif event.type == SDL_KEYDOWN and (event.key == SDLK_f or event.key == SDLK_j):
+            character1.handle_event(event)
+
     pass
 
 
@@ -98,8 +97,8 @@ def draw():
         game_object.draw()
     update_canvas()
 
-
     delay(0.1)
+
     pass
 
 
