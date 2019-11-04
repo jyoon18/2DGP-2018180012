@@ -20,6 +20,7 @@ from jelly import Big_Jelly_lv1
 name = "MainState"
 
 character1 = None
+character2 = None
 aims = None
 maps = None
 bosses = None
@@ -30,8 +31,8 @@ Sjelly = None
 up_attack_decision = 0
 
 def enter():
-    global character1, aims, maps, bosses, Bjelly, Sjelly
-    character1 = Character1()
+    global character2, aims, maps, bosses, Bjelly, Sjelly
+    character2 = Character2()
     aims = Aim()
     maps = Maps()
     bosses = Boss()
@@ -41,7 +42,7 @@ def enter():
 
     game_world.add_object(maps, 0)
     game_world.add_object(aims, 0)
-    game_world.add_object(character1, 1)
+    game_world.add_object(character2, 1)
     game_world.add_object(bosses, 1)
     game_world.add_object(Bjelly, 1)
     game_world.add_object(Sjelly, 1)
