@@ -72,7 +72,7 @@ def handle_events():
         elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:    # 타이틀 상태에서 esc키를 누르면 타이틀로 넘어가게
             game_framework.change_state(title_state)
         elif event.type == SDL_KEYDOWN and (event.key == SDLK_f or event.key == SDLK_j):
-            character1.handle_event(event)
+            character2.handle_event(event)
 
     pass
 

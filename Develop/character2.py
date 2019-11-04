@@ -22,12 +22,12 @@ class IdleState:
 
     @staticmethod
     def do(character2):
-        character2.x, character2.y = 90, 90
-        character2.frame = (character2.frame + 1) % 4
+        character2.x, character2.y = 90, 160
+        character2.frame = (character2.frame + 1) % 8
 
     @staticmethod
     def draw(character2):
-        character2.image.clip_draw(character2.frame * 160, 0, 160, 160, character2.x, character2.y)
+        character2.image.clip_draw(character2.frame * 320, 0, 320, 320, character2.x, character2.y)
 
 
 class AttackState:
@@ -44,19 +44,14 @@ class AttackState:
 
     @staticmethod
     def do(character2):
-        if character2.toggle == 1:
-            character2.x, character2.y = 180, 200
-        elif character2.toggle == 2:
-            character2.x, character2.y = 180, 90
-        else:
-            character2.frame = (character2.frame + 1) % 4
+       character2.frame = (character2.frame + 1) % 8
 
     @staticmethod
     def draw(character2):
         if character2.toggle == 1:
-            character2.attack_image.draw(180, 200)
+            character2.attack_image.draw(180, 320)
         elif character2.toggle == 2:
-            character2.attack_image.draw(180, 90)
+            character2.attack_image.draw(180, 160)
         else:
             character2.image.clip_draw(character2.frame * 320, 0, 320, 320, character2.x, character2.y)
         character2.toggle = 0

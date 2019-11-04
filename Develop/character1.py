@@ -44,12 +44,7 @@ class AttackState:
 
     @staticmethod
     def do(character1):
-        if character1.toggle == 1:
-            character1.x, character1.y = 180, 200
-        elif character1.toggle == 2:
-            character1.x, character1.y = 180, 90
-        else:
-            character1.frame = (character1.frame + 1) % 4
+        character1.frame = (character1.frame + 1) % 4
 
     @staticmethod
     def draw(character1):
