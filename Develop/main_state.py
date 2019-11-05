@@ -47,9 +47,12 @@ def enter():
     small_jelly = [Small_Jelly_lv1() for i in range(5)]
     for i in range(5):
         small_jelly[i].y = Sjelly.y
-
         game_world.add_objects(small_jelly, 1)
 
+    big_jelly = [Big_Jelly_lv1() for n in range(5)]
+    for n in range(5):
+        big_jelly[n].y = Bjelly.y
+        game_world.add_objects(big_jelly, 1)
 
 
 def exit():
