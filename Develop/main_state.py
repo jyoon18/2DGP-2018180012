@@ -41,8 +41,7 @@ def enter():
     game_world.add_object(aims, 0)
     game_world.add_object(character2, 1)
     game_world.add_object(boss_character, 1)
-    game_world.add_object(Bjelly, 1)
-    #game_world.add_object(Sjelly, 1)
+
 
     small_jelly = [Small_Jelly_lv1() for i in range(5)]
     for i in range(5):
@@ -61,8 +60,6 @@ def exit():
 
 
 def handle_events():
-    global up_attack_decision
-
     events = get_events()
     for event in events:
         if event.type == SDL_QUIT:          # 윈도우 창 x를 누르면 종료되게
