@@ -36,7 +36,6 @@ def enter():
     aims = Aim()
     maps = Maps()
     bosses = Boss()
-
     Bjelly = Big_Jelly_lv1()
     Sjelly = Small_Jelly_lv1()
 
@@ -73,7 +72,8 @@ def handle_events():
             game_framework.change_state(title_state)
         elif event.type == SDL_KEYDOWN and (event.key == SDLK_f or event.key == SDLK_j):
             character2.handle_event(event)
-
+        #elif event.type == SDL_KEYDOWN and event.key == SDLK_KP_ENTER:
+            #game_framework.change_state()
     pass
 
 
