@@ -7,9 +7,9 @@ class Small_Jelly_lv1:
     image = None
 
     def __init__(self):
-        self.x, self.y = 1000, random.randint(150, 200)
-        self.speed = 19
-        self.frame = random.randint(2,20)
+        self.x, self.y = 1000, 200
+        self.speed = random.randint(10, 20)
+        self.frame = 0
         if Small_Jelly_lv1.image == None:
             Small_Jelly_lv1.image = load_image('used_image/Level1_jelly.png')
 

@@ -46,9 +46,9 @@ def enter():
     game_world.add_object(Bjelly, 1)
     #game_world.add_object(Sjelly, 1)
 
-    small_jelly = [Small_Jelly_lv1() for i in range(25)]
+    small_jelly = [Small_Jelly_lv1() for i in range(5)]
 
-    for i in range(25):
+    for i in range(5):
         small_jelly[i].y = Sjelly.y
     game_world.add_objects(small_jelly, 1)
 
