@@ -28,8 +28,6 @@ boss_character = None
 Bjelly = None
 Sjelly = None
 
-up_attack_decision = 0
-
 def enter():
     global character2, aims, maps, boss_character, Bjelly, Sjelly
     character2 = Character2()
@@ -47,23 +45,14 @@ def enter():
     #game_world.add_object(Sjelly, 1)
 
     small_jelly = [Small_Jelly_lv1() for i in range(5)]
-
     for i in range(5):
         small_jelly[i].y = Sjelly.y
-    game_world.add_objects(small_jelly, 1)
+
+        game_world.add_objects(small_jelly, 1)
 
 
 
 def exit():
-    #global character_, aims, maps, bosses
-    #global Bjelly, Sjelly
-    #del character_
-    #del maps
-    #del bosses
-    #del aims
-    #del Bjelly
-    #del Sjelly
-
     game_world.clear()
     pass
 
@@ -79,22 +68,14 @@ def handle_events():
             game_framework.change_state(title_state)
         elif event.type == SDL_KEYDOWN and (event.key == SDLK_f or event.key == SDLK_j):
             character2.handle_event(event)
-        #elif event.type == SDL_KEYDOWN and event.key == SDLK_KP_ENTER:
-            #game_framework.change_state()
     pass
 
 
 def update():
-    #global character_, aims, maps, bosses
-    #global Bjelly, Sjelly
-    #character_.update()
-    #maps.update()
-    #bosses.update()
-    #Bjelly.update()
-    #Sjelly.update()
-
+    global timer_running_state
     for game_object in game_world.all_objects():
         game_object.update()
+
     pass
 
 def draw():

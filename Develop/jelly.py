@@ -8,7 +8,7 @@ class Small_Jelly_lv1:
 
     def __init__(self):
         self.x, self.y = 1000, 200
-        self.speed = random.randint(10, 20)
+        self.speed = random.randint(5, 10)
         self.frame = 0
         if Small_Jelly_lv1.image == None:
             Small_Jelly_lv1.image = load_image('used_image/Level1_jelly.png')
@@ -16,6 +16,8 @@ class Small_Jelly_lv1:
     def update(self):
         self.frame = (self.frame + 1) % 2
         self.x -= self.speed
+        if self.x == -100:
+            self.x, self.y = 1000, 200
 
     def draw(self):
         self.image.clip_draw(self.frame * 80, 0, 80, 80, self.x, self.y)
