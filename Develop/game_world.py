@@ -8,7 +8,7 @@ def add_object(o, layer):
     objects[layer].append(o)        # 게임월드에 객체를 추가
 
 def add_objects(l, layer):
-    objects[layer] += 1             # 게임월드에 객체들을 추가 => 이건 다수의 객체를 추가해주는거?
+    objects[layer] += l
 
 def remove_object(o):
     for i in range(len(objects)):   # 게임 월드의 객체 제거
@@ -22,6 +22,7 @@ def clear():
         for o in all_objects():
              remove_object(o)
              del o
+
 
 def all_objects():
     for i in range(len(objects)): # 게임 월드의 모든 객체들을 하나씩 꺼내오기

@@ -23,7 +23,7 @@ character1 = None
 character2 = None
 aims = None
 maps = None
-bosses = None
+boss_character = None
 
 Bjelly = None
 Sjelly = None
@@ -31,21 +31,28 @@ Sjelly = None
 up_attack_decision = 0
 
 def enter():
-    global character2, aims, maps, bosses, Bjelly, Sjelly
+    global character2, aims, maps, boss_character, Bjelly, Sjelly
     character2 = Character2()
     aims = Aim()
     maps = Maps()
-    bosses = Boss()
+    boss_character = Boss()
     Bjelly = Big_Jelly_lv1()
     Sjelly = Small_Jelly_lv1()
 
     game_world.add_object(maps, 0)
     game_world.add_object(aims, 0)
     game_world.add_object(character2, 1)
-    game_world.add_object(bosses, 1)
+    game_world.add_object(boss_character, 1)
     game_world.add_object(Bjelly, 1)
-    game_world.add_object(Sjelly, 1)
-    pass
+    #game_world.add_object(Sjelly, 1)
+
+    small_jelly = [Small_Jelly_lv1() for i in range(25)]
+
+    for i in range(25):
+        small_jelly[i].y = Sjelly.y
+    game_world.add_objects(small_jelly, 1)
+
+
 
 def exit():
     #global character_, aims, maps, bosses
