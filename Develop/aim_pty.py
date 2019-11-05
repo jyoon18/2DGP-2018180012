@@ -7,7 +7,7 @@ class Aim:
 
     def draw(self):
         self.image.draw(200,200)
-        self.image.draw(200,70)
+        self.image.draw(200,90)
 
     def update(self):
         pass
