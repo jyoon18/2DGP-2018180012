@@ -6,8 +6,8 @@ class Aim:
         self.x, self.y = 0,0
 
     def draw(self):
-        self.image.draw(200,200)
-        self.image.draw(200,90)
+        self.image.draw(200, 200)
+        self.image.draw(200, 90)
 
     def update(self):
         pass
