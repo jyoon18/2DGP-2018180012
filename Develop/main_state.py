@@ -85,6 +85,8 @@ def draw():
 
     pass
 
+def collide(a, b):
+
 
 
 

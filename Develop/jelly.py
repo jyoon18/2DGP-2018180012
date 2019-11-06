@@ -27,6 +27,10 @@ class Small_Jelly_lv1:
     def draw(self):
         self.image.clip_draw(self.frame * 80, 0, 80, 80, self.x, self.y)
 
+    def get_bb(self):
+        return self.x - 40, self.y - 40, self.x + 40, self.y + 40
+
+
 class Big_Jelly_lv1:
     image = None
 
@@ -52,3 +56,5 @@ class Big_Jelly_lv1:
     def draw(self):
         self.image.clip_draw(self.frame * 160, 0, 160, 160, self.x, self.y)
 
+    def get_bb(self):
+        return self.x - 80, self.y - 80, self.x + 80, self.y + 80
