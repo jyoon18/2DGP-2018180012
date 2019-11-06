@@ -28,7 +28,7 @@ class Small_Jelly_lv1:
         self.image.clip_draw(self.frame * 80, 0, 80, 80, self.x, self.y)
 
     def get_bb(self):
-        return self.x - 20, self.y - 20, self.x + 20, self.y + 20
+        return self.x - 40, self.y - 40, self.x + 40, self.y + 40
 
 
 class Big_Jelly_lv1:
@@ -48,13 +48,13 @@ class Big_Jelly_lv1:
         self.x -= self.speed
         if self.x < -10:
             self.x = 1000
-        if self.random_select == 0:
-            self.y = 200
-        elif self.random_select == 1:
-            self.y = 90
+            if self.y == 90:
+                self.y = 200
+            elif self.y == 200:
+                self.y = 90
 
     def draw(self):
         self.image.clip_draw(self.frame * 160, 0, 160, 160, self.x, self.y)
 
     def get_bb(self):
-        return self.x - 20, self.y - 20, self.x + 20, self.y + 20
+        return self.x - 40, self.y - 40, self.x + 40, self.y + 40

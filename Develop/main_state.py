@@ -78,6 +78,12 @@ def update():
             print("으악")
         if collide(aim_down, Sjelly):
             print("으악")
+    for Bjelly in big_jelly:
+        if collide(aim_up, Bjelly):
+            print("으윽")
+        if collide(aim_down, Bjelly):
+            print("으윽")
+
 
 
     pass
