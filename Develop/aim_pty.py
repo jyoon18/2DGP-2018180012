@@ -12,8 +12,7 @@ class Aim:
     def update(self):
         pass
 
-    def get_bb_up(self):
+    def get_bb(self):
         return self.x - 25, self.y - 25, self.x + 25, self.y + 25
 
-    def get_bb_down(self):
-        return self.x - 25, self.y - 25, self.x + 25, self.y + 25
+
