@@ -1,18 +1,31 @@
 from pico2d import *
 
-class Aim:
+class Aim_Up:
+
     def __init__(self):
         self.image = load_image('used_image/aim.png')
-        self.x, self.y = 0,0
+        self.x, self.y = 200, 200
 
     def draw(self):
-        self.image.draw(200, 200)
-        self.image.draw(200, 90)
+        self.image.draw(self.x, self.y)
 
     def update(self):
         pass
 
     def get_bb(self):
-        return self.x - 25, self.y - 25, self.x + 25, self.y + 25
+        return self.x - 40, self.y - 40, self.x + 40, self.y + 40
 
+class Aim_Down:
+    def __init__(self):
+        self.image = load_image('used_image/aim.png')
+        self.x, self.y = 200, 90
+
+    def draw(self):
+        self.image.draw(self.x, self.y)
+
+    def update(self):
+        pass
+
+    def get_bb(self):
+        return self.x - 40, self.y - 40, self.x + 40, self.y + 40
 
