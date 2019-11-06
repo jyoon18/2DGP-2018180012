@@ -45,13 +45,12 @@ def enter():
     small_jelly = [Small_Jelly_lv1() for i in range(5)]
     for i in range(5):
         small_jelly[i].y = Sjelly.y
-        game_world.add_objects(small_jelly, 1)
+    game_world.add_objects(small_jelly, 1)
 
-    big_jelly = [Big_Jelly_lv1() for n in range(5)]
-    for n in range(5):
+    big_jelly = [Big_Jelly_lv1() for n in range(2)]
+    for n in range(2):
         big_jelly[n].y = Bjelly.y
-        game_world.add_objects(big_jelly, 1)
-
+    game_world.add_objects(big_jelly, 1)
 
 def exit():
     game_world.clear()
@@ -71,15 +70,12 @@ def handle_events():
 
 
 def update():
-    global timer_running_state
     for game_object in game_world.all_objects():
         game_object.update()
 
     pass
 
 def draw():
-    global up_attack_decision
-
     clear_canvas()
     for game_object in game_world.all_objects():
         game_object.draw()
