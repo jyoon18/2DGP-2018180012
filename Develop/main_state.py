@@ -42,7 +42,6 @@ def enter():
     game_world.add_object(character2, 1)
     game_world.add_object(boss_character, 1)
 
-
     small_jelly = [Small_Jelly_lv1() for i in range(5)]
     for i in range(5):
         small_jelly[i].y = Sjelly.y
