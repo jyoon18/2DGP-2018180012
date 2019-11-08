@@ -11,7 +11,7 @@ class Small_Jelly_lv2:
         self.speed = random.randint(6, 18)
         self.frame = 0
         if Small_Jelly_lv2.image == None:
-            Small_Jelly_lv2.image = load_image('used_image/Level1_jelly.png')
+            Small_Jelly_lv2.image = load_image('used_image/Level2_jelly.png')
 
     def update(self):
         self.frame = (self.frame + 1) % 2

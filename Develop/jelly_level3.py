@@ -11,7 +11,7 @@ class Small_Jelly_lv1:
         self.speed = random.randint(5, 20)
         self.frame = 0
         if Small_Jelly_lv1.image == None:
-            Small_Jelly_lv1.image = load_image('used_image/Level1_jelly.png')
+            Small_Jelly_lv1.image = load_image('used_image/Level3_jelly.png')
 
     def update(self):
         self.frame = (self.frame + 1) % 2
@@ -41,7 +41,7 @@ class Big_Jelly_lv1:
         self.random_select = random.randint(0, 1)
 
         if Big_Jelly_lv1.image == None:
-            Big_Jelly_lv1.image = load_image('used_image/big_bullet2.png')
+            Big_Jelly_lv1.image = load_image('used_image/level3_big_bullet.png')
 
     def update(self):
         self.frame = (self.frame + 1) % 2

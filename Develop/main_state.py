@@ -34,7 +34,7 @@ Sjelly = None
 
 def enter():
     global character2, aim_up, aim_down, maps, boss_character, Bjelly, Sjelly
-    global small_jelly, big_jelly
+    global jelly
     global life
 
     character2 = Character2()
@@ -52,14 +52,11 @@ def enter():
     game_world.add_object(character2, 1)
     game_world.add_object(boss_character, 1)
 
-    small_jelly = [Small_Jelly_lv1() for i in range(2)]
-    game_world.add_objects(small_jelly, 1)
-
-    big_jelly = [Big_Jelly_lv1() for n in range(2)]
-    game_world.add_objects(big_jelly, 1)
+    jelly = [Small_Jelly_lv1() for i in range(2)] + [Big_Jelly_lv1() for n in range(2)]
+    game_world.add_objects(jelly, 1)
 
     life_location = [Life() for k in range(5)]
-    game_world.add_objects(life_location, 1)
+    game_world.add_objects(life_location, 0)
 
 def exit():
     game_world.clear()
@@ -82,12 +79,13 @@ def update():
     for game_object in game_world.all_objects():
         game_object.update()
 
-    for Sjelly in small_jelly:
+    for Sjelly in jelly:
         if collide(aim_up, Sjelly):
             print("으악")
         if collide(aim_down, Sjelly):
             print("으악")
-    for Bjelly in big_jelly:
+
+    for Bjelly in jelly:
         if collide(aim_up, Bjelly):
             print("으윽")
         if collide(aim_down, Bjelly):
