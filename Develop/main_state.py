@@ -91,6 +91,17 @@ def update():
         if collide(aim_down, Bjelly):
             print("으윽")
 
+    for Sjelly in jelly:
+        if collide(character2, Sjelly):
+            print("체크쳋크")
+            jelly.remove(Sjelly)
+            game_world.remove_object(Sjelly)
+
+    for Bjelly in jelly:
+        if collide(character2, Bjelly):
+            print("체크체크")
+            jelly.remove(Bjelly)
+            game_world.remove_object(Bjelly)j
 
 
     pass

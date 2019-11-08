@@ -95,4 +95,6 @@ class Character1:
             key_event = key_event_table[(event.type, event.key)]
             self.add_event(key_event)
 
+    def get_bb(self):
+        return self.x - 40, self.y - 40, self.x + 40, self.y + 40
 

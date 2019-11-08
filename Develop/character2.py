@@ -92,3 +92,6 @@ class Character2:
         if (event.type, event.key) in key_event_table:
             key_event = key_event_table[(event.type, event.key)]
             self.add_event(key_event)
+
+    def get_bb(self):
+        return self.x - 80, self.y - 80, self.x + 80, self.y + 80
