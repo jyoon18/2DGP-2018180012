@@ -28,7 +28,7 @@ class Small_Jelly_lv2:
         self.image.clip_draw(self.frame * 80, 0, 80, 80, self.x, self.y)
 
     def get_bb(self):
-        return self.x - 20, self.y - 20, self.x + 20, self.y + 20
+        return self.x - 30, self.y - 30, self.x + 30, self.y + 30
 
 
 class Big_Jelly_lv2:
@@ -38,7 +38,6 @@ class Big_Jelly_lv2:
         self.x, self.y = 1000, 90
         self.speed = random.randint(6, 10)
         self.frame = 0
-        self.random_select = random.randint(0, 1)
 
         if Big_Jelly_lv2.image == None:
             Big_Jelly_lv2.image = load_image('used_image/big_bullet2.png')

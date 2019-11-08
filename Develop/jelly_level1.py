@@ -38,7 +38,6 @@ class Big_Jelly_lv1:
         self.x, self.y = 1000, 90
         self.speed = random.randint(5, 8)
         self.frame = 0
-        self.random_select = random.randint(0, 1)
 
         if Big_Jelly_lv1.image == None:
             Big_Jelly_lv1.image = load_image('used_image/big_bullet2.png')
