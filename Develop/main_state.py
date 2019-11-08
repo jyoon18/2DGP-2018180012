@@ -19,6 +19,7 @@ from jelly_level1 import Small_Jelly_lv1
 from jelly_level1 import Big_Jelly_lv1
 from jelly_level2 import Small_Jelly_lv2
 from jelly_level2 import Big_Jelly_lv2
+from life import Life
 
 name = "MainState"
 
@@ -34,6 +35,8 @@ Sjelly = None
 def enter():
     global character2, aim_up, aim_down, maps, boss_character, Bjelly, Sjelly
     global small_jelly, big_jelly
+    global life
+
     character2 = Character2()
     aim_up = Aim_Up()
     aim_down = Aim_Down()
@@ -41,6 +44,7 @@ def enter():
     boss_character = Boss()
     Bjelly = Big_Jelly_lv1()
     Sjelly = Small_Jelly_lv1()
+    life = Life()
 
     game_world.add_object(maps, 0)
     game_world.add_object(aim_up, 0)
@@ -53,6 +57,9 @@ def enter():
 
     big_jelly = [Big_Jelly_lv1() for n in range(2)]
     game_world.add_objects(big_jelly, 1)
+
+    life_location = [Life() for k in range(5)]
+    game_world.add_objects(life_location, 1)
 
 def exit():
     game_world.clear()
