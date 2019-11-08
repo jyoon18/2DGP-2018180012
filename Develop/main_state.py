@@ -17,6 +17,8 @@ from boss_moving import Boss
 
 from jelly_level1 import Small_Jelly_lv1
 from jelly_level1 import Big_Jelly_lv1
+from jelly_level2 import Small_Jelly_lv2
+from jelly_level2 import Big_Jelly_lv2
 
 name = "MainState"
 
@@ -46,7 +48,7 @@ def enter():
     game_world.add_object(character2, 1)
     game_world.add_object(boss_character, 1)
 
-    small_jelly = [Small_Jelly_lv1() for i in range(10)]
+    small_jelly = [Small_Jelly_lv1() for i in range(2)]
     game_world.add_objects(small_jelly, 1)
 
     big_jelly = [Big_Jelly_lv1() for n in range(2)]
@@ -60,9 +62,9 @@ def exit():
 def handle_events():
     events = get_events()
     for event in events:
-        if event.type == SDL_QUIT:          # 윈도우 창 x를 누르면 종료되게
+        if event.type == SDL_QUIT:
             game_framework.quit()
-        elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:    # 타이틀 상태에서 esc키를 누르면 타이틀로 넘어가게
+        elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
             game_framework.change_state(title_state)
         elif event.type == SDL_KEYDOWN and (event.key == SDLK_f or event.key == SDLK_j):
             character2.handle_event(event)
