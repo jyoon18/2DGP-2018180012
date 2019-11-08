@@ -15,8 +15,8 @@ from aim_pty import Aim_Down
 from map import Maps
 from boss_moving import Boss
 
-from jelly import Small_Jelly_lv1
-from jelly import Big_Jelly_lv1
+from jelly_level1 import Small_Jelly_lv1
+from jelly_level1 import Big_Jelly_lv1
 
 name = "MainState"
 
