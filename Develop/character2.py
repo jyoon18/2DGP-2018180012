@@ -3,18 +3,21 @@ import game_framework
 
 # character event
 
-F_DOWN, J_DOWN = range(2)
+F_DOWN, J_DOWN, F_UP, J_UP = range(4)
 
 key_event_table =\
     {
         (SDL_KEYDOWN, SDLK_f): F_DOWN,
         (SDL_KEYDOWN, SDLK_j): J_DOWN,
+        (SDL_KEYUP, SDLK_f): F_UP,
+        (SDL_KEYUP, SDLK_j): J_UP
     }
 
 class IdleState:
     @staticmethod
     def enter(character2, event):
         character2.toggle = 0
+        character2.x, character2.y = 90, 160
 
     @staticmethod
     def exit(character2, event):
@@ -35,8 +38,13 @@ class AttackState:
     def enter(character2, event):
         if event == F_DOWN:
             character2.toggle = 1
+            character2.x, character2.y = 180, 320
         elif event == J_DOWN:
             character2.toggle = 2
+            character2.x, character2.y = 180, 160
+        else:
+            character2.toggle = 0
+            character2.x, character2.y = 90, 160
 
     @staticmethod
     def exit(character2, event):
@@ -49,9 +57,9 @@ class AttackState:
     @staticmethod
     def draw(character2):
         if character2.toggle == 1:
-            character2.attack_image.draw(180, 320)
+            character2.attack_image.draw(character2.x, character2.y)
         elif character2.toggle == 2:
-            character2.attack_image.draw(180, 160)
+            character2.attack_image.draw(character2.x, character2.y)
         else:
             character2.image.clip_draw(character2.frame * 320, 0, 320, 320, character2.x, character2.y)
         character2.toggle = 0
