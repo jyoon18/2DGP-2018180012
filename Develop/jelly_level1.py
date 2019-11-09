@@ -43,10 +43,6 @@ class Small_Jelly_lv1:
         elif self.y == 90:
             self.y = 200
 
-
-
-
-
 class Big_Jelly_lv1:
     image = None
 
@@ -81,3 +77,7 @@ class Big_Jelly_lv1:
     def disappear(self):
         self.disappeared_image.clip_draw(self.disappear_frame * 300, 0, 300, 300, self.x, self.y)
         self.x = 1000
+        if self.y == 200:
+            self.y = 90
+        elif self.y == 90:
+            self.y = 200
