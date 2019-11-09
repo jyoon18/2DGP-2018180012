@@ -101,7 +101,7 @@ def update():
         if collide(character2, Bjelly):
             print("체크체크")
             jelly.remove(Bjelly)
-            game_world.remove_object(Bjelly)j
+            game_world.remove_object(Bjelly)
 
 
     pass

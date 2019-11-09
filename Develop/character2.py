@@ -87,6 +87,7 @@ class Character2:
 
     def draw(self):
         self.cur_state.draw(self)
+        draw_rectangle(*self.get_bb())
 
     def handle_event(self, event):
         if (event.type, event.key) in key_event_table:
@@ -94,4 +95,4 @@ class Character2:
             self.add_event(key_event)
 
     def get_bb(self):
-        return self.x - 80, self.y - 80, self.x + 80, self.y + 80
+        return self.x - 20, self.y - 20, self.x + 20, self.y + 20

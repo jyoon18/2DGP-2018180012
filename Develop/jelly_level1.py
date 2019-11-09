@@ -30,9 +30,10 @@ class Small_Jelly_lv1:
 
     def draw(self):
         self.image.clip_draw(self.frame * 80, 0, 80, 80, self.x, self.y)
+        draw_rectangle(*self.get_bb())
 
     def get_bb(self):
-        return self.x - 40, self.y - 40, self.x + 40, self.y + 40
+        return self.x - 20, self.y - 20, self.x + 20, self.y + 20
 
     def disappear(self):
         self.disappeared_image.clip_draw(self.disappear_frame * 300, 0, 300, 300, self.x, self.y)
@@ -68,6 +69,7 @@ class Big_Jelly_lv1:
 
     def draw(self):
         self.image.clip_draw(self.frame * 160, 0, 160, 160, self.x, self.y)
+        draw_rectangle(*self.get_bb())
 
     def get_bb(self):
         return self.x - 40, self.y - 40, self.x + 40, self.y + 40

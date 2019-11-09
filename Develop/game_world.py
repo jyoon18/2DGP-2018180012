@@ -13,7 +13,7 @@ def add_objects(l, layer):
 def remove_object(o):
     for i in range(len(objects)):   # 게임 월드의 객체 제거
         if o in objects[i]:
-            objects.remove(o)
+            objects[i].remove(o)
             del o
             break
 
