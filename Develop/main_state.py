@@ -53,7 +53,7 @@ def enter():
     game_world.add_object(character2, 1)
     game_world.add_object(boss_character, 1)
 
-    jelly = [Small_Jelly_lv1() for i in range(2)] + [Big_Jelly_lv1() for n in range(2)]
+    jelly = [Small_Jelly_lv1() for i in range(10)] + [Big_Jelly_lv1() for n in range(2)]
     game_world.add_objects(jelly, 1)
 
     life_location = [Life() for k in range(5)]
@@ -95,14 +95,12 @@ def update():
     for Sjelly in jelly:
         if collide(character2, Sjelly):
             print("체크쳋크")
-            jelly.remove(Sjelly)
-            game_world.remove_object(Sjelly)
+            Sjelly.disappear()
 
     for Bjelly in jelly:
         if collide(character2, Bjelly):
             print("체크체크")
-            jelly.remove(Bjelly)
-            game_world.remove_object(Bjelly)
+            Bjelly.disappear()
 
 
     pass

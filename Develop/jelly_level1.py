@@ -8,7 +8,7 @@ class Small_Jelly_lv1:
 
     def __init__(self):
         self.x, self.y = 1000, 200
-        self.speed = random.randint(5, 10)
+        self.speed = random.randint(5, 18)
         self.frame = 0
         self.disappear_frame = 0
         self.disappeared_image = load_image('used_image/bullet_disappear.png')
@@ -37,6 +37,11 @@ class Small_Jelly_lv1:
 
     def disappear(self):
         self.disappeared_image.clip_draw(self.disappear_frame * 300, 0, 300, 300, self.x, self.y)
+        self.x = 1000
+        if self.y == 200:
+            self.y = 90
+        elif self.y == 90:
+            self.y = 200
 
 
 
@@ -44,7 +49,6 @@ class Small_Jelly_lv1:
 
 class Big_Jelly_lv1:
     image = None
-    disappeared_image = None
 
     def __init__(self):
         self.x, self.y = 1000, 90
@@ -76,3 +80,4 @@ class Big_Jelly_lv1:
 
     def disappear(self):
         self.disappeared_image.clip_draw(self.disappear_frame * 300, 0, 300, 300, self.x, self.y)
+        self.x = 1000
