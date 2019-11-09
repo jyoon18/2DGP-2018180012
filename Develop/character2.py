@@ -100,4 +100,4 @@ class Character2:
             self.add_event(key_event)
 
     def get_bb(self):
-        return self.x - 20, self.y - 20, self.x + 20, self.y + 20
+        return self.x - 40, self.y - 140, self.x + 40, self.y - 40

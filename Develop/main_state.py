@@ -50,7 +50,7 @@ def enter():
     game_world.add_object(maps, 0)
     game_world.add_object(aim_up, 0)
     game_world.add_object(aim_down, 0)
-    game_world.add_object(character1, 1)
+    game_world.add_object(character2, 1)
     game_world.add_object(boss_character, 1)
 
     jelly = [Small_Jelly_lv1() for i in range(2)] + [Big_Jelly_lv1() for n in range(2)]
@@ -72,7 +72,7 @@ def handle_events():
         elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
             game_framework.change_state(title_state)
         elif event.type == SDL_KEYDOWN and (event.key == SDLK_f or event.key == SDLK_j):
-            character1.handle_event(event)
+            character2.handle_event(event)
     pass
 
 
@@ -93,13 +93,13 @@ def update():
             print("으윽")
 
     for Sjelly in jelly:
-        if collide(character1, Sjelly):
+        if collide(character2, Sjelly):
             print("체크쳋크")
             jelly.remove(Sjelly)
             game_world.remove_object(Sjelly)
 
     for Bjelly in jelly:
-        if collide(character1, Bjelly):
+        if collide(character2, Bjelly):
             print("체크체크")
             jelly.remove(Bjelly)
             game_world.remove_object(Bjelly)
