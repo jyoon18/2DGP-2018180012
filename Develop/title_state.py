@@ -1,5 +1,4 @@
 import game_framework               # game_framework와 main_state를 받아온다
-import main_state
 from pico2d import *
 import character_select_state
 
