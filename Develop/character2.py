@@ -3,14 +3,12 @@ import game_framework
 
 # character event
 
-F_DOWN, J_DOWN, F_UP, J_UP = range(4)
+F_DOWN, J_DOWN = range(2)
 
 key_event_table =\
     {
         (SDL_KEYDOWN, SDLK_f): F_DOWN,
-        (SDL_KEYDOWN, SDLK_j): J_DOWN,
-        (SDL_KEYUP, SDLK_f): F_UP,
-        (SDL_KEYUP, SDLK_j): J_UP
+        (SDL_KEYDOWN, SDLK_j): J_DOWN
     }
 
 class IdleState:
@@ -42,9 +40,7 @@ class AttackState:
         elif event == J_DOWN:
             character2.toggle = 2
             character2.x, character2.y = 180, 160
-        else:
-            character2.toggle = 0
-            character2.x, character2.y = 90, 160
+
 
     @staticmethod
     def exit(character2, event):
@@ -53,6 +49,8 @@ class AttackState:
     @staticmethod
     def do(character2):
        character2.frame = (character2.frame + 1) % 8
+       character2.x, character2.y = 90, 160
+
 
     @staticmethod
     def draw(character2):
