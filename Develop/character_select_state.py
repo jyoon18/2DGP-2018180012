@@ -1,7 +1,7 @@
 from pico2d import *
 
 import game_framework
-import main_state
+import Level1_state
 
 
 image = None
@@ -55,9 +55,9 @@ def handle_events():
             if (event.type, event.key) == (SDL_KEYDOWN, SDLK_ESCAPE):
                 game_framework.quit()
             elif (event.type, event.key) == (SDL_KEYDOWN, SDLK_1):
-                game_framework.change_state(main_state)
+                game_framework.change_state(Level1_state)
             elif (event.type, event.key) == (SDL_KEYDOWN, SDLK_2):
-                game_framework.change_state(main_state)
+                game_framework.change_state(Level1_state)
 
 def update():
     global character1, character2
@@ -67,11 +67,10 @@ def update():
 
 def draw():
     clear_canvas()
-    image.draw(640,300)
+    image.draw(640, 300)
 
     character1.draw()
     character2.draw()
-
 
     update_canvas()
     delay(0.1)
