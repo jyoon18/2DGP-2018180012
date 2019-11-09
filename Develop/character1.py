@@ -36,8 +36,10 @@ class AttackState:
     def enter(character1, event):
         if event == F_DOWN:
             character1.toggle = 1
+            character1.x, character1.y = 180, 200
         elif event == J_DOWN:
             character1.toggle = 2
+            character1.x, character1.y = 180, 90
 
     @staticmethod
     def exit(character1, event):
@@ -46,6 +48,7 @@ class AttackState:
     @staticmethod
     def do(character1):
         character1.frame = (character1.frame + 1) % 4
+        character1.x, character1.y = 90, 90
 
     @staticmethod
     def draw(character1):
@@ -89,6 +92,7 @@ class Character1:
 
     def draw(self):
         self.cur_state.draw(self)
+        draw_rectangle(*self.get_bb())
 
     def handle_event(self, event):
         if (event.type, event.key) in key_event_table:

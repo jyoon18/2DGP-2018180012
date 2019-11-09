@@ -15,7 +15,6 @@ class IdleState:
     @staticmethod
     def enter(character2, event):
         character2.toggle = 0
-        character2.x, character2.y = 90, 160
 
     @staticmethod
     def exit(character2, event):
