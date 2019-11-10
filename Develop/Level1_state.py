@@ -100,7 +100,11 @@ def update():
             print("체크쳋크")
             Sjelly.disappear()
 
-        if Sjelly.x < 180:
+        if Sjelly.x < 165:
+            for l in life_location:
+                life_location.remove(l)
+                game_world.remove_object(l)
+                break
             print("키입력이 없었어요~")
 
 
