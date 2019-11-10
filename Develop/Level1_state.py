@@ -97,6 +97,7 @@ def update():
             Sjelly.disappear()
 
         if not collide(character2, Sjelly) and Sjelly.x < 180:
+            character2.get_damage()
             print("키입력이 없었어요~")
 
     for Bjelly in jelly:
@@ -105,7 +106,8 @@ def update():
             Bjelly.disappear()
 
         if not collide(character2, Bjelly) and Bjelly.x < 180:
-                print("키입력이 없었어요~")
+            character2.get_damage()
+            print("키입력이 없었어요~")
 
 
 
