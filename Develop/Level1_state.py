@@ -79,7 +79,8 @@ def handle_events():
 
 def update():
     global character2
-    global life_location, life
+    global hit
+
     for game_object in game_world.all_objects():
         game_object.update()
 
@@ -103,9 +104,8 @@ def update():
 
         if not collide(character2, Sjelly) and Sjelly.x < 180:
             print("키입력이 없었어요~")
-            for life in life_location:
-                life_location.remove(life)
-                game_world.remove_object(life)
+
+
 
     for Bjelly in jelly:
         if collide(character2, Bjelly):
@@ -114,9 +114,6 @@ def update():
 
         if not collide(character2, Bjelly) and Bjelly.x < 180:
             print("키입력이 없었어요~")
-            for life in life_location:
-                life_location.remove(life)
-                game_world.remove_object(life)
 
 
 
