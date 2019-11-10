@@ -75,6 +75,7 @@ class Character2:
         self.frame = 0
         self.attack_image = load_image('used_image/character2_up_attack.png')
         self.image = load_image('used_image/character02_4.png')
+        self.damaged_image = load_image('used_image/character2_hit_by_jelly2.png')
         self.event_que = []
         self.cur_state = IdleState
         self.cur_state.enter(self, None)
@@ -101,3 +102,6 @@ class Character2:
 
     def get_bb(self):
         return self.x - 40, self.y - 140, self.x + 40, self.y - 40
+
+    def get_damage(self):
+        self.damaged_image.draw(self.x, self.y)

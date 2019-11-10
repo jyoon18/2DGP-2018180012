@@ -70,6 +70,7 @@ def handle_events():
             game_framework.change_state(title_state)
         elif event.type == SDL_KEYDOWN and (event.key == SDLK_f or event.key == SDLK_j):
             character2.handle_event(event)
+
     pass
 
 
@@ -93,14 +94,18 @@ def update():
         if collide(character2, Sjelly):
             print("체크쳋크")
             Sjelly.disappear()
+        elif Sjelly.x < 180:
+            print("왜 키를 안눌렀니?")
+            character2.get_damaged()
 
     for Bjelly in jelly:
         if collide(character2, Bjelly):
             print("체크체크")
             Bjelly.disappear()
+        elif Bjelly.x < 180:
+            print("왜 키를 안눌렀니?")
+            character2.get_damaged()
 
-
-    pass
 
 def draw():
     clear_canvas()
@@ -109,8 +114,6 @@ def draw():
     update_canvas()
 
     delay(0.1)
-
-    pass
 
 def collide(a, b):
     left_a, bottom_a, right_a, top_a = a.get_bb()
