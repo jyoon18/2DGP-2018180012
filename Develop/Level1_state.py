@@ -50,10 +50,13 @@ def enter():
     game_world.add_object(character2, 1)
     game_world.add_object(boss_character, 1)
 
-    jelly = [Small_Jelly_lv1() for i in range(10)] + [Big_Jelly_lv1() for n in range(2)]
+    jelly = [Small_Jelly_lv1() for i in range(1)] + [Big_Jelly_lv1() for n in range(2)]
     game_world.add_objects(jelly, 1)
 
     life_location = [Life() for k in range(5)]
+    for l in range(5):
+        life_location[l].x = life.x
+        life.x += 65
     game_world.add_objects(life_location, 0)
 
 def exit():
@@ -76,7 +79,7 @@ def handle_events():
 
 def update():
     global character2
-    global life_location
+    global life_location, life
     for game_object in game_world.all_objects():
         game_object.update()
 
