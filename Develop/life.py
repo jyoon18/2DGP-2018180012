@@ -1,5 +1,4 @@
 from pico2d import *
-import game_world
 
 
 class Life:
@@ -7,8 +6,8 @@ class Life:
         self.x, self.y = 950, 540
         self.image = load_image('used_image/life.png')
         self.interval_distance = 65
-
     def update(self):
+
         pass
 
     def draw(self):
