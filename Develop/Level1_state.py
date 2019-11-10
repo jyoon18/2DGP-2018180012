@@ -75,6 +75,7 @@ def handle_events():
 
 
 def update():
+    global character2
     for game_object in game_world.all_objects():
         game_object.update()
 
@@ -94,17 +95,18 @@ def update():
         if collide(character2, Sjelly):
             print("체크쳋크")
             Sjelly.disappear()
-        elif Sjelly.x < 180:
-            print("왜 키를 안눌렀니?")
-            character2.get_damaged()
+
+        if not collide(character2, Sjelly) and Sjelly.x < 180:
+            print("키입력이 없었어요~")
 
     for Bjelly in jelly:
         if collide(character2, Bjelly):
             print("체크체크")
             Bjelly.disappear()
-        elif Bjelly.x < 180:
-            print("왜 키를 안눌렀니?")
-            character2.get_damaged()
+
+        if not collide(character2, Bjelly) and Bjelly.x < 180:
+                print("키입력이 없었어요~")
+
 
 
 def draw():

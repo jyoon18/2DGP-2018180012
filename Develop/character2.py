@@ -11,6 +11,7 @@ key_event_table =\
         (SDL_KEYDOWN, SDLK_j): J_DOWN
     }
 
+
 class IdleState:
     @staticmethod
     def enter(character2, event):
@@ -103,5 +104,3 @@ class Character2:
     def get_bb(self):
         return self.x - 40, self.y - 140, self.x + 40, self.y - 40
 
-    def get_damage(self):
-        self.damaged_image.draw(self.x, self.y)
