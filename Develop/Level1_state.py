@@ -25,6 +25,7 @@ character2 = None
 aims = None
 maps = None
 boss_character = None
+hit = None
 
 Bjelly = None
 Sjelly = None
@@ -74,12 +75,9 @@ def handle_events():
         elif event.type == SDL_KEYDOWN and (event.key == SDLK_f or event.key == SDLK_j):
             character2.handle_event(event)
 
-    pass
-
 
 def update():
     global character2
-    global hit
 
     for game_object in game_world.all_objects():
         game_object.update()
@@ -104,8 +102,6 @@ def update():
 
         if not collide(character2, Sjelly) and Sjelly.x < 180:
             print("키입력이 없었어요~")
-
-
 
     for Bjelly in jelly:
         if collide(character2, Bjelly):
