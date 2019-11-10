@@ -30,9 +30,9 @@ Bjelly = None
 Sjelly = None
 
 def enter():
-    global character1, character2, aim_up, aim_down, maps, boss_character, Bjelly, Sjelly
+    global character1, character2, aim_up, aim_down, maps, boss_character, Bjelly, Sjelly, life
     global jelly
-    global life
+    global life_location
 
     character1 = Character1()
     character2 = Character2()
@@ -76,6 +76,7 @@ def handle_events():
 
 def update():
     global character2
+    global life_location
     for game_object in game_world.all_objects():
         game_object.update()
 
@@ -91,14 +92,17 @@ def update():
         if collide(aim_down, Bjelly):
             print("으윽")
 
+
     for Sjelly in jelly:
         if collide(character2, Sjelly):
             print("체크쳋크")
             Sjelly.disappear()
 
         if not collide(character2, Sjelly) and Sjelly.x < 180:
-            character2.get_damage()
             print("키입력이 없었어요~")
+            for life in life_location:
+                life_location.remove(life)
+                game_world.remove_object(life)
 
     for Bjelly in jelly:
         if collide(character2, Bjelly):
@@ -106,8 +110,12 @@ def update():
             Bjelly.disappear()
 
         if not collide(character2, Bjelly) and Bjelly.x < 180:
-            character2.get_damage()
             print("키입력이 없었어요~")
+            for life in life_location:
+                life_location.remove(life)
+                game_world.remove_object(life)
+
+
 
 
 

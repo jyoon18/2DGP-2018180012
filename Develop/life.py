@@ -11,7 +11,7 @@ class Life:
 
     def draw(self):
         self.image.draw(self.x, self.y)
-        self.image.draw(self.x + self.interval_distance, self.y)
-        self.image.draw(self.x + self.interval_distance * 2, self.y)
-        self.image.draw(self.x + self.interval_distance * 3, self.y)
-        self.image.draw(self.x + self.interval_distance * 4, self.y)
+        #self.image.draw(self.x + self.interval_distance, self.y)
+        #self.image.draw(self.x + self.interval_distance * 2, self.y)
+        #self.image.draw(self.x + self.interval_distance * 3, self.y)
+        #self.image.draw(self.x + self.interval_distance * 4, self.y)
