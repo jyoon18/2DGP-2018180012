@@ -100,7 +100,7 @@ def update():
             print("체크쳋크")
             Sjelly.disappear()
 
-        if Sjelly.x < 160:
+        if Sjelly.x < 180:
             for l in life_location:
                 life_location.remove(l)
                 game_world.remove_object(l)

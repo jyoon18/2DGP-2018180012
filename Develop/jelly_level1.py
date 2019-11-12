@@ -21,7 +21,7 @@ class Small_Jelly_lv1:
         self.disappear_frame = (self.disappear_frame + 1) % 4
         self.x -= self.speed
 
-        if self.x <= 150:
+        if self.x <= 170:
             self.x = 1000
             if self.y == 90:
                 self.y = 200
@@ -60,7 +60,7 @@ class Big_Jelly_lv1:
         self.frame = (self.frame + 1) % 2
         self.disappear_frame = (self.disappear_frame + 1) % 4
         self.x -= self.speed
-        if self.x <= 150:
+        if self.x <= 170:
             self.x = 1000
             if self.y == 90:
                 self.y = 200
