@@ -51,7 +51,7 @@ def enter():
     game_world.add_object(character2, 1)
     game_world.add_object(boss_character, 1)
 
-    jelly = [Small_Jelly_lv1() for i in range(1)] + [Big_Jelly_lv1() for n in range(2)]
+    jelly = [Small_Jelly_lv1() for i in range(10)] + [Big_Jelly_lv1() for n in range(10)]
     game_world.add_objects(jelly, 1)
 
     life_location = [Life() for k in range(5)]
