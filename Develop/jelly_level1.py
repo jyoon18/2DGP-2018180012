@@ -8,7 +8,7 @@ class Small_Jelly_lv1:
 
     def __init__(self):
         self.x, self.y = 1000, 200
-        self.speed = 15
+        self.speed = random.randint(5, 10)
         self.frame = 0
         self.disappear_frame = 0
         self.disappeared_image = load_image('used_image/bullet_disappear.png')
