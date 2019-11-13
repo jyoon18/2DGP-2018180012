@@ -18,7 +18,7 @@ from jelly_level2 import Small_Jelly_lv2
 from jelly_level2 import Big_Jelly_lv2
 from life import Life
 import failure_state
-name = "MainState"
+name = "Level1_state"
 
 character1 = None
 character2 = None
