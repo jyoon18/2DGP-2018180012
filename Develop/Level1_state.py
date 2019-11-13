@@ -104,8 +104,11 @@ def update():
             for l in life_location:
                 life_location.remove(l)
                 game_world.remove_object(l)
+                if len(life_location) == 0:
+                    game_framework.change_state()
+                    print('꿱')
                 break
-            print("키입력이 없었어요~")
+
 
 
     for Bjelly in jelly:
@@ -118,6 +121,8 @@ def update():
                 life_location.remove(l)
                 game_world.remove_object(l)
                 break
+
+
 
 
 
