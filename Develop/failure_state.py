@@ -3,8 +3,6 @@ from pico2d import *
 import character_select_state
 
 
-name = "TitleState"
-
 state_image = None
 
 character1 = None
@@ -23,8 +21,8 @@ class Fail_Character1_State:
         self.image.clip_draw(self.frame * 370, 0, 370, 370, self.x, self.y)
 
 class Fail_Character2_State:
-    def __int__(self):
-        self.x, self.y = 640, 300
+    def __init__(self):
+        self.x, self.y = 640, 350
         self.frame = 0
         self.image = load_image('used_image/character2_failed2.png')
 
@@ -36,16 +34,17 @@ class Fail_Character2_State:
 
 def enter():
 
-    global character1, character2
+    global character1, character2, state_image
 
     character1 = Fail_Character1_State()
     character2 = Fail_Character2_State()
-
+    state_image = load_image('used_image/failure_state_window.png')
 
 def exit():
-    global character1, character2
+    global character1, character2, state_image
     del character1
     del character2
+    del state_image
 
 
 def handle_events():
@@ -59,11 +58,18 @@ def handle_events():
             game_framework.quit()
     pass
 
+def update():
+    global character1, character2
+    character1.update()
+    character2.update()
+
+    pass
+
 def draw():
     clear_canvas()
 
-
-    character1.draw()
+    state_image.draw(640, 300)
+    #character1.draw()
     character2.draw()
 
     update_canvas()
@@ -71,8 +77,6 @@ def draw():
     pass
 
 
-def update():
-    pass
 
 
 def pause():

@@ -4,7 +4,7 @@ import game_framework
 import Level1_state
 
 
-character_select_window = None
+image = None
 character1 = None
 character2 = None
 
@@ -18,7 +18,7 @@ class Select_Character1:
         self.frame = (self.frame + 1) % 8
 
     def draw(self):
-        self.image.clip_draw(self.frame * 168, 0 , 160, 160, self.x, self.y)
+        self.image.clip_draw(self.frame * 168, 0, 160, 160, self.x, self.y)
 
 class Select_Character2:
     def __init__(self):
@@ -34,15 +34,16 @@ class Select_Character2:
 
 
 def enter():
-    global character_select_window, character1, character2
-    character_select_window = load_image('used_image/character_select_window.png')
+    global image, character1, character2
+    image = load_image('used_image/character_select_window.png')
     character1 = Select_Character1()
     character2 = Select_Character2()
 
 def exit():
-    global character_select_window, character1, character2
+    global image, character1, character2
     del character1
     del character2
+    del image
 
 
 def handle_events():
@@ -66,7 +67,7 @@ def update():
 
 def draw():
     clear_canvas()
-    character_select_window.draw(640, 300)
+    image.draw(640, 300)
 
     character1.draw()
     character2.draw()
