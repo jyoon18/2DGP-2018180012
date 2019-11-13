@@ -3,3 +3,4 @@
 
 character_selects = [[], []]
 
+def character1_select():
