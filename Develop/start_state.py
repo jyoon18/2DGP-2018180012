@@ -4,18 +4,18 @@ from pico2d import *
 
 # 초기화 시켜줌
 name = "StartState"
-image = None
+image_character1 = None
 logo_time = 0.0
 
 def enter():
-    global image
+    global image_character1
     image = load_image('used_image/kpu_credit.png')
     pass
 
 # 게임 상태에서 나갈 때 종료화
 # image를 삭제시켜줌
 def exit():
-    global image
+    global image_character1
     del(image)
     pass
 
@@ -33,7 +33,7 @@ def update():
 
 
 def draw():
-    global image           # kpu_credit을 보여줌
+    global image_character1           # kpu_credit을 보여줌
     clear_canvas()
     image.draw(640,300)
     update_canvas()

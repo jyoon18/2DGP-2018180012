@@ -1,26 +1,46 @@
-import game_framework               # game_framework와 main_state를 받아온다
+import game_framework
 from pico2d import *
 import character_select_state
 
 
 name = "TitleState"
-image = None
+image_character1 = None
+image_character2 = None
 
-# title_state상태에 접어들 때, 맨 처음 해줄 것들을 초기화 하는 함수
-# title의 이미지를 보여줌
+character1 = None
+character2 = None
+
+class Fail_Character1_State:
+    def __init__(self):
+        self.x, self.y = 640, 300
+        self.frame = 0
+        self.image = load_image('used_image/fail.png')
+
+    def update(self):
+        self.frame = (self.frame + 1) % 10
+
+    def draw(self):
+        self.image.clip_draw(self.frame * 370, 0, 370, 370, self.x, self.y)
+
+class Fail_Character2_State:
+    def __int__(self):
+        self.x, self.y = 640, 300
+        self.frame = 0
+        self.image = load_image('used_image/')
+
 def enter():
-    global image
-    image = load_image('used_image/.png')
-    pass
+    global character1, character2
 
-# 게임을 종료할 때, image를 삭제해줌
+    character1 = Fail_Character1_State()
+
+
+
 def exit():
-    global image
-    del(image)
+    global image_character1
+    del(image_character1)
     pass
 
-# 사용자 입력을 받아오는 함수
-# 사용자가 window창의 종료 버튼을 눌렀을 때는 아예 game_framework가 끝나게 함, 게임자체가 끝나게
+
 def handle_events():
     events = get_events()
     for event in events:
@@ -34,7 +54,7 @@ def handle_events():
 
 def draw():
     clear_canvas()
-    image.draw(640,300)         # 메인화면을 그려라!
+    image_character1.draw(640, 300)
     update_canvas()
     pass
 
