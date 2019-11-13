@@ -4,18 +4,18 @@ import character_select_state
 
 
 name = "TitleState"
-image_character1 = None
+character_select_window = None
 
 # title_state상태에 접어들 때, 맨 처음 해줄 것들을 초기화 하는 함수
 # title의 이미지를 보여줌
 def enter():
-    global image_character1
+    global character_select_window
     image = load_image('used_image/title.png')
     pass
 
 # 게임을 종료할 때, image를 삭제해줌
 def exit():
-    global image_character1
+    global character_select_window
     del(image)
     pass
 
@@ -34,7 +34,7 @@ def handle_events():
     pass
 def draw():
     clear_canvas()
-    image_character1.draw(640, 300)         # 메인화면을 그려라!
+    character_select_window.draw(640, 300)         # 메인화면을 그려라!
     update_canvas()
     pass
 

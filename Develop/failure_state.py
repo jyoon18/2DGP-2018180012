@@ -4,8 +4,8 @@ import character_select_state
 
 
 name = "TitleState"
-image_character1 = None
-image_character2 = None
+
+state_image = None
 
 character1 = None
 character2 = None
@@ -26,19 +26,26 @@ class Fail_Character2_State:
     def __int__(self):
         self.x, self.y = 640, 300
         self.frame = 0
-        self.image = load_image('used_image/')
+        self.image = load_image('used_image/character2_failed2.png')
+
+    def update(self):
+        self.frame = (self.frame + 1) % 11
+
+    def draw(self):
+        self.image.clip_draw(self.frame * 370, 0, 370, 370, self.x, self.y)
 
 def enter():
+
     global character1, character2
 
     character1 = Fail_Character1_State()
-
+    character2 = Fail_Character2_State()
 
 
 def exit():
-    global image_character1
-    del(image_character1)
-    pass
+    global character1, character2
+    del character1
+    del character2
 
 
 def handle_events():
@@ -54,8 +61,13 @@ def handle_events():
 
 def draw():
     clear_canvas()
-    image_character1.draw(640, 300)
+
+
+    character1.draw()
+    character2.draw()
+
     update_canvas()
+    delay(0.1)
     pass
 
 
