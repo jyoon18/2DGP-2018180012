@@ -17,7 +17,7 @@ from jelly_level1 import Big_Jelly_lv1
 from jelly_level2 import Small_Jelly_lv2
 from jelly_level2 import Big_Jelly_lv2
 from life import Life
-
+import failure_state
 name = "MainState"
 
 character1 = None
@@ -105,7 +105,7 @@ def update():
                 life_location.remove(l)
                 game_world.remove_object(l)
                 if len(life_location) == 0:
-                    game_framework.change_state()
+                    game_framework.change_state(failure_state)
                     print('꿱')
                 break
 
