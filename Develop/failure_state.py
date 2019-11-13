@@ -69,8 +69,8 @@ def draw():
     clear_canvas()
 
     state_image.draw(640, 300)
-    character1.draw()
-    #character2.draw()
+    #character1.draw()
+    character2.draw()
 
     update_canvas()
     delay(0.1)
