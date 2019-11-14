@@ -69,8 +69,10 @@ def draw():
     clear_canvas()
 
     state_image.draw(640, 300)
-    #character1.draw()
-    character2.draw()
+    if character_select_state.character_select_number == 1:
+        character1.draw()
+    elif character_select_state.character_select_number == 2:
+        character2.draw()
 
     update_canvas()
     delay(0.1)
