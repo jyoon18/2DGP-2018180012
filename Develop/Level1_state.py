@@ -114,7 +114,7 @@ def update():
             if collide(character2, Sjelly):
                 Sjelly.disappear()
 
-        if Sjelly.x < 180:
+        if Sjelly.x < 171:
             for l in life_location:
                 life_location.remove(l)
                 game_world.remove_object(l)
@@ -136,7 +136,7 @@ def update():
                 print("체크쳋크")
                 Bjelly.disappear()
 
-        if Bjelly.x < 170:
+        if Bjelly.x < 171:
             for l in life_location:
                 life_location.remove(l)
                 game_world.remove_object(l)
