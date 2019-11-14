@@ -166,7 +166,7 @@ def collide(a, b):
     return True
 
 def timer():
-    if get_time() == 10:
+    if time.time() == 10:
         print("시간 체크중")
 
 
