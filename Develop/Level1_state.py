@@ -4,6 +4,7 @@ from pico2d import *
 import game_framework
 import game_world
 import title_state
+import character_select_state
 
 from character1 import Character1
 from character2 import Character2
@@ -48,6 +49,7 @@ def enter():
     game_world.add_object(maps, 0)
     game_world.add_object(aim_up, 0)
     game_world.add_object(aim_down, 0)
+
     game_world.add_object(character2, 1)
     game_world.add_object(boss_character, 1)
 

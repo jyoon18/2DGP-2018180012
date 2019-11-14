@@ -8,6 +8,8 @@ image = None
 character1 = None
 character2 = None
 
+character_select_number = 0
+
 class Select_Character1:
     def __init__(self):
         self.x, self.y = 400, 200
@@ -47,6 +49,7 @@ def exit():
 
 
 def handle_events():
+    global character_select_number
     events = get_events()
     for event in events:
         if event.type == SDL_QUIT:
@@ -55,8 +58,10 @@ def handle_events():
             if (event.type, event.key) == (SDL_KEYDOWN, SDLK_ESCAPE):
                 game_framework.quit()
             elif (event.type, event.key) == (SDL_KEYDOWN, SDLK_1):
+                character_select_number = 1
                 game_framework.change_state(Level1_state)
             elif (event.type, event.key) == (SDL_KEYDOWN, SDLK_2):
+                character_select_number = 2
                 game_framework.change_state(Level1_state)
 
 def update():
