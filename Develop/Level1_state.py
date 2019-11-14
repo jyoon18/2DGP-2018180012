@@ -53,6 +53,8 @@ def enter():
     if character_select_state.character_select_number == 1:
         game_world.add_object(character1, 1)
     elif character_select_state.character_select_number == 2:
+        game_world.add_object(character2, 1)
+
     game_world.add_object(boss_character, 1)
 
     jelly = [Small_Jelly_lv1() for i in range(10)] + [Big_Jelly_lv1() for n in range(10)]
@@ -77,11 +79,14 @@ def handle_events():
         elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
             game_framework.change_state(title_state)
         elif event.type == SDL_KEYDOWN and (event.key == SDLK_f or event.key == SDLK_j):
-            character2.handle_event(event)
+            if character_select_state.character_select_number == 1:
+                character1.handle_event(event)
+            elif character_select_state.character_select_number == 2:
+                character2.handle_event(event)
 
 
 def update():
-    global character2, Sjelly
+    global character1, character2, Sjelly
 
     for game_object in game_world.all_objects():
         game_object.update()
@@ -100,9 +105,15 @@ def update():
 
 
     for Sjelly in jelly:
-        if collide(character2, Sjelly):
-            print("체크쳋크")
-            Sjelly.disappear()
+        if character_select_state.character_select_number == 1:
+            if collide(character1, Sjelly):
+                print("체크쳋크")
+                Sjelly.disappear()
+
+        elif character_select_state.character_select_number == 2:
+            if collide(character2, Sjelly):
+                print("체크쳋크")
+                Sjelly.disappear()
 
         if Sjelly.x < 180:
             for l in life_location:
@@ -116,19 +127,21 @@ def update():
 
 
     for Bjelly in jelly:
-        if collide(character2, Bjelly):
-            print("체크체크")
-            Bjelly.disappear()
+        if character_select_state.character_select_number == 1:
+            if collide(character1, Bjelly):
+                print("체크체크")
+                Bjelly.disappear()
+
+        elif character_select_state.character_select_number == 2:
+            if collide(character2, Sjelly):
+                print("체크쳋크")
+                Bjelly.disappear()
 
         if Bjelly.x < 170:
             for l in life_location:
                 life_location.remove(l)
                 game_world.remove_object(l)
                 break
-
-
-
-
 
 
 
