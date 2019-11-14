@@ -50,7 +50,9 @@ def enter():
     game_world.add_object(aim_up, 0)
     game_world.add_object(aim_down, 0)
 
-    game_world.add_object(character2, 1)
+    if character_select_state.character_select_number == 1:
+        game_world.add_object(character1, 1)
+    elif character_select_state.character_select_number == 2:
     game_world.add_object(boss_character, 1)
 
     jelly = [Small_Jelly_lv1() for i in range(10)] + [Big_Jelly_lv1() for n in range(10)]
