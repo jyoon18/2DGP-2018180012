@@ -5,7 +5,6 @@ import game_framework
 import game_world
 import title_state
 import character_select_state
-import time
 
 from character1 import Character1
 from character2 import Character2
@@ -14,11 +13,11 @@ from aim_pty import Aim_Down
 from map import Maps
 from boss_moving import Boss
 
-from jelly_level1 import Small_Jelly_lv1
-from jelly_level1 import Big_Jelly_lv1
+from jelly_level2 import Small_Jelly_lv2
+from jelly_level2 import Big_Jelly_lv2
 from life import Life
 import failure_state
-name = "Level1_state"
+name = "Level2_state"
 
 character1 = None
 character2 = None
@@ -41,8 +40,8 @@ def enter():
     aim_down = Aim_Down()
     maps = Maps()
     boss_character = Boss()
-    Bjelly = Big_Jelly_lv1()
-    Sjelly = Small_Jelly_lv1()
+    Bjelly = Big_Jelly_lv2()
+    Sjelly = Small_Jelly_lv2()
     life = Life()
 
     game_world.add_object(maps, 0)
@@ -56,7 +55,7 @@ def enter():
 
     game_world.add_object(boss_character, 1)
 
-    jelly = [Small_Jelly_lv1() for i in range(10)] + [Big_Jelly_lv1() for n in range(10)]
+    jelly = [Small_Jelly_lv2() for i in range(10)] + [Big_Jelly_lv2() for n in range(10)]
     game_world.add_objects(jelly, 1)
 
     life_location = [Life() for k in range(5)]
@@ -90,26 +89,28 @@ def update():
     for game_object in game_world.all_objects():
         game_object.update()
 
-    #for Sjelly in jelly:
-        #if collide(aim_up, Sjelly):
-         #   print("으악")
-        #if collide(aim_down, Sjelly):
-         #   print("으악")
+    for Sjelly in jelly:
+        if collide(aim_up, Sjelly):
+            print("으악")
+        if collide(aim_down, Sjelly):
+            print("으악")
 
-    #for Bjelly in jelly:
-        #if collide(aim_up, Bjelly):
-         #   print("으윽")
-        #if collide(aim_down, Bjelly):
-         #   print("으윽")
+    for Bjelly in jelly:
+        if collide(aim_up, Bjelly):
+            print("으윽")
+        if collide(aim_down, Bjelly):
+            print("으윽")
 
 
     for Sjelly in jelly:
         if character_select_state.character_select_number == 1:
             if collide(character1, Sjelly):
+                print("체크쳋크")
                 Sjelly.disappear()
 
         elif character_select_state.character_select_number == 2:
             if collide(character2, Sjelly):
+                print("체크쳋크")
                 Sjelly.disappear()
 
         if Sjelly.x < 180:
@@ -165,9 +166,6 @@ def collide(a, b):
 
     return True
 
-def timer():
-    if get_time() == 10:
-        print("시간 체크중")
 
 
 
