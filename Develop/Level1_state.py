@@ -30,6 +30,8 @@ hit = None
 Bjelly = None
 Sjelly = None
 
+frame_time = 0.0
+
 def enter():
     global character1, character2, aim_up, aim_down, maps, boss_character, Bjelly, Sjelly, life
     global jelly
@@ -143,9 +145,15 @@ def update():
 
 
 def draw():
+    global frame_time
     clear_canvas()
     for game_object in game_world.all_objects():
         game_object.draw()
+
+    current_time = time.time()
+
+    if current_time - 15737487 > 10:
+        print("시간췤")
     update_canvas()
 
     delay(0.1)
@@ -164,10 +172,6 @@ def collide(a, b):
         return False
 
     return True
-
-def timer():
-    if time.time() == 10:
-        print("시간 체크중")
 
 
 
