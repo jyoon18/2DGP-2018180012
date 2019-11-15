@@ -144,7 +144,7 @@ def update():
                 break
 
     current_time = pico2d.get_time()
-    if current_time > 10:
+    if current_time > 5:
         print("time checking")
         game_framework.change_state(success_state_Lv1)
 

@@ -89,17 +89,17 @@ def update():
     for game_object in game_world.all_objects():
         game_object.update()
 
-    for Sjelly in jelly:
-        if collide(aim_up, Sjelly):
-            print("으악")
-        if collide(aim_down, Sjelly):
-            print("으악")
+    # for Sjelly in jelly:
+    # if collide(aim_up, Sjelly):
+    #   print("으악")
+    # if collide(aim_down, Sjelly):
+    #   print("으악")
 
-    for Bjelly in jelly:
-        if collide(aim_up, Bjelly):
-            print("으윽")
-        if collide(aim_down, Bjelly):
-            print("으윽")
+    # for Bjelly in jelly:
+    # if collide(aim_up, Bjelly):
+    #   print("으윽")
+    # if collide(aim_down, Bjelly):
+    #   print("으윽")
 
 
     for Sjelly in jelly:

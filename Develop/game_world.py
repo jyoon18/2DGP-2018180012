@@ -18,10 +18,15 @@ def remove_object(o):
             break
 
 def clear():
-    for i in range(len(objects)):   # 게임 월드 모든 객체가 제거
-        for o in all_objects():
-            remove_object(o)
-            del o
+    global objects
+    #for i in range(len(objects)):   # 게임 월드 모든 객체가 제거
+    #    for o in all_objects():
+    #        remove_object(o)
+    #        del o
+    for o in all_objects():
+        del o
+    objects.clear()
+    objects = [[], []]
 
 
 def all_objects():
