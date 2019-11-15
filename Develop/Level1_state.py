@@ -154,8 +154,6 @@ def draw():
         game_object.draw()
 
     print(pico2d.get_time())
-
-
     update_canvas()
 
     delay(0.1)

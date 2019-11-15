@@ -149,6 +149,7 @@ def draw():
         game_object.draw()
     update_canvas()
 
+    print("level2 checking")
     delay(0.1)
 
 def collide(a, b):
