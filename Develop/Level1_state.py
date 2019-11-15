@@ -4,8 +4,8 @@ from pico2d import *
 import game_framework
 import game_world
 import title_state
+import success_state_Lv1
 import character_select_state
-import time
 
 from character1 import Character1
 from character2 import Character2
@@ -146,7 +146,7 @@ def update():
     current_time = pico2d.get_time()
     if current_time > 30:
         print("time checking")
-        game_framework.change_state()
+        game_framework.change_state(success_state_Lv1)
 
 def draw():
     clear_canvas()
