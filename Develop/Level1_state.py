@@ -150,10 +150,10 @@ def draw():
     for game_object in game_world.all_objects():
         game_object.draw()
 
-    current_time = time.time()
+    current_time = time
+    print(current_time)
 
-    if current_time - 15737487 > 10:
-        print("시간췤")
+
     update_canvas()
 
     delay(0.1)
