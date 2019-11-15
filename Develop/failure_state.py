@@ -78,9 +78,6 @@ def draw():
     delay(0.1)
     pass
 
-
-
-
 def pause():
     pass
 
