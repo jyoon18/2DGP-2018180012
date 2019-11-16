@@ -1,4 +1,3 @@
-
 from pico2d import *
 
 import game_framework
@@ -8,7 +7,6 @@ import character_select_state
 import failure_state
 import Level2_state
 import success_state_Lv3
-
 
 from character1 import Character1
 from character2 import Character2
@@ -72,7 +70,6 @@ def enter():
 def exit():
     game_world.clear()
     pass
-
 
 def handle_events():
     events = get_events()
@@ -143,7 +140,7 @@ def update():
                     game_framework.change_state(failure_state)
                 break
 
-    level3_total_time = pico2d.get_time() - Level2_state.level2_total_time
+    level3_total_time = pico2d.get_time() - Level2_state.level2_total_time - character_select_state.character_state_total_time
     if level3_total_time > 20:
         game_framework.change_state(success_state_Lv3)
 
@@ -155,7 +152,7 @@ def draw():
         game_object.draw()
     update_canvas()
 
-    level3_total_time = pico2d.get_time() - Level2_state.level2_total_time
+    level3_total_time = pico2d.get_time() - Level2_state.level2_total_time - character_select_state.character_state_total_time
     print("3단계 걸리는 시간: ", level3_total_time)
 
     delay(0.1)

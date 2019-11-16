@@ -13,7 +13,6 @@ class Small_Jelly_lv3:
         self.disappear_frame = 0
         self.disappeared_image = load_image('used_image/bullet_disappear.png')
 
-
         if Small_Jelly_lv3.image == None:
             Small_Jelly_lv3.image = load_image('used_image/Level3_jelly.png')
 
