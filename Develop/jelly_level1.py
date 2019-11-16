@@ -12,6 +12,8 @@ class Small_Jelly_lv1:
         self.frame = 0
         self.disappear_frame = 0
         self.disappeared_image = load_image('used_image/bullet_disappear.png')
+        self.disappear_check = 0
+
 
         if Small_Jelly_lv1.image == None:
             Small_Jelly_lv1.image = load_image('used_image/Level1_jelly.png')
@@ -27,16 +29,20 @@ class Small_Jelly_lv1:
                 self.y = 200
             elif self.y == 200:
                 self.y = 90
+        self.disappear_check = 0
+
 
     def draw(self):
         self.image.clip_draw(self.frame * 80, 0, 80, 80, self.x, self.y)
         draw_rectangle(*self.get_bb())
+        if self.disappear_check == 1:
+            self.disappeared_image.clip_draw(self.disappear_frame * 300, 0, 300, 300, self.x, self.y)
 
     def get_bb(self):
         return self.x - 20, self.y - 20, self.x + 20, self.y + 20
 
     def disappear(self):
-        self.disappeared_image.clip_draw(self.disappear_frame * 300, 0, 300, 300, self.x, self.y)
+        self.disappear_check = 1
         self.x = 1000
         if self.y == 200:
             self.y = 90
@@ -67,15 +73,21 @@ class Big_Jelly_lv1:
             elif self.y == 200:
                 self.y = 90
 
+        self.disappear_check = 0
+
+
     def draw(self):
         self.image.clip_draw(self.frame * 160, 0, 160, 160, self.x, self.y)
         draw_rectangle(*self.get_bb())
+        if self.disappear_check == 1:
+            self.disappeared_image.clip_draw(self.disappear_frame * 300, 0, 300, 300, self.x, self.y)
+
 
     def get_bb(self):
         return self.x - 40, self.y - 40, self.x + 40, self.y + 40
 
     def disappear(self):
-        self.disappeared_image.clip_draw(self.disappear_frame * 300, 0, 300, 300, self.x, self.y)
+        self.disappear_check = 1
         self.x = 1000
         if self.y == 200:
             self.y = 90

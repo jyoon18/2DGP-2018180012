@@ -62,6 +62,7 @@ class Big_Jelly_lv3:
         self.frame = (self.frame + 1) % 2
         self.disappear_frame = (self.disappear_frame + 1) % 4
         self.x -= self.speed
+        self.disappear_check = 0
         if self.x < -10:
             self.x = 1000
             if self.y == 90:
@@ -72,12 +73,16 @@ class Big_Jelly_lv3:
     def draw(self):
         self.image.clip_draw(self.frame * 160, 0, 160, 160, self.x, self.y)
         draw_rectangle(*self.get_bb())
+        if self.disappear_check == 1:
+            self.disappeared_image.clip_draw(self.disappear_frame * 300, 0, 300, 300, self.x, self.y)
+
 
     def get_bb(self):
         return self.x - 20, self.y - 20, self.x + 20, self.y + 20
 
     def disappear(self):
-        self.disappeared_image.clip_draw(self.disappear_frame * 300, 0, 300, 300, self.x, self.y)
+        self.disappear_check = 1
+
         self.x = 1000
         if self.y == 200:
             self.y = 90

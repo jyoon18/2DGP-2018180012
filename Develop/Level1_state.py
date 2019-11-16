@@ -141,7 +141,7 @@ def update():
                 break
 
     level1_total_time = pico2d.get_time() - character_select_state.character_state_total_time
-    if level1_total_time > 5:
+    if level1_total_time > 30:
         game_framework.change_state(success_state_Lv1)
 
 def draw():
