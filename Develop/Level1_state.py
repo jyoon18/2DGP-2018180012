@@ -13,7 +13,6 @@ from aim_pty import Aim_Up
 from aim_pty import Aim_Down
 from map import Level1_Map
 from boss_moving import Boss
-from effect_class import Damage_Effect
 
 from jelly_level1 import Small_Jelly_lv1
 from jelly_level1 import Big_Jelly_lv1
@@ -38,7 +37,7 @@ checkk = 0
 def enter():
     global character1, character2, aim_up, aim_down, maps, boss_character, Bjelly, Sjelly, life
     global jelly
-    global life_location, damaged_effect, checkk
+    global life_location, checkk
 
     character1 = Character1()
     character2 = Character2()
@@ -49,7 +48,6 @@ def enter():
     Bjelly = Big_Jelly_lv1()
     Sjelly = Small_Jelly_lv1()
     life = Life()
-    damaged_effect = Damage_Effect()
 
     game_world.add_object(maps, 0)
     game_world.add_object(aim_up, 0)

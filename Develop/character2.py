@@ -1,7 +1,6 @@
 from pico2d import *
 import game_framework
 import Level1_state
-import effect_class
 # character event
 
 F_DOWN, J_DOWN, F_UP, J_UP = range(4)

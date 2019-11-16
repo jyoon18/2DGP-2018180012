@@ -35,11 +35,16 @@ class IdleState:
 
         if Level1_state.checkk == 1:
             print("ouch")
+        Level1_state.checkk = 0
 
     @staticmethod
     def draw(character1):
-        character1.image.clip_draw(character1.frame * 160, 0, 160, 160, character1.x, character1.y)
-
+        if Level1_state.checkk == 1:
+            character1.damaged_image.draw(character1.x, character1.y, 160, 160)
+            character1.damage_effect.draw(640, 300, 1300, 640)
+            delay(0.05)
+        else:
+            character1.image.clip_draw(character1.frame * 160, 0, 160, 160, character1.x, character1.y)
 
 class AttackState:
     @staticmethod
@@ -59,9 +64,6 @@ class AttackState:
     def do(character1):
         character1.frame = (character1.frame + 1) % 4
         character1.x, character1.y = 90, 90
-        if Level1_state.checkk == 1:
-            print("ouch")
-
 
     @staticmethod
     def draw(character1):
@@ -88,6 +90,8 @@ class Character1:
         self.toggle = 0
         self.attack_image = load_image('used_image/up_attack.png')
         self.image = load_image('used_image/running1.png')
+        self.damaged_image = load_image('used_image/character1_hit_by_jelly.png')
+        self.damage_effect = load_image('used_image/damaged_screen_effect.png')
         self.event_que = []
         self.cur_state = IdleState
         self.cur_state.enter(self, None)
