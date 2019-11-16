@@ -13,7 +13,7 @@ from character1 import Character1
 from character2 import Character2
 from aim_pty import Aim_Up
 from aim_pty import Aim_Down
-from map import Maps
+from map import Level2_Map
 from boss_moving import Boss
 
 from jelly_level2 import Small_Jelly_lv2
@@ -42,7 +42,7 @@ def enter():
     character2 = Character2()
     aim_up = Aim_Up()
     aim_down = Aim_Down()
-    maps = Maps()
+    maps = Level2_Map()
     boss_character = Boss()
     Bjelly = Big_Jelly_lv2()
     Sjelly = Small_Jelly_lv2()
@@ -59,7 +59,7 @@ def enter():
 
     game_world.add_object(boss_character, 1)
 
-    jelly = [Small_Jelly_lv2() for i in range(10)] + [Big_Jelly_lv2() for n in range(10)]
+    jelly = [Small_Jelly_lv2() for i in range(20)] + [Big_Jelly_lv2() for n in range(15)]
     game_world.add_objects(jelly, 1)
 
     life_location = [Life() for k in range(5)]
@@ -105,7 +105,6 @@ def update():
     #   print("으윽")
     # if collide(aim_down, Bjelly):
     #   print("으윽")
-
 
     for Sjelly in jelly:
         if character_select_state.character_select_number == 1:
@@ -180,8 +179,3 @@ def collide(a, b):
         return False
 
     return True
-
-
-
-
-

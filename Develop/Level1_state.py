@@ -11,7 +11,7 @@ from character1 import Character1
 from character2 import Character2
 from aim_pty import Aim_Up
 from aim_pty import Aim_Down
-from map import Maps
+from map import Level1_Map
 from boss_moving import Boss
 
 from jelly_level1 import Small_Jelly_lv1
@@ -41,7 +41,7 @@ def enter():
     character2 = Character2()
     aim_up = Aim_Up()
     aim_down = Aim_Down()
-    maps = Maps()
+    maps = Level1_Map()
     boss_character = Boss()
     Bjelly = Big_Jelly_lv1()
     Sjelly = Small_Jelly_lv1()
@@ -123,8 +123,6 @@ def update():
                     game_framework.change_state(failure_state)
                 break
 
-
-
     for Bjelly in jelly:
         if character_select_state.character_select_number == 1:
             if collide(character1, Bjelly):
@@ -147,6 +145,7 @@ def update():
         game_framework.change_state(success_state_Lv1)
 
 def draw():
+    global level1_total_time
     clear_canvas()
     for game_object in game_world.all_objects():
         game_object.draw()
@@ -171,7 +170,3 @@ def collide(a, b):
         return False
 
     return True
-
-
-
-

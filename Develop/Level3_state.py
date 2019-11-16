@@ -14,7 +14,7 @@ from character1 import Character1
 from character2 import Character2
 from aim_pty import Aim_Up
 from aim_pty import Aim_Down
-from map import Maps
+from map import Level3_Map
 from boss_moving import Boss
 
 from jelly_level3 import Small_Jelly_lv3
@@ -43,7 +43,7 @@ def enter():
     character2 = Character2()
     aim_up = Aim_Up()
     aim_down = Aim_Down()
-    maps = Maps()
+    maps = Level3_Map()
     boss_character = Boss()
     Bjelly = Big_Jelly_lv3()
     Sjelly = Small_Jelly_lv3()
@@ -60,7 +60,7 @@ def enter():
 
     game_world.add_object(boss_character, 1)
 
-    jelly = [Small_Jelly_lv3() for i in range(10)] + [Big_Jelly_lv3() for n in range(10)]
+    jelly = [Small_Jelly_lv3() for i in range(25)] + [Big_Jelly_lv3() for n in range(20)]
     game_world.add_objects(jelly, 1)
 
     life_location = [Level3_Life() for k in range(10)]
@@ -144,7 +144,7 @@ def update():
                 break
 
     level3_total_time = pico2d.get_time() - Level2_state.level2_total_time
-    if level3_total_time > 5:
+    if level3_total_time > 20:
         game_framework.change_state(success_state_Lv3)
 
 
@@ -156,7 +156,7 @@ def draw():
     update_canvas()
 
     level3_total_time = pico2d.get_time() - Level2_state.level2_total_time
-    print(level3_total_time)
+    print("3단계 걸리는 시간: ", level3_total_time)
 
     delay(0.1)
 
