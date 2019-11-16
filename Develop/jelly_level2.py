@@ -3,6 +3,7 @@ import random
 import game_framework
 
 
+
 class Small_Jelly_lv2:
     image = None
 
@@ -72,7 +73,7 @@ class Big_Jelly_lv2:
         self.image.clip_draw(self.frame * 160, 0, 160, 160, self.x, self.y)
 
     def get_bb(self):
-        return self.x - 30, self.y - 30, self.x + 30, self.y + 30
+        return self.x - 25, self.y - 25, self.x + 25, self.y + 25
 
     def disappear(self):
         self.disappeared_image.clip_draw(self.disappear_frame * 300, 0, 300, 300, self.x, self.y)

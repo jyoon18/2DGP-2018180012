@@ -30,7 +30,7 @@ hit = None
 Bjelly = None
 Sjelly = None
 
-current_time = None
+level1_total_time = None
 
 def enter():
     global character1, character2, aim_up, aim_down, maps, boss_character, Bjelly, Sjelly, life
@@ -88,7 +88,7 @@ def handle_events():
 
 def update():
     global character1, character2, Sjelly, Bjelly
-    global current_time
+    global level1_total_time
 
     for game_object in game_world.all_objects():
         game_object.update()
@@ -143,8 +143,8 @@ def update():
                 game_world.remove_object(l)
                 break
 
-    current_time = pico2d.get_time()
-    if current_time > 5:
+    level1_total_time = pico2d.get_time()
+    if level1_total_time > 5:
         print("time checking")
         game_framework.change_state(success_state_Lv1)
 

@@ -5,6 +5,8 @@ import game_framework
 import game_world
 import title_state
 import character_select_state
+import failure_state
+import Level1_state
 
 from character1 import Character1
 from character2 import Character2
@@ -16,7 +18,6 @@ from boss_moving import Boss
 from jelly_level2 import Small_Jelly_lv2
 from jelly_level2 import Big_Jelly_lv2
 from life import Life
-import failure_state
 name = "Level2_state"
 
 character1 = None
@@ -28,6 +29,8 @@ hit = None
 
 Bjelly = None
 Sjelly = None
+
+level2_total_time = None
 
 def enter():
     global character1, character2, aim_up, aim_down, maps, boss_character, Bjelly, Sjelly, life
@@ -149,7 +152,10 @@ def draw():
         game_object.draw()
     update_canvas()
 
-    print("level2 checking")
+    level2_total_time = pico2d.get_time() - Level1_state.level1_total_time
+    print(level2_total_time)
+    print(Level1_state.level1_total_time)
+
     delay(0.1)
 
 def collide(a, b):
