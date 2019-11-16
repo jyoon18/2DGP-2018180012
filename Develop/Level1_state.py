@@ -121,7 +121,6 @@ def update():
                 game_world.remove_object(l)
                 if len(life_location) == 0:
                     game_framework.change_state(failure_state)
-                    print('꿱')
                 break
 
 
@@ -129,12 +128,10 @@ def update():
     for Bjelly in jelly:
         if character_select_state.character_select_number == 1:
             if collide(character1, Bjelly):
-                print("체크체크")
                 Bjelly.disappear()
 
         elif character_select_state.character_select_number == 2:
             if collide(character2, Sjelly):
-                print("체크쳋크")
                 Bjelly.disappear()
 
         if Bjelly.x < 171:
@@ -143,12 +140,10 @@ def update():
                 game_world.remove_object(l)
                 if len(life_location) == 0:
                     game_framework.change_state(failure_state)
-                    print('꿱')
                 break
 
-    level1_total_time = pico2d.get_time()
+    level1_total_time = pico2d.get_time() - character_select_state.character_state_total_time
     if level1_total_time > 5:
-        print("time checking")
         game_framework.change_state(success_state_Lv1)
 
 def draw():
@@ -156,7 +151,8 @@ def draw():
     for game_object in game_world.all_objects():
         game_object.draw()
 
-    print(pico2d.get_time())
+    level1_total_time = pico2d.get_time() - character_select_state.character_state_total_time
+    print("1단계 걸리는 시간: ", level1_total_time)
     update_canvas()
 
     delay(0.1)

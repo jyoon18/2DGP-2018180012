@@ -2,6 +2,7 @@ from pico2d import *
 
 import game_framework
 import Level1_state
+import title_state
 
 
 image = None
@@ -9,6 +10,7 @@ character1 = None
 character2 = None
 
 character_select_number = 0
+character_state_total_time = None
 
 class Select_Character1:
     def __init__(self):
@@ -71,12 +73,15 @@ def update():
     pass
 
 def draw():
+    global character_state_total_time
     clear_canvas()
     image.draw(640, 300)
 
     character1.draw()
     character2.draw()
 
+    character_state_total_time = pico2d.get_time() - title_state.title_state_total_time
+    print("캐릭터 선택하는데 걸리는 시간: ", character_state_total_time)
     update_canvas()
     delay(0.1)
     pass

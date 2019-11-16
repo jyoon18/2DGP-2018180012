@@ -1,10 +1,11 @@
 import game_framework               # game_framework와 main_state를 받아온다
 from pico2d import *
 import character_select_state
-
+import start_state
 
 name = "TitleState"
 image = None
+title_state_total_time = None
 
 # title_state상태에 접어들 때, 맨 처음 해줄 것들을 초기화 하는 함수
 # title의 이미지를 보여줌
@@ -16,7 +17,7 @@ def enter():
 # 게임을 종료할 때, image를 삭제해줌
 def exit():
     global image
-    del(image)
+    del image
     pass
 
 # 사용자 입력을 받아오는 함수
@@ -33,8 +34,11 @@ def handle_events():
                 game_framework.change_state(character_select_state)
     pass
 def draw():
+    global title_state_total_time
     clear_canvas()
     image.draw(640, 300)         # 메인화면을 그려라!
+    title_state_total_time = pico2d.get_time() - start_state.start_state_total_time
+    print("타이틀에서 넘어가는 시간: ", title_state_total_time)
     update_canvas()
     pass
 

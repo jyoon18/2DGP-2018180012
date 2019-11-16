@@ -6,6 +6,7 @@ from pico2d import *
 name = "StartState"
 image = None
 logo_time = 0.0
+start_state_total_time = None
 
 def enter():
     global image
@@ -16,7 +17,7 @@ def enter():
 # image를 삭제시켜줌
 def exit():
     global image
-    del(image)
+    del image
     pass
 
 # 게임을 갱신시켜줌
@@ -28,27 +29,20 @@ def update():
         logo_time = 0
         game_framework.change_state(title_state)    # import한 title_state로 게임의 상태를 완전히 바꿔줌
     delay(0.01)
-    logo_time += 0.01           # 그게 아니라면 계속 로고화면을 보여주기 위한 시간을 0.01초 씩 늘려준당당
+    logo_time += 0.01           # 그게 아니라면 계속 로고화면을 보여주기 위한 시간을 0.01초 씩 늘려준다
     pass
 
 
 def draw():
-    global image           # kpu_credit을 보여줌
+    global image, start_state_total_time         # kpu_credit을 보여줌
     clear_canvas()
     image.draw(640,300)
+    start_state_total_time = pico2d.get_time()
+    print("로고 띄우는데 걸리는 시간: ", start_state_total_time)
     update_canvas()
     pass
 
 def handle_events():
-    events = get_events()
     pass
-
-
-def pause(): pass
-
-
-def resume(): pass
-
-
 
 
