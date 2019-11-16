@@ -1,7 +1,7 @@
 import game_framework
 from pico2d import *
 import character_select_state
-# import Level3_state
+import Level3_state
 
 
 state_image = None

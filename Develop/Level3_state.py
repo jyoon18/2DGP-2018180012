@@ -6,7 +6,7 @@ import game_world
 import title_state
 import character_select_state
 import failure_state
-import Level1_state
+import Level2_state
 
 from character1 import Character1
 from character2 import Character2
@@ -15,9 +15,9 @@ from aim_pty import Aim_Down
 from map import Maps
 from boss_moving import Boss
 
-from jelly_level2 import Small_Jelly_lv2
-from jelly_level2 import Big_Jelly_lv2
-from life import Life
+from jelly_level3 import Small_Jelly_lv3
+from jelly_level3 import Big_Jelly_lv3
+from life import Level3_Life
 name = "Level3_state"
 
 character1 = None
@@ -30,7 +30,7 @@ hit = None
 Bjelly = None
 Sjelly = None
 
-level2_total_time = None
+level3_total_time = None
 
 def enter():
     global character1, character2, aim_up, aim_down, maps, boss_character, Bjelly, Sjelly, life
@@ -43,9 +43,9 @@ def enter():
     aim_down = Aim_Down()
     maps = Maps()
     boss_character = Boss()
-    Bjelly = Big_Jelly_lv2()
-    Sjelly = Small_Jelly_lv2()
-    life = Life()
+    Bjelly = Big_Jelly_lv3()
+    Sjelly = Small_Jelly_lv3()
+    life = Level3_Life()
 
     game_world.add_object(maps, 0)
     game_world.add_object(aim_up, 0)
@@ -58,11 +58,11 @@ def enter():
 
     game_world.add_object(boss_character, 1)
 
-    jelly = [Small_Jelly_lv2() for i in range(10)] + [Big_Jelly_lv2() for n in range(10)]
+    jelly = [Small_Jelly_lv3() for i in range(10)] + [Big_Jelly_lv3() for n in range(10)]
     game_world.add_objects(jelly, 1)
 
-    life_location = [Life() for k in range(5)]
-    for l in range(5):
+    life_location = [Level3_Life() for k in range(10)]
+    for l in range(10):
         life_location[l].x = life.x
         life.x += 65
     game_world.add_objects(life_location, 0)
@@ -147,9 +147,7 @@ def update():
                     print('꿱')
                 break
 
-    if level2_total_time > 5:
-        print("time checking")
-        game_framework.change_state(success_state_Lv1)
+
 
 def draw():
     clear_canvas()
@@ -157,9 +155,7 @@ def draw():
         game_object.draw()
     update_canvas()
 
-    level2_total_time = pico2d.get_time() - Level1_state.level1_total_time
-    print(level2_total_time)
-    print(Level1_state.level1_total_time)
+
 
     delay(0.1)
 
