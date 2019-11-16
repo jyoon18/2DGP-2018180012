@@ -1,21 +1,29 @@
 from pico2d import *
 import game_framework
-
+import Level1_state
+import effect_class
 # character event
 
-F_DOWN, J_DOWN = range(2)
+F_DOWN, J_DOWN, F_UP, J_UP = range(4)
 
 key_event_table =\
     {
         (SDL_KEYDOWN, SDLK_f): F_DOWN,
-        (SDL_KEYDOWN, SDLK_j): J_DOWN
+        (SDL_KEYDOWN, SDLK_j): J_DOWN,
+        (SDL_KEYUP, SDLK_f): F_UP,
+        (SDL_KEYUP, SDLK_j): J_UP
     }
 
 
 class IdleState:
     @staticmethod
     def enter(character2, event):
-        character2.toggle = 0
+        if event == F_DOWN:
+            character2.toggle = 1
+            character2.x, character2.y = 180, 320
+        elif event == J_DOWN:
+            character2.toggle = 2
+            character2.x, character2.y = 180, 160
 
     @staticmethod
     def exit(character2, event):
@@ -26,9 +34,18 @@ class IdleState:
         character2.x, character2.y = 90, 160
         character2.frame = (character2.frame + 1) % 8
 
+        if Level1_state.checkk == 1:
+            print("ouch")
+        Level1_state.checkk = 0
+
     @staticmethod
     def draw(character2):
-        character2.image.clip_draw(character2.frame * 320, 0, 320, 320, character2.x, character2.y)
+        if Level1_state.checkk == 1:
+            character2.damaged_image.draw(character2.x, character2.y)
+            character2.damage_effect.draw(640, 300, 1300, 640)
+
+        else:
+            character2.image.clip_draw(character2.frame * 320, 0, 320, 320, character2.x, character2.y)
 
 
 class AttackState:
@@ -37,6 +54,7 @@ class AttackState:
         if event == F_DOWN:
             character2.toggle = 1
             character2.x, character2.y = 180, 320
+
         elif event == J_DOWN:
             character2.toggle = 2
             character2.x, character2.y = 180, 160
@@ -65,8 +83,8 @@ class AttackState:
 
 
 next_state_table = {
-    IdleState: {F_DOWN: AttackState, J_DOWN: AttackState},
-    AttackState: {F_DOWN: AttackState, J_DOWN: AttackState}
+    IdleState: {F_DOWN: AttackState, J_DOWN: AttackState, F_UP: AttackState, J_UP: AttackState},
+    AttackState: {F_DOWN: IdleState, J_DOWN: IdleState, F_UP: IdleState, J_UP: IdleState}
 }
 
 
@@ -77,6 +95,7 @@ class Character2:
         self.attack_image = load_image('used_image/character2_up_attack.png')
         self.image = load_image('used_image/character02_4.png')
         self.damaged_image = load_image('used_image/character2_hit_by_jelly2.png')
+        self.damage_effect = load_image('used_image/damaged_screen_effect.png')
         self.event_que = []
         self.cur_state = IdleState
         self.cur_state.enter(self, None)

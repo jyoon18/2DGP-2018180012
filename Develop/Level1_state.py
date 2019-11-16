@@ -13,6 +13,7 @@ from aim_pty import Aim_Up
 from aim_pty import Aim_Down
 from map import Level1_Map
 from boss_moving import Boss
+from effect_class import Damage_Effect
 
 from jelly_level1 import Small_Jelly_lv1
 from jelly_level1 import Big_Jelly_lv1
@@ -32,10 +33,12 @@ Sjelly = None
 
 level1_total_time = None
 
+checkk = 0
+
 def enter():
     global character1, character2, aim_up, aim_down, maps, boss_character, Bjelly, Sjelly, life
     global jelly
-    global life_location
+    global life_location, damaged_effect, checkk
 
     character1 = Character1()
     character2 = Character2()
@@ -46,6 +49,7 @@ def enter():
     Bjelly = Big_Jelly_lv1()
     Sjelly = Small_Jelly_lv1()
     life = Life()
+    damaged_effect = Damage_Effect()
 
     game_world.add_object(maps, 0)
     game_world.add_object(aim_up, 0)
@@ -66,11 +70,11 @@ def enter():
         life_location[l].x = life.x
         life.x += 65
     game_world.add_objects(life_location, 0)
+    checkk = 0
 
 def exit():
     game_world.clear()
     pass
-
 
 def handle_events():
     events = get_events()
@@ -88,7 +92,7 @@ def handle_events():
 
 def update():
     global character1, character2, Sjelly, Bjelly
-    global level1_total_time
+    global level1_total_time, damaged_effect, checkk
 
     for game_object in game_world.all_objects():
         game_object.update()
@@ -110,15 +114,15 @@ def update():
         if character_select_state.character_select_number == 1:
             if collide(character1, Sjelly):
                 Sjelly.disappear()
-
         elif character_select_state.character_select_number == 2:
             if collide(character2, Sjelly):
                 Sjelly.disappear()
-
         if Sjelly.x < 171:
             for l in life_location:
                 life_location.remove(l)
                 game_world.remove_object(l)
+                checkk = 1
+                print("check")
                 if len(life_location) == 0:
                     game_framework.change_state(failure_state)
                 break
@@ -136,6 +140,7 @@ def update():
             for l in life_location:
                 life_location.remove(l)
                 game_world.remove_object(l)
+                checkk = 1
                 if len(life_location) == 0:
                     game_framework.change_state(failure_state)
                 break
@@ -145,13 +150,13 @@ def update():
         game_framework.change_state(success_state_Lv1)
 
 def draw():
-    global level1_total_time, Sjelly
+    global level1_total_time, damaged_effect
+
     clear_canvas()
     for game_object in game_world.all_objects():
         game_object.draw()
 
     level1_total_time = pico2d.get_time() - character_select_state.character_state_total_time
-    print("1단계 걸리는 시간: ", level1_total_time)
     update_canvas()
 
     delay(0.1)

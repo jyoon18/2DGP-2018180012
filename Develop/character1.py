@@ -1,22 +1,29 @@
 from pico2d import *
 import game_framework
+import Level1_state
 
 # character event
 
-F_DOWN, J_DOWN = range(2)
+F_DOWN, J_DOWN, F_UP, J_UP = range(4)
 
 key_event_table =\
     {
         (SDL_KEYDOWN, SDLK_f): F_DOWN,
         (SDL_KEYDOWN, SDLK_j): J_DOWN,
+        (SDL_KEYUP, SDLK_f): F_UP,
+        (SDL_KEYUP, SDLK_j): J_UP
     }
 
 
 class IdleState:
     @staticmethod
     def enter(character1, event):
-        character1.toggle = 0
-
+        if event == F_DOWN:
+            character1.toggle = 1
+            character1.x, character1.y = 180, 200
+        elif event == J_DOWN:
+            character1.toggle = 2
+            character1.x, character1.y = 180, 90
     @staticmethod
     def exit(character1, event):
         pass
@@ -25,6 +32,9 @@ class IdleState:
     def do(character1):
         character1.x, character1.y = 90, 90
         character1.frame = (character1.frame + 1) % 4
+
+        if Level1_state.checkk == 1:
+            print("ouch")
 
     @staticmethod
     def draw(character1):
@@ -49,6 +59,9 @@ class AttackState:
     def do(character1):
         character1.frame = (character1.frame + 1) % 4
         character1.x, character1.y = 90, 90
+        if Level1_state.checkk == 1:
+            print("ouch")
+
 
     @staticmethod
     def draw(character1):
@@ -63,8 +76,8 @@ class AttackState:
 
 
 next_state_table = {
-    IdleState: {F_DOWN: AttackState, J_DOWN: AttackState},
-    AttackState: {F_DOWN: AttackState, J_DOWN: AttackState}
+    IdleState: {F_DOWN: AttackState, J_DOWN: AttackState, F_UP: AttackState, J_UP: AttackState},
+    AttackState: {F_DOWN: IdleState, J_DOWN: IdleState, F_UP: IdleState, J_UP: IdleState}
 }
 
 

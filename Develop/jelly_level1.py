@@ -1,5 +1,6 @@
 from pico2d import *
 import random
+import Level1_state
 
 
 class Small_Jelly_lv1:
@@ -9,13 +10,19 @@ class Small_Jelly_lv1:
         self.x, self.y = 1000, 200
         self.speed = random.randint(5, 20)
         self.frame = 0
+        self.disappear_frame = 0
         self.disappeared_image = load_image('used_image/bullet_disappear.png')
+        self.check = 0
 
-        if Small_Jelly_lv1.image == None:
+        if Small_Jelly_lv1.image is None:
             Small_Jelly_lv1.image = load_image('used_image/Level1_jelly.png')
 
     def update(self):
-        self.frame = (self.frame + 1) % 2
+        if self.check == 0:
+            self.frame = (self.frame + 1) % 2
+        else:
+            self.disappear_frame = self.disappear_frame % 4
+
         self.x -= self.speed
         if self.x <= 165:
             self.x = 1000
@@ -23,6 +30,8 @@ class Small_Jelly_lv1:
                 self.y = 200
             elif self.y == 200:
                 self.y = 90
+
+        self.check = 0
 
     def draw(self):
         self.image.clip_draw(self.frame * 80, 0, 80, 80, self.x, self.y)
@@ -32,11 +41,13 @@ class Small_Jelly_lv1:
         return self.x - 20, self.y - 20, self.x + 20, self.y + 20
 
     def disappear(self):
+
         self.x = 1000
         if self.y == 200:
             self.y = 90
         elif self.y == 90:
             self.y = 200
+        print("디서피어 함수가 돌아가는 중이에용")
 
 class Big_Jelly_lv1:
     image = None
@@ -47,7 +58,7 @@ class Big_Jelly_lv1:
         self.frame = 0
         self.disappeared_image = load_image('used_image/bullet_disappear.png')
 
-        if Big_Jelly_lv1.image == None:
+        if Big_Jelly_lv1.image is None:
             Big_Jelly_lv1.image = load_image('used_image/big_bullet2.png')
 
     def update(self):
@@ -73,3 +84,4 @@ class Big_Jelly_lv1:
             self.y = 90
         elif self.y == 90:
             self.y = 200
+        print("디서피어 함수가 돌아가는 중이에용")
