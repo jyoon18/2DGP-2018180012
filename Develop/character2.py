@@ -42,7 +42,7 @@ class IdleState:
         if Level1_state.checkk == 1:
             character2.damaged_image.draw(character2.x, character2.y)
             character2.damage_effect.draw(640, 300, 1300, 640)
-
+            delay(0.05)
         else:
             character2.image.clip_draw(character2.frame * 320, 0, 320, 320, character2.x, character2.y)
 
