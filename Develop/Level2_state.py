@@ -7,6 +7,7 @@ import title_state
 import character_select_state
 import failure_state
 import Level1_state
+import success_state_Lv2
 
 from character1 import Character1
 from character2 import Character2
@@ -88,6 +89,7 @@ def handle_events():
 
 def update():
     global character1, character2, Sjelly
+    global level2_total_time
 
     for game_object in game_world.all_objects():
         game_object.update()
@@ -147,9 +149,10 @@ def update():
                     print('꿱')
                 break
 
+    level2_total_time = pico2d.get_time() - Level1_state.level1_total_time
     if level2_total_time > 5:
         print("time checking")
-        game_framework.change_state(success_state_Lv1)
+        game_framework.change_state(success_state_Lv2)
 
 def draw():
     clear_canvas()

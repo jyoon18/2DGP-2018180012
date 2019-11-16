@@ -18,7 +18,7 @@ from boss_moving import Boss
 from jelly_level2 import Small_Jelly_lv2
 from jelly_level2 import Big_Jelly_lv2
 from life import Life
-name = "Level2_state"
+name = "Level3_state"
 
 character1 = None
 character2 = None
