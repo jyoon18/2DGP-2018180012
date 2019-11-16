@@ -7,6 +7,8 @@ import title_state
 import character_select_state
 import failure_state
 import Level2_state
+import success_state_Lv3
+
 
 from character1 import Character1
 from character2 import Character2
@@ -108,12 +110,10 @@ def update():
     for Sjelly in jelly:
         if character_select_state.character_select_number == 1:
             if collide(character1, Sjelly):
-                print("체크쳋크")
                 Sjelly.disappear()
 
         elif character_select_state.character_select_number == 2:
             if collide(character2, Sjelly):
-                print("체크쳋크")
                 Sjelly.disappear()
 
         if Sjelly.x < 180:
@@ -122,7 +122,6 @@ def update():
                 game_world.remove_object(l)
                 if len(life_location) == 0:
                     game_framework.change_state(failure_state)
-                    print('꿱')
                 break
 
 
@@ -130,12 +129,10 @@ def update():
     for Bjelly in jelly:
         if character_select_state.character_select_number == 1:
             if collide(character1, Bjelly):
-                print("체크체크")
                 Bjelly.disappear()
 
         elif character_select_state.character_select_number == 2:
             if collide(character2, Sjelly):
-                print("체크쳋크")
                 Bjelly.disappear()
 
         if Bjelly.x < 170:
@@ -144,18 +141,22 @@ def update():
                 game_world.remove_object(l)
                 if len(life_location) == 0:
                     game_framework.change_state(failure_state)
-                    print('꿱')
                 break
 
+    level3_total_time = pico2d.get_time() - Level2_state.level2_total_time
+    if level3_total_time > 5:
+        game_framework.change_state(success_state_Lv3)
 
 
 def draw():
+    global level3_total_time
     clear_canvas()
     for game_object in game_world.all_objects():
         game_object.draw()
     update_canvas()
 
-
+    level3_total_time = pico2d.get_time() - Level2_state.level2_total_time
+    print(level3_total_time)
 
     delay(0.1)
 
