@@ -129,7 +129,7 @@ def update():
                 Bjelly.disappear()
 
         elif character_select_state.character_select_number == 2:
-            if collide(character2, Sjelly):
+            if collide(character2, Bjelly):
                 Bjelly.disappear()
 
         if Bjelly.x < 171:
@@ -145,7 +145,7 @@ def update():
         game_framework.change_state(success_state_Lv1)
 
 def draw():
-    global level1_total_time
+    global level1_total_time, Sjelly
     clear_canvas()
     for game_object in game_world.all_objects():
         game_object.draw()
