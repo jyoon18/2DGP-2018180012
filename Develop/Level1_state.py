@@ -141,6 +141,9 @@ def update():
             for l in life_location:
                 life_location.remove(l)
                 game_world.remove_object(l)
+                if len(life_location) == 0:
+                    game_framework.change_state(failure_state)
+                    print('꿱')
                 break
 
     level1_total_time = pico2d.get_time()
