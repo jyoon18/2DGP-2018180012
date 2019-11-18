@@ -4,14 +4,15 @@ import Level1_state
 
 # character event
 
-F_DOWN, J_DOWN, F_UP, J_UP = range(4)
+F_DOWN, J_DOWN, F_UP, J_UP, SPACE = range(5)
 
 key_event_table =\
     {
         (SDL_KEYDOWN, SDLK_f): F_DOWN,
         (SDL_KEYDOWN, SDLK_j): J_DOWN,
         (SDL_KEYUP, SDLK_f): F_UP,
-        (SDL_KEYUP, SDLK_j): J_UP
+        (SDL_KEYUP, SDLK_j): J_UP,
+        (SDL_KEYDOWN, SDLK_SPACE): SPACE
     }
 
 
@@ -78,8 +79,8 @@ class AttackState:
 
 
 next_state_table = {
-    IdleState: {F_DOWN: AttackState, J_DOWN: AttackState, F_UP: AttackState, J_UP: AttackState},
-    AttackState: {F_DOWN: IdleState, J_DOWN: IdleState, F_UP: IdleState, J_UP: IdleState}
+    IdleState: {F_DOWN: AttackState, J_DOWN: AttackState, F_UP: AttackState, J_UP: AttackState, SPACE: IdleState},
+    AttackState: {F_DOWN: IdleState, J_DOWN: IdleState, F_UP: IdleState, J_UP: IdleState, SPACE: AttackState}
 }
 
 
@@ -119,3 +120,4 @@ class Character1:
     def get_bb(self):
         return self.x - 40, self.y - 40, self.x + 40, self.y + 40
 
+    def fire_a_bullet(self):
