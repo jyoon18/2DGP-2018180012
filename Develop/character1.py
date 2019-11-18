@@ -27,6 +27,8 @@ class IdleState:
             character1.x, character1.y = 180, 90
     @staticmethod
     def exit(character1, event):
+        if event == SPACE:
+            character1.fire_a_bullet()
         pass
 
     @staticmethod
@@ -93,6 +95,7 @@ class Character1:
         self.image = load_image('used_image/running1.png')
         self.damaged_image = load_image('used_image/character1_hit_by_jelly.png')
         self.damage_effect = load_image('used_image/damaged_screen_effect.png')
+        self.bullet_image = load_image('used_image/bullet_candy.png')
         self.event_que = []
         self.cur_state = IdleState
         self.cur_state.enter(self, None)
