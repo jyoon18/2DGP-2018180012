@@ -1,6 +1,8 @@
 from pico2d import *
 import game_framework
+import game_world
 import Level1_state
+from bullet import Bullet
 
 # character event
 
@@ -25,10 +27,14 @@ class IdleState:
         elif event == J_DOWN:
             character1.toggle = 2
             character1.x, character1.y = 180, 90
+        elif event == SPACE:
+            character1.fire()
+        print("check idle")
+
     @staticmethod
     def exit(character1, event):
         if event == SPACE:
-            character1.fire_a_bullet()
+            character1.fire()
         pass
 
     @staticmethod
@@ -46,8 +52,13 @@ class IdleState:
             character1.damaged_image.draw(character1.x, character1.y, 160, 160)
             character1.damage_effect.draw(640, 300, 1300, 640)
             delay(0.05)
+        if character1.toggle == 1:
+            character1.attack_image.draw(character1.x, character1.y)
+        elif character1.toggle == 2:
+            character1.attack_image.draw(character1.x, character1.y)
         else:
             character1.image.clip_draw(character1.frame * 160, 0, 160, 160, character1.x, character1.y)
+        character1.toggle = 0
 
 class AttackState:
     @staticmethod
@@ -58,9 +69,14 @@ class AttackState:
         elif event == J_DOWN:
             character1.toggle = 2
             character1.x, character1.y = 180, 90
+        elif event == SPACE:
+            character1.fire()
+        print("check attack")
 
     @staticmethod
     def exit(character1, event):
+        if event == SPACE:
+            character1.fire()
         pass
 
     @staticmethod
@@ -68,21 +84,29 @@ class AttackState:
         character1.frame = (character1.frame + 1) % 4
         character1.x, character1.y = 90, 90
 
+        if Level1_state.checkk == 1:
+            print("ouch")
+        Level1_state.checkk = 0
+
     @staticmethod
     def draw(character1):
+        if Level1_state.checkk == 1:
+            character1.damaged_image.draw(character1.x, character1.y, 160, 160)
+            character1.damage_effect.draw(640, 300, 1300, 640)
+            delay(0.05)
+        #else:
+        #    character1.image.clip_draw(character1.frame * 160, 0, 160, 160, character1.x, character1.y)
         if character1.toggle == 1:
-            character1.attack_image.draw(180, 200)
+            character1.attack_image.draw(character1.x, character1.y)
         elif character1.toggle == 2:
-            character1.attack_image.draw(180, 90)
+            character1.attack_image.draw(character1.x, character1.y)
         else:
             character1.image.clip_draw(character1.frame * 160, 0, 160, 160, character1.x, character1.y)
         character1.toggle = 0
 
-
-
 next_state_table = {
     IdleState: {F_DOWN: AttackState, J_DOWN: AttackState, F_UP: AttackState, J_UP: AttackState, SPACE: IdleState},
-    AttackState: {F_DOWN: IdleState, J_DOWN: IdleState, F_UP: IdleState, J_UP: IdleState, SPACE: AttackState}
+    AttackState: {F_DOWN: IdleState, J_DOWN: IdleState, F_UP: IdleState, J_UP: IdleState, SPACE: AttackState},
 }
 
 
@@ -90,15 +114,19 @@ class Character1:
     def __init__(self):
         self.x, self.y = 90, 90
         self.frame = 0
+        self.velocity = 5
         self.toggle = 0
         self.attack_image = load_image('used_image/up_attack.png')
         self.image = load_image('used_image/running1.png')
         self.damaged_image = load_image('used_image/character1_hit_by_jelly.png')
         self.damage_effect = load_image('used_image/damaged_screen_effect.png')
-        self.bullet_image = load_image('used_image/bullet_candy.png')
         self.event_que = []
         self.cur_state = IdleState
         self.cur_state.enter(self, None)
+
+    def fire(self):
+        bullet = Bullet(self.x, self.y, self.velocity)
+        game_world.add_object(bullet, 1)
 
     def add_event(self, event):
         self.event_que.insert(0, event)
@@ -123,4 +151,4 @@ class Character1:
     def get_bb(self):
         return self.x - 40, self.y - 40, self.x + 40, self.y + 40
 
-    def fire_a_bullet(self):
+

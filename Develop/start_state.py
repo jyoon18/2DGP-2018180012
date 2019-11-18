@@ -38,7 +38,7 @@ def draw():
     clear_canvas()
     image.draw(640,300)
     start_state_total_time = pico2d.get_time()
-    print("로고 띄우는데 걸리는 시간: ", start_state_total_time)
+    #print("로고 띄우는데 걸리는 시간: ", start_state_total_time)
     update_canvas()
     pass
 

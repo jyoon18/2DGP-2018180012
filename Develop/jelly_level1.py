@@ -47,7 +47,6 @@ class Small_Jelly_lv1:
             self.y = 90
         elif self.y == 90:
             self.y = 200
-        print("디서피어 함수가 돌아가는 중이에용")
 
 class Big_Jelly_lv1:
     image = None
@@ -84,4 +83,3 @@ class Big_Jelly_lv1:
             self.y = 90
         elif self.y == 90:
             self.y = 200
-        print("디서피어 함수가 돌아가는 중이에용")

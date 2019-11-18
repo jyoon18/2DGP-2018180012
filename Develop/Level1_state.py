@@ -60,7 +60,7 @@ def enter():
 
     game_world.add_object(boss_character, 1)
 
-    jelly = [Small_Jelly_lv1() for i in range(10)] + [Big_Jelly_lv1() for n in range(10)]
+    jelly = [Small_Jelly_lv1() for i in range(10)] + [Big_Jelly_lv1() for n in range(1)]
     game_world.add_objects(jelly, 1)
 
     life_location = [Life() for k in range(5)]
@@ -81,7 +81,7 @@ def handle_events():
             game_framework.quit()
         elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
             game_framework.change_state(title_state)
-        elif event.type == SDL_KEYDOWN and (event.key == SDLK_f or event.key == SDLK_j):
+        else: #event.type == SDL_KEYDOWN and (event.key == SDLK_f or event.key == SDLK_j or event.key == SDLK_SPACE):
             if character_select_state.character_select_number == 1:
                 character1.handle_event(event)
             elif character_select_state.character_select_number == 2:
@@ -120,7 +120,6 @@ def update():
                 life_location.remove(l)
                 game_world.remove_object(l)
                 checkk = 1
-                print("check")
                 if len(life_location) == 0:
                     game_framework.change_state(failure_state)
                 break

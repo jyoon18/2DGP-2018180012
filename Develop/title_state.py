@@ -38,7 +38,7 @@ def draw():
     clear_canvas()
     image.draw(640, 300)         # 메인화면을 그려라!
     title_state_total_time = pico2d.get_time() - start_state.start_state_total_time
-    print("타이틀에서 넘어가는 시간: ", title_state_total_time)
+    #print("타이틀에서 넘어가는 시간: ", title_state_total_time)
     update_canvas()
     pass
 
