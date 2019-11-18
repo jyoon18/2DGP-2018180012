@@ -2,8 +2,9 @@ from pico2d import *
 
 class Boss:
     def __init__(self):
-        self.x, self.y = 1050, 200
+        self.x, self.y = 1050, 150
         self.frame = 0
+        self.health = 1000
         self.image = load_image('used_image/boss.png')
 
     def update(self):
@@ -11,3 +12,4 @@ class Boss:
 
     def draw(self):
         self.image.clip_draw(self.frame * 316, 0, 290, 230, self.x, self.y)
+

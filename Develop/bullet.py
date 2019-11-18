@@ -1,7 +1,6 @@
 from pico2d import *
 import game_world
 
-
 class Bullet:
     image = None
 
@@ -15,5 +14,5 @@ class Bullet:
 
     def update(self):
         self.x += self.velocity * 5
-        if self.x < 25 or self.x > 1600 - 25:
+        if self.x < 25 or self.x > 1280 - 40:
             game_world.remove_object(self)
