@@ -1,5 +1,6 @@
 from pico2d import *
 import game_world
+import game_framework
 
 class Bullet:
     image = None
@@ -20,7 +21,7 @@ class Bullet:
         draw_rectangle(*self.get_bb())
 
     def update(self):
-        self.x += self.velocity * 5
+        self.x += self.velocity * 10
         if self.x < 25 or self.x > 1280 - 40:
             game_world.remove_object(self)
 

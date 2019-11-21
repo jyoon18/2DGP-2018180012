@@ -148,10 +148,7 @@ def update():
                     print('꿱')
                 break
 
-    level2_total_time = pico2d.get_time() - Level1_state.level1_total_time - character_select_state.character_state_total_time
-    if level2_total_time > 5:
-        print("time checking")
-        game_framework.change_state(success_state_Lv2)
+
 
 def draw():
     global level2_total_time
@@ -160,8 +157,7 @@ def draw():
         game_object.draw()
     update_canvas()
 
-    level2_total_time = pico2d.get_time() - Level1_state.level1_total_time - character_select_state.character_state_total_time
-    print("2단계 걸리는 시간: ", level2_total_time)
+
 
     delay(0.1)
 

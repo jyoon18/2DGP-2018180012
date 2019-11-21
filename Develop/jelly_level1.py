@@ -3,6 +3,7 @@ import random
 import Level1_state
 
 
+
 class Small_Jelly_lv1:
     image = None
 

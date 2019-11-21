@@ -5,13 +5,13 @@ class Boss:
     def __init__(self):
         self.x, self.y = 1050, 150
         self.frame = 0
-        self.health = 1000
+        self.hp = 1000
         self.image = load_image('used_image/boss.png')
 
-        self.left = self.x - 95
-        self.right = self.x + 95
-        self.top = self.y + 95
-        self.bottom = self.y -95
+        #self.left = self.x - 95
+        #self.right = self.x + 95
+        #self.top = self.y + 95
+        #self.bottom = self.y -95
 
     def update(self):
         self.frame = (self.frame + 1) % 3

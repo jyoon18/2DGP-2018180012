@@ -5,6 +5,7 @@ import game_framework
 import game_world
 import title_state
 import character_select_state
+import Level2_state
 
 from character1 import Character1
 from character2 import Character2
@@ -144,8 +145,8 @@ def update():
                     game_framework.change_state(failure_state)
                 break
 
-    boss_character.collide()
-
+    if pico2d.get_time() > 10:
+        game_framework.change_state(Level2_state)
 def draw():
     global level1_total_time
 

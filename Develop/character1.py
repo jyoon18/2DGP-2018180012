@@ -117,6 +117,8 @@ class Character1:
     def fire(self):
         bullet = Bullet(self.x, self.y, self.velocity)
         game_world.add_object(bullet, 1)
+        if bullet.x > 1050:
+            print(bullet.x)
 
     def add_event(self, event):
         self.event_que.insert(0, event)
