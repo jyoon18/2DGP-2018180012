@@ -31,8 +31,6 @@ bullet = None
 Bjelly = None
 Sjelly = None
 
-level1_total_time = None
-
 checkk = 0
 
 def enter():
@@ -49,15 +47,16 @@ def enter():
     Bjelly = Big_Jelly_lv1()
     Sjelly = Small_Jelly_lv1()
     life = Life()
+    bullet = Bullet()
 
     game_world.add_object(maps, 0)
     game_world.add_object(aim_up, 0)
     game_world.add_object(aim_down, 0)
-    game_world.add_object(bullet, 1)
 
 
     if character_select_state.character_select_number == 1:
         game_world.add_object(character1, 1)
+
     elif character_select_state.character_select_number == 2:
         game_world.add_object(character2, 1)
 

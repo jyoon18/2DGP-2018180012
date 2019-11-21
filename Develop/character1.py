@@ -127,6 +127,7 @@ class Character1:
         bullet = Bullet(self.x, self.y, self.velocity)
         game_world.add_object(bullet, 1)
 
+
     def add_event(self, event):
         self.event_que.insert(0, event)
 

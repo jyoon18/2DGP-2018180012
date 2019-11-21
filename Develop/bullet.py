@@ -1,6 +1,6 @@
 from pico2d import *
 import game_world
-import Level1_state
+import boss_moving
 
 class Bullet:
     image = None
@@ -21,3 +21,4 @@ class Bullet:
 
     def get_bb(self):
         return self.x - 20, self.y - 20, self.x + 20, self.y + 20
+
