@@ -46,7 +46,7 @@ def enter():
     Bjelly = Big_Jelly_lv1()
     Sjelly = Small_Jelly_lv1()
     life = Life()
-    bullet = Bullet(character1.x, character1.y, character1.velocity)
+    bullet = Bullet()
 
     game_world.add_object(maps, 0)
     game_world.add_object(aim_up, 0)
@@ -109,8 +109,7 @@ def update():
         #if collide(aim_down, Bjelly):
          #   print("으윽")
 
-    if collide(bullet, boss_character):
-        print("checking")
+
     for Sjelly in jelly:
         if character_select_state.character_select_number == 1:
             if collide(character1, Sjelly):
@@ -145,6 +144,7 @@ def update():
                     game_framework.change_state(failure_state)
                 break
 
+    boss_character.collide()
 
 def draw():
     global level1_total_time

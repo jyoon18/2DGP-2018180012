@@ -7,7 +7,13 @@ class Bullet:
     def __init__(self, x=90, y=90, velocity=10):
         if Bullet.image == None:
             Bullet.image = load_image('used_image/bullet_candy.png')
+
         self.x, self.y, self.velocity = x, y, velocity
+
+        self.left = self.x - 20
+        self.right = self.x + 20
+        self.top = self.y + 20
+        self.bottom = self.y - 20
 
     def draw(self):
         self.image.draw(self.x, self.y)
