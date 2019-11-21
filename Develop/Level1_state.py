@@ -111,7 +111,6 @@ def update():
 
     if collide(bullet, boss_character):
         print("checking")
-
     for Sjelly in jelly:
         if character_select_state.character_select_number == 1:
             if collide(character1, Sjelly):
