@@ -49,11 +49,12 @@ def enter():
     Bjelly = Big_Jelly_lv1()
     Sjelly = Small_Jelly_lv1()
     life = Life()
-    bullet = Bullet()
 
     game_world.add_object(maps, 0)
     game_world.add_object(aim_up, 0)
     game_world.add_object(aim_down, 0)
+    game_world.add_object(bullet, 1)
+
 
     if character_select_state.character_select_number == 1:
         game_world.add_object(character1, 1)
@@ -70,6 +71,7 @@ def enter():
         life_location[l].x = life.x
         life.x += 65
     game_world.add_objects(life_location, 0)
+
     checkk = 0
 
 def exit():
@@ -108,6 +110,9 @@ def update():
          #   print("으윽")
         #if collide(aim_down, Bjelly):
          #   print("으윽")
+
+    if collide(bullet, boss_character):
+        print("checking")
 
     for Sjelly in jelly:
         if character_select_state.character_select_number == 1:
@@ -148,7 +153,7 @@ def update():
         game_framework.change_state(success_state_Lv1)
 
 def draw():
-    global level1_total_time, damaged_effect
+    global level1_total_time
 
     clear_canvas()
     for game_object in game_world.all_objects():

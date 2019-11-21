@@ -5,7 +5,7 @@ import Level1_state
 class Bullet:
     image = None
 
-    def __init__(self, x = 90, y = 90, velocity = 10):
+    def __init__(self, x=90, y=90, velocity=10):
         if Bullet.image == None:
             Bullet.image = load_image('used_image/bullet_candy.png')
         self.x, self.y, self.velocity = x, y, velocity
