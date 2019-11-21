@@ -14,7 +14,7 @@ from character2 import Character2
 from aim_pty import Aim_Up
 from aim_pty import Aim_Down
 from map import Level2_Map
-from boss_moving import Boss
+from boss_moving import Level1_Boss
 
 from jelly_level2 import Small_Jelly_lv2
 from jelly_level2 import Big_Jelly_lv2

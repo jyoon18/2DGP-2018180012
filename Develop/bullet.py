@@ -23,7 +23,7 @@ class Bullet:
     def update(self):
         self.x += self.velocity * 10
 
-        if self.x < 25 or self.x > 1280 - 40:
+        if self.x < 25 or self.x > 1050 - 20:
             print("checking")
             Level1_state.boss_character.hp -= 1
             print(Level1_state.boss_character.hp)

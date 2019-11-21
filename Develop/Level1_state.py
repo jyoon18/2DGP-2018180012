@@ -12,7 +12,7 @@ from character2 import Character2
 from aim_pty import Aim_Up
 from aim_pty import Aim_Down
 from map import Level1_Map
-from boss_moving import Boss
+from boss_moving import Level1_Boss
 
 from jelly_level1 import Small_Jelly_lv1
 from jelly_level1 import Big_Jelly_lv1
@@ -43,7 +43,7 @@ def enter():
     aim_up = Aim_Up()
     aim_down = Aim_Down()
     maps = Level1_Map()
-    boss_character = Boss()
+    boss_character = Level1_Boss()
     Bjelly = Big_Jelly_lv1()
     Sjelly = Small_Jelly_lv1()
     life = Life()

@@ -8,12 +8,13 @@ class Aim_Up:
 
     def draw(self):
         self.image.draw(self.x, self.y)
+        draw_rectangle(*self.get_bb())
 
     def update(self):
         pass
 
     def get_bb(self):
-        return self.x - 40, self.y - 40, self.x + 40, self.y + 40
+        return self.x - 20, self.y - 20, self.x + 20, self.y + 20
 
 class Aim_Down:
     def __init__(self):
@@ -22,10 +23,11 @@ class Aim_Down:
 
     def draw(self):
         self.image.draw(self.x, self.y)
+        draw_rectangle(*self.get_bb())
 
     def update(self):
         pass
 
     def get_bb(self):
-        return self.x - 40, self.y - 40, self.x + 40, self.y + 40
+        return self.x - 20, self.y - 20, self.x + 20, self.y + 20
 
