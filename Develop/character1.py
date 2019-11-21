@@ -94,8 +94,7 @@ class AttackState:
             character1.damaged_image.draw(character1.x, character1.y, 160, 160)
             character1.damage_effect.draw(640, 300, 1300, 640)
             delay(0.05)
-        #else:
-        #    character1.image.clip_draw(character1.frame * 160, 0, 160, 160, character1.x, character1.y)
+
         if character1.toggle == 1:
             character1.attack_image.draw(character1.x, character1.y)
         elif character1.toggle == 2:

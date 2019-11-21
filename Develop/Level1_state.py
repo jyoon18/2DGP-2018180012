@@ -109,7 +109,6 @@ def update():
         #if collide(aim_down, Bjelly):
          #   print("으윽")
 
-
     for Sjelly in jelly:
         if character_select_state.character_select_number == 1:
             if collide(character1, Sjelly):
@@ -144,9 +143,6 @@ def update():
                     game_framework.change_state(failure_state)
                 break
 
-    if collide(boss_character, bullet):
-        print("ouch !!!!")
-
     level1_total_time = pico2d.get_time() - character_select_state.character_state_total_time
     if level1_total_time > 30:
         game_framework.change_state(success_state_Lv1)
@@ -178,12 +174,3 @@ def collide(a, b):
 
     return True
 
-def collide2(a, b):
-    left_a, bottom_a, right_a, top_a = a.get_bb()
-    left_b, bottom_b, right_b, top_b = b.get_bb()
-
-    if left_a < right_b:
-        return False
-    if right_a > left_b:
-        return False
-    

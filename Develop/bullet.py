@@ -1,5 +1,6 @@
 from pico2d import *
 import game_world
+import Level1_state
 
 class Bullet:
     image = None
