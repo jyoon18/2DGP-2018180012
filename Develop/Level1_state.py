@@ -81,7 +81,7 @@ def handle_events():
             game_framework.quit()
         elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
             game_framework.change_state(title_state)
-        else: #event.type == SDL_KEYDOWN and (event.key == SDLK_f or event.key == SDLK_j or event.key == SDLK_SPACE):
+        else:
             if character_select_state.character_select_number == 1:
                 character1.handle_event(event)
             elif character_select_state.character_select_number == 2:
