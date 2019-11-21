@@ -4,7 +4,6 @@ from pico2d import *
 import game_framework
 import game_world
 import title_state
-import success_state_Lv1
 import character_select_state
 
 from character1 import Character1
@@ -47,7 +46,7 @@ def enter():
     Bjelly = Big_Jelly_lv1()
     Sjelly = Small_Jelly_lv1()
     life = Life()
-    bulle = Bullet()
+    bullet = Bullet(character1.x, character1.y, character1.velocity)
 
     game_world.add_object(maps, 0)
     game_world.add_object(aim_up, 0)
@@ -154,8 +153,6 @@ def draw():
     clear_canvas()
     for game_object in game_world.all_objects():
         game_object.draw()
-
-    level1_total_time = pico2d.get_time() - character_select_state.character_state_total_time
     update_canvas()
 
     delay(0.1)

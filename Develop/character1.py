@@ -24,9 +24,6 @@ class IdleState:
         elif event == J_DOWN:
             character1.toggle = 2
             character1.x, character1.y = 180, 90
-        elif event == SPACE:
-            character1.fire()
-        print("check idle")
 
     @staticmethod
     def exit(character1, event):
@@ -66,9 +63,6 @@ class AttackState:
         elif event == J_DOWN:
             character1.toggle = 2
             character1.x, character1.y = 180, 90
-        elif event == SPACE:
-            character1.fire()
-        print("check attack")
 
     @staticmethod
     def exit(character1, event):

@@ -1,6 +1,5 @@
 from pico2d import *
 import game_world
-import boss_moving
 
 class Bullet:
     image = None
