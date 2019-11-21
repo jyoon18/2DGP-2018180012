@@ -87,6 +87,7 @@ def handle_events():
         else:
             if character_select_state.character_select_number == 1:
                 character1.handle_event(event)
+
             elif character_select_state.character_select_number == 2:
                 character2.handle_event(event)
 
