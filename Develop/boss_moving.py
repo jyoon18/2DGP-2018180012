@@ -12,4 +12,7 @@ class Boss:
 
     def draw(self):
         self.image.clip_draw(self.frame * 316, 0, 290, 230, self.x, self.y)
+        draw_rectangle(*self.get_bb())
 
+    def get_bb(self):
+        return self.x - 115, self.y -115, self.x + 115, self.y + 115

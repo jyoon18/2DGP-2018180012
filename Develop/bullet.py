@@ -16,3 +16,6 @@ class Bullet:
         self.x += self.velocity * 5
         if self.x < 25 or self.x > 1280 - 40:
             game_world.remove_object(self)
+
+    def get_bb(self):
+        return 
