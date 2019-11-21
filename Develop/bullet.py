@@ -1,6 +1,6 @@
 from pico2d import *
 import game_world
-import game_framework
+import Level1_state
 
 class Bullet:
     image = None
@@ -22,7 +22,11 @@ class Bullet:
 
     def update(self):
         self.x += self.velocity * 10
+
         if self.x < 25 or self.x > 1280 - 40:
+            print("checking")
+            Level1_state.boss_character.hp -= 1
+            print(Level1_state.boss_character.hp)
             game_world.remove_object(self)
 
     def get_bb(self):

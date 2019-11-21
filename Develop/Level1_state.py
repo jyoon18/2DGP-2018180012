@@ -36,7 +36,7 @@ checkk = 0
 def enter():
     global character1, character2, aim_up, aim_down, maps, boss_character, Bjelly, Sjelly, life
     global jelly
-    global life_location, checkk, bullet
+    global life_location, checkk
 
     character1 = Character1()
     character2 = Character2()
@@ -47,7 +47,6 @@ def enter():
     Bjelly = Big_Jelly_lv1()
     Sjelly = Small_Jelly_lv1()
     life = Life()
-    bullet = Bullet()
 
     game_world.add_object(maps, 0)
     game_world.add_object(aim_up, 0)
@@ -93,7 +92,7 @@ def handle_events():
 
 def update():
     global character1, character2, Sjelly, Bjelly
-    global level1_total_time, checkk, bullet, boss_character
+    global level1_total_time, checkk
 
     for game_object in game_world.all_objects():
         game_object.update()
@@ -145,8 +144,7 @@ def update():
                     game_framework.change_state(failure_state)
                 break
 
-    if pico2d.get_time() > 10:
-        game_framework.change_state(Level2_state)
+
 def draw():
     global level1_total_time
 
