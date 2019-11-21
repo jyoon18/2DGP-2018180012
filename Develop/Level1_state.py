@@ -17,6 +17,7 @@ from boss_moving import Boss
 from jelly_level1 import Small_Jelly_lv1
 from jelly_level1 import Big_Jelly_lv1
 from life import Life
+from bullet import Bullet
 import failure_state
 name = "Level1_state"
 
@@ -25,7 +26,7 @@ character2 = None
 aims = None
 maps = None
 boss_character = None
-hit = None
+bullet = None
 
 Bjelly = None
 Sjelly = None
@@ -37,7 +38,7 @@ checkk = 0
 def enter():
     global character1, character2, aim_up, aim_down, maps, boss_character, Bjelly, Sjelly, life
     global jelly
-    global life_location, checkk
+    global life_location, checkk, bullet
 
     character1 = Character1()
     character2 = Character2()
@@ -48,6 +49,7 @@ def enter():
     Bjelly = Big_Jelly_lv1()
     Sjelly = Small_Jelly_lv1()
     life = Life()
+    bullet = Bullet()
 
     game_world.add_object(maps, 0)
     game_world.add_object(aim_up, 0)
@@ -90,7 +92,7 @@ def handle_events():
 
 def update():
     global character1, character2, Sjelly, Bjelly
-    global level1_total_time, damaged_effect, checkk
+    global level1_total_time, checkk, bullet, boss_character
 
     for game_object in game_world.all_objects():
         game_object.update()
@@ -142,6 +144,9 @@ def update():
                     game_framework.change_state(failure_state)
                 break
 
+    if collide(boss_character, bullet):
+        print("ouch !!!!")
+
     level1_total_time = pico2d.get_time() - character_select_state.character_state_total_time
     if level1_total_time > 30:
         game_framework.change_state(success_state_Lv1)
@@ -172,3 +177,13 @@ def collide(a, b):
         return False
 
     return True
+
+def collide2(a, b):
+    left_a, bottom_a, right_a, top_a = a.get_bb()
+    left_b, bottom_b, right_b, top_b = b.get_bb()
+
+    if left_a < right_b:
+        return False
+    if right_a > left_b:
+        return False
+    

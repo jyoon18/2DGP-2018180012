@@ -11,6 +11,7 @@ class Bullet:
 
     def draw(self):
         self.image.draw(self.x, self.y)
+        draw_rectangle(*self.get_bb())
 
     def update(self):
         self.x += self.velocity * 5
@@ -18,4 +19,4 @@ class Bullet:
             game_world.remove_object(self)
 
     def get_bb(self):
-        return 
+        return self.x - 20, self.y - 20, self.x + 20, self.y + 20

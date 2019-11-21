@@ -15,4 +15,4 @@ class Boss:
         draw_rectangle(*self.get_bb())
 
     def get_bb(self):
-        return self.x - 115, self.y -115, self.x + 115, self.y + 115
+        return self.x - 95, self.y -95, self.x + 95, self.y + 95
