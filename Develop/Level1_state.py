@@ -47,12 +47,11 @@ def enter():
     Bjelly = Big_Jelly_lv1()
     Sjelly = Small_Jelly_lv1()
     life = Life()
-    bullet = Bullet()
+    bulle = Bullet()
 
     game_world.add_object(maps, 0)
     game_world.add_object(aim_up, 0)
     game_world.add_object(aim_down, 0)
-
 
     if character_select_state.character_select_number == 1:
         game_world.add_object(character1, 1)
@@ -148,9 +147,6 @@ def update():
                     game_framework.change_state(failure_state)
                 break
 
-    level1_total_time = pico2d.get_time() - character_select_state.character_state_total_time
-    if level1_total_time > 30:
-        game_framework.change_state(success_state_Lv1)
 
 def draw():
     global level1_total_time

@@ -1,10 +1,7 @@
 from pico2d import *
-import game_framework
 import game_world
 import Level1_state
 from bullet import Bullet
-
-# character event
 
 F_DOWN, J_DOWN, F_UP, J_UP, SPACE = range(5)
 
@@ -104,8 +101,8 @@ class AttackState:
         character1.toggle = 0
 
 next_state_table = {
-    IdleState: {F_DOWN: AttackState, J_DOWN: AttackState, F_UP: AttackState, J_UP: AttackState},
-    AttackState: {F_DOWN: IdleState, J_DOWN: IdleState, F_UP: IdleState, J_UP: IdleState},
+    IdleState: {F_DOWN: AttackState, J_DOWN: AttackState, F_UP: AttackState, J_UP: AttackState, SPACE: IdleState},
+    AttackState: {F_DOWN: IdleState, J_DOWN: IdleState, F_UP: IdleState, J_UP: IdleState, SPACE: AttackState},
 }
 
 
@@ -126,7 +123,6 @@ class Character1:
     def fire(self):
         bullet = Bullet(self.x, self.y, self.velocity)
         game_world.add_object(bullet, 1)
-
 
     def add_event(self, event):
         self.event_que.insert(0, event)
