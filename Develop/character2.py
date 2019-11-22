@@ -1,16 +1,18 @@
 from pico2d import *
-import game_framework
+import game_world
 import Level1_state
+from bullet import Bullet
 # character event
 
-F_DOWN, J_DOWN, F_UP, J_UP = range(4)
+F_DOWN, J_DOWN, F_UP, J_UP, SPACE = range(5)
 
 key_event_table =\
     {
         (SDL_KEYDOWN, SDLK_f): F_DOWN,
         (SDL_KEYDOWN, SDLK_j): J_DOWN,
         (SDL_KEYUP, SDLK_f): F_UP,
-        (SDL_KEYUP, SDLK_j): J_UP
+        (SDL_KEYUP, SDLK_j): J_UP,
+        (SDL_KEYDOWN, SDLK_SPACE): SPACE
     }
 
 
