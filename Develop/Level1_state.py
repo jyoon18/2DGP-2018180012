@@ -67,9 +67,9 @@ def enter():
         Sjelly.x += random.randint(50, 65)
     game_world.add_objects(small_jelly, 1)
 
-    for k in range(10):
+    for k in range(5):
         big_jelly[k].x = Bjelly.x
-        Bjelly.x += random.randint(50, 65)
+        Bjelly.x += random.randint(60, 65)
     game_world.add_objects(big_jelly, 1)
 
     life_location = [Life() for k in range(5)]

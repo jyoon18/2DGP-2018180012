@@ -22,6 +22,7 @@ class Small_Jelly_lv1:
         self.speed = 150
         self.frame = 0
         self.check = 0
+        self.random = random.randint(0, 1)
 
         if Small_Jelly_lv1.image is None:
             Small_Jelly_lv1.image = load_image('used_image/Level1_jelly.png')
@@ -47,12 +48,12 @@ class Small_Jelly_lv1:
         return self.x - 20, self.y - 20, self.x + 20, self.y + 20
 
     def disappear(self):
-
         self.x = 1000
-        if self.y == 200:
+        if self.random == 0:
             self.y = 90
-        elif self.y == 90:
+        else:
             self.y = 200
+
 
 class Big_Jelly_lv1:
     image = None
@@ -61,6 +62,7 @@ class Big_Jelly_lv1:
         self.x, self.y = 1000, 90
         self.speed = 150
         self.frame = 0
+        self.random = random.randint(0, 1)
 
         if Big_Jelly_lv1.image is None:
             Big_Jelly_lv1.image = load_image('used_image/big_bullet2.png')
@@ -84,7 +86,7 @@ class Big_Jelly_lv1:
 
     def disappear(self):
         self.x = 1000
-        if self.y == 200:
+        if self.random == 0:
             self.y = 90
-        elif self.y == 90:
+        else:
             self.y = 200
