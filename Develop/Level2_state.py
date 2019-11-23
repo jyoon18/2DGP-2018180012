@@ -43,7 +43,7 @@ def enter():
     aim_up = Aim_Up()
     aim_down = Aim_Down()
     maps = Level2_Map()
-    boss_character = Boss()
+    boss_character = Level1_Boss()
     Bjelly = Big_Jelly_lv2()
     Sjelly = Small_Jelly_lv2()
     life = Life()
