@@ -60,9 +60,9 @@ def enter():
 
     game_world.add_object(boss_character, 1)
 
-    small_jelly = [Small_Jelly_lv1() for i in range(10)]
+    small_jelly = [Small_Jelly_lv1() for i in range(1)]
     big_jelly = [Big_Jelly_lv1() for n in range(10)]
-    for o in range(10):
+    for o in range(1):
         small_jelly[o].x = Sjelly.x
         Sjelly.x += random.randint(50, 65)
     game_world.add_objects(small_jelly, 1)
@@ -100,7 +100,7 @@ def handle_events():
 
 def update():
     global character1, character2, Sjelly, Bjelly
-    global level1_total_time, checkk
+    global level1_total_time, checkk, aim_up, aim_down
 
     for game_object in game_world.all_objects():
         game_object.update()
@@ -112,7 +112,10 @@ def update():
         elif character_select_state.character_select_number == 2:
             if collide(character2, Sjelly):
                 Sjelly.disappear()
-        if Sjelly.x < 171:
+        print(aim_up.left, " ", aim_down.left)
+        print(Sjelly.left, " ", Bjelly.left)
+
+        if Sjelly.x < 200:
             for l in life_location:
                 life_location.remove(l)
                 game_world.remove_object(l)
@@ -130,7 +133,7 @@ def update():
             if collide(character2, Bjelly):
                 Bjelly.disappear()
 
-        if Bjelly.x < 171:
+        if Bjelly.left < aim_up.left or Bjelly.left < aim_down.left:
             for l in life_location:
                 life_location.remove(l)
                 game_world.remove_object(l)

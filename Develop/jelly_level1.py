@@ -23,12 +23,14 @@ class Small_Jelly_lv1:
         self.frame = 0
         self.check = 0
         self.random = random.randint(0, 1)
+        self.left = 0
 
         if Small_Jelly_lv1.image is None:
             Small_Jelly_lv1.image = load_image('used_image/Level1_jelly.png')
 
     def update(self):
         self.frame = (int(self.frame) + FRAME_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 2
+        self.left = self.x - 20
 
         self.x -= self.speed * game_framework.frame_time
         if self.x <= 165:
@@ -63,6 +65,8 @@ class Big_Jelly_lv1:
         self.speed = 150
         self.frame = 0
         self.random = random.randint(0, 1)
+        self.left = 0
+
 
         if Big_Jelly_lv1.image is None:
             Big_Jelly_lv1.image = load_image('used_image/big_bullet2.png')
@@ -70,6 +74,7 @@ class Big_Jelly_lv1:
     def update(self):
         self.frame = (int(self.frame) + FRAME_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 2
         self.x -= self.speed * game_framework.frame_time
+        self.left = self.x - 40
         if self.x <= 170:
             self.x = 1000
             if self.y == 90:
