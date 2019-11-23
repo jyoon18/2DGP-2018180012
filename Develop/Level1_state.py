@@ -17,7 +17,6 @@ from boss_moving import Level1_Boss
 from jelly_level1 import Small_Jelly_lv1
 from jelly_level1 import Big_Jelly_lv1
 from life import Life
-from bullet import Bullet
 import failure_state
 name = "Level1_state"
 
@@ -85,7 +84,6 @@ def handle_events():
         else:
             if character_select_state.character_select_number == 1:
                 character1.handle_event(event)
-
             elif character_select_state.character_select_number == 2:
                 character2.handle_event(event)
 
@@ -97,17 +95,17 @@ def update():
     for game_object in game_world.all_objects():
         game_object.update()
 
-    #for Sjelly in jelly:
-        #if collide(aim_up, Sjelly):
-         #   print("으악")
-        #if collide(aim_down, Sjelly):
-         #   print("으악")
+    for Sjelly in jelly:
+       if collide(aim_up, Sjelly):
+           print("으악")
+       if collide(aim_down, Sjelly):
+           print("으악")
 
-    #for Bjelly in jelly:
-        #if collide(aim_up, Bjelly):
-         #   print("으윽")
-        #if collide(aim_down, Bjelly):
-         #   print("으윽")
+    for Bjelly in jelly:
+       if collide(aim_up, Bjelly):
+           print("으윽")
+       if collide(aim_down, Bjelly):
+           print("으윽")
 
 
     for Sjelly in jelly:

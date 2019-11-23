@@ -80,7 +80,7 @@ def handle_events():
             game_framework.quit()
         elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
             game_framework.change_state(title_state)
-        elif event.type == SDL_KEYDOWN and (event.key == SDLK_f or event.key == SDLK_j):
+        else:
             if character_select_state.character_select_number == 1:
                 character1.handle_event(event)
             elif character_select_state.character_select_number == 2:
@@ -159,7 +159,7 @@ def draw():
 
 
 
-    delay(0.1)
+    #delay(0.1)
 
 def collide(a, b):
     left_a, bottom_a, right_a, top_a = a.get_bb()

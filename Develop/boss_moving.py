@@ -6,7 +6,7 @@ class Level1_Boss:
         self.x, self.y = 1050, 150
         self.frame = 0
         self.hp = 100
-        self.font = load_font('ENCR10B.TTF', 16)
+        self.font = load_font('ENCR10B.TTF', 35)
         self.image = load_image('used_image/boss.png')
 
         #self.left = self.x - 95

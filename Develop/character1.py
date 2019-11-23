@@ -19,10 +19,8 @@ class IdleState:
     @staticmethod
     def enter(character1, event):
         if event == F_DOWN:
-            character1.toggle = 1
             character1.x, character1.y = 180, 200
         elif event == J_DOWN:
-            character1.toggle = 2
             character1.x, character1.y = 180, 90
 
     @staticmethod
@@ -45,11 +43,7 @@ class IdleState:
         if Level1_state.checkk == 1:
             character1.damaged_image.draw(character1.x, character1.y, 160, 160)
             character1.damage_effect.draw(640, 300, 1300, 640)
-            delay(0.05)
-        if character1.toggle == 1:
-            character1.attack_image.draw(character1.x, character1.y)
-        elif character1.toggle == 2:
-            character1.attack_image.draw(character1.x, character1.y)
+
         else:
             character1.image.clip_draw(character1.frame * 160, 0, 160, 160, character1.x, character1.y)
         character1.toggle = 0
@@ -84,7 +78,6 @@ class AttackState:
         if Level1_state.checkk == 1:
             character1.damaged_image.draw(character1.x, character1.y, 160, 160)
             character1.damage_effect.draw(640, 300, 1300, 640)
-            delay(0.05)
 
         if character1.toggle == 1:
             character1.attack_image.draw(character1.x, character1.y)
@@ -96,7 +89,7 @@ class AttackState:
 
 next_state_table = {
     IdleState: {F_DOWN: AttackState, J_DOWN: AttackState, F_UP: AttackState, J_UP: AttackState, SPACE: IdleState},
-    AttackState: {F_DOWN: IdleState, J_DOWN: IdleState, F_UP: IdleState, J_UP: IdleState, SPACE: AttackState},
+    AttackState: {F_DOWN: IdleState, J_DOWN: IdleState, F_UP: IdleState, J_UP: IdleState, SPACE: IdleState},
 }
 
 
