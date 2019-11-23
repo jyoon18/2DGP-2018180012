@@ -5,7 +5,7 @@ import game_framework
 import game_world
 import title_state
 import character_select_state
-import Level2_state
+import success_state_Lv1
 
 from character1 import Character1
 from character2 import Character2
@@ -143,7 +143,8 @@ def update():
                 if len(life_location) == 0:
                     game_framework.change_state(failure_state)
                 break
-
+    if boss_character.hp == 0:
+        game_framework.change_state(success_state_Lv1)
 
 def draw():
     global level1_total_time
