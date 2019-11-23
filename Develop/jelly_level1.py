@@ -19,7 +19,7 @@ class Small_Jelly_lv1:
 
     def __init__(self):
         self.x, self.y = 640, 200
-        self.speed = 200
+        self.speed = 150
         self.frame = 0
         self.check = 0
 
@@ -59,7 +59,7 @@ class Big_Jelly_lv1:
 
     def __init__(self):
         self.x, self.y = 1000, 90
-        self.speed = 200
+        self.speed = 150
         self.frame = 0
 
         if Big_Jelly_lv1.image is None:

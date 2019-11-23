@@ -61,15 +61,15 @@ def enter():
     game_world.add_object(boss_character, 1)
 
     small_jelly = [Small_Jelly_lv1() for i in range(10)]
-    big_jelly = [Big_Jelly_lv1() for n in range(1)]
+    big_jelly = [Big_Jelly_lv1() for n in range(10)]
     for o in range(10):
         small_jelly[o].x = Sjelly.x
-        Sjelly.x += random.randint(10, 50)
+        Sjelly.x += random.randint(50, 65)
     game_world.add_objects(small_jelly, 1)
 
-    for k in range(1):
+    for k in range(10):
         big_jelly[k].x = Bjelly.x
-        Bjelly.x += random.randint(1, 5)
+        Bjelly.x += random.randint(50, 65)
     game_world.add_objects(big_jelly, 1)
 
     life_location = [Life() for k in range(5)]
