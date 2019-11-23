@@ -1,6 +1,7 @@
 from pico2d import *
 import game_world
 import Level1_state
+import game_framework
 
 class Bullet:
     image = None
@@ -21,7 +22,7 @@ class Bullet:
         draw_rectangle(*self.get_bb())
 
     def update(self):
-        self.x += self.velocity * 10
+        self.x += 1000 * game_framework.frame_time
 
         if self.x < 25 or self.x > 1050 - 20:
             print("checking")

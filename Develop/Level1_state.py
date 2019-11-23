@@ -106,19 +106,6 @@ def update():
         game_object.update()
 
     for Sjelly in small_jelly:
-       if collide(aim_up, Sjelly):
-           print("으악")
-       if collide(aim_down, Sjelly):
-           print("으악")
-
-    for Bjelly in big_jelly:
-       if collide(aim_up, Bjelly):
-           print("으윽")
-       if collide(aim_down, Bjelly):
-           print("으윽")
-
-
-    for Sjelly in small_jelly:
         if character_select_state.character_select_number == 1:
             if collide(character1, Sjelly):
                 Sjelly.disappear()

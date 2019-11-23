@@ -10,7 +10,7 @@ RUN_SPPED_MPM = (RUN_SPPED_KMPH * 1000.0 / 60.0)
 RUN_SPPED_MPS = (RUN_SPPED_MPM / 60.0)
 RUN_SPPED_PPS = (RUN_SPPED_MPS * PIXEL_PER_METER)
 
-TIMER_PER_ACTION = 0.25
+TIMER_PER_ACTION = 0.5
 ACTION_PER_TIME = 1.0 / TIMER_PER_ACTION
 FRAME_PER_ACTION = 4
 F_DOWN, J_DOWN, F_UP, J_UP, SPACE = range(5)
@@ -90,10 +90,9 @@ class AttackState:
             character1.damage_effect.draw(640, 300, 1300, 640)
 
         if character1.toggle == 1:
-            #character1.attack_image.draw(character1.x, character1.y)
-            character1.attack_image.clip_draw(int(character1.frame) * 0, 0, 160, 160, character1.x, character1.y)
+            character1.image.clip_draw(int(character1.frame) * 160, 0, 160, 160, character1.x, character1.y)
         elif character1.toggle == 2:
-            character1.attack_image.clip_draw(int(character1.frame) * 0, 0, 160, 160, character1.x, character1.y)
+            character1.image.clip_draw(int(character1.frame) * 160, 0, 160, 160, character1.x, character1.y)
         else:
             character1.image.clip_draw(int(character1.frame) * 160, 0, 160, 160, character1.x, character1.y)
         character1.toggle = 0
