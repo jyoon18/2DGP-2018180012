@@ -6,6 +6,7 @@ import game_world
 import title_state
 import character_select_state
 import success_state_Lv1
+import random
 
 from character1 import Character1
 from character2 import Character2
@@ -60,6 +61,9 @@ def enter():
     game_world.add_object(boss_character, 1)
 
     jelly = [Small_Jelly_lv1() for i in range(10)] + [Big_Jelly_lv1() for n in range(1)]
+    for o in range(10):
+        jelly[o].x = Sjelly.x
+        Sjelly.x += random.randint(50, 80)
     game_world.add_objects(jelly, 1)
 
     life_location = [Life() for k in range(5)]
@@ -152,7 +156,7 @@ def draw():
         game_object.draw()
     update_canvas()
 
-    delay(0.1)
+
 
 def collide(a, b):
     left_a, bottom_a, right_a, top_a = a.get_bb()

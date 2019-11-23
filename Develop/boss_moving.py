@@ -1,5 +1,15 @@
 from pico2d import *
-import Level1_state
+import game_framework
+
+PIXEL_PER_METER = (10.0 / 0.3)
+RUN_SPPED_KMPH = 20.0
+RUN_SPPED_MPM = (RUN_SPPED_KMPH * 1000.0 / 60.0)
+RUN_SPPED_MPS = (RUN_SPPED_MPM / 60.0)
+RUN_SPPED_PPS = (RUN_SPPED_MPS * PIXEL_PER_METER)
+
+TIMER_PER_ACTION = 0.3
+ACTION_PER_TIME = 1.0 / TIMER_PER_ACTION
+FRAME_PER_ACTION = 3
 
 class Level1_Boss:
     def __init__(self):
@@ -15,10 +25,10 @@ class Level1_Boss:
         #self.bottom = self.y -95
 
     def update(self):
-        self.frame = (self.frame + 1) % 3
+        self.frame = (self.frame + FRAME_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 3
 
     def draw(self):
-        self.image.clip_draw(self.frame * 316, 0, 290, 230, self.x, self.y)
+        self.image.clip_draw(int(self.frame) * 316, 0, 290, 230, self.x, self.y)
         self.font.draw(self.x - 45, self.y + 45, '(HP: %d)' % self.hp, (0, 0, 0))
         draw_rectangle(*self.get_bb())
 

@@ -2,7 +2,17 @@ from pico2d import *
 import game_world
 import Level1_state
 from bullet import Bullet
+import game_framework
 
+PIXEL_PER_METER = (10.0 / 0.3)
+RUN_SPPED_KMPH = 20.0
+RUN_SPPED_MPM = (RUN_SPPED_KMPH * 1000.0 / 60.0)
+RUN_SPPED_MPS = (RUN_SPPED_MPM / 60.0)
+RUN_SPPED_PPS = (RUN_SPPED_MPS * PIXEL_PER_METER)
+
+TIMER_PER_ACTION = 1.0
+ACTION_PER_TIME = 1.0 / TIMER_PER_ACTION
+FRAME_PER_ACTION = 4
 F_DOWN, J_DOWN, F_UP, J_UP, SPACE = range(5)
 
 key_event_table =\
@@ -32,7 +42,7 @@ class IdleState:
     @staticmethod
     def do(character1):
         character1.x, character1.y = 90, 90
-        character1.frame = (character1.frame + 1) % 4
+        character1.frame = (character1.frame + FRAME_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 4
 
         if Level1_state.checkk == 1:
             print("ouch")
@@ -45,7 +55,7 @@ class IdleState:
             character1.damage_effect.draw(640, 300, 1300, 640)
 
         else:
-            character1.image.clip_draw(character1.frame * 160, 0, 160, 160, character1.x, character1.y)
+            character1.image.clip_draw(int(character1.frame) * 160, 0, 160, 160, character1.x, character1.y)
         character1.toggle = 0
 
 class AttackState:
@@ -66,7 +76,7 @@ class AttackState:
 
     @staticmethod
     def do(character1):
-        character1.frame = (character1.frame + 1) % 4
+        character1.frame = character1.frame = (character1.frame + FRAME_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 4
         character1.x, character1.y = 90, 90
 
         if Level1_state.checkk == 1:
@@ -84,7 +94,7 @@ class AttackState:
         elif character1.toggle == 2:
             character1.attack_image.draw(character1.x, character1.y)
         else:
-            character1.image.clip_draw(character1.frame * 160, 0, 160, 160, character1.x, character1.y)
+            character1.image.clip_draw(int(character1.frame) * 160, 0, 160, 160, character1.x, character1.y)
         character1.toggle = 0
 
 next_state_table = {
