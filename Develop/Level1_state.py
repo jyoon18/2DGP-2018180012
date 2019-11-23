@@ -35,7 +35,7 @@ checkk = 0
 
 def enter():
     global character1, character2, aim_up, aim_down, maps, boss_character, Bjelly, Sjelly, life
-    global jelly
+    global small_jelly, big_jelly
     global life_location, checkk
 
     character1 = Character1()
@@ -60,11 +60,17 @@ def enter():
 
     game_world.add_object(boss_character, 1)
 
-    jelly = [Small_Jelly_lv1() for i in range(10)] + [Big_Jelly_lv1() for n in range(1)]
+    small_jelly = [Small_Jelly_lv1() for i in range(10)]
+    big_jelly = [Big_Jelly_lv1() for n in range(1)]
     for o in range(10):
-        jelly[o].x = Sjelly.x
-        Sjelly.x += random.randint(50, 80)
-    game_world.add_objects(jelly, 1)
+        small_jelly[o].x = Sjelly.x
+        Sjelly.x += random.randint(10, 50)
+    game_world.add_objects(small_jelly, 1)
+
+    for k in range(1):
+        big_jelly[k].x = Bjelly.x
+        Bjelly.x += random.randint(1, 5)
+    game_world.add_objects(big_jelly, 1)
 
     life_location = [Life() for k in range(5)]
     for l in range(5):
@@ -99,20 +105,20 @@ def update():
     for game_object in game_world.all_objects():
         game_object.update()
 
-    for Sjelly in jelly:
+    for Sjelly in small_jelly:
        if collide(aim_up, Sjelly):
            print("으악")
        if collide(aim_down, Sjelly):
            print("으악")
 
-    for Bjelly in jelly:
+    for Bjelly in big_jelly:
        if collide(aim_up, Bjelly):
            print("으윽")
        if collide(aim_down, Bjelly):
            print("으윽")
 
 
-    for Sjelly in jelly:
+    for Sjelly in small_jelly:
         if character_select_state.character_select_number == 1:
             if collide(character1, Sjelly):
                 Sjelly.disappear()
@@ -128,7 +134,7 @@ def update():
                     game_framework.change_state(failure_state)
                 break
 
-    for Bjelly in jelly:
+    for Bjelly in big_jelly:
         if character_select_state.character_select_number == 1:
             if collide(character1, Bjelly):
                 Bjelly.disappear()

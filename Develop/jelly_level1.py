@@ -9,7 +9,7 @@ RUN_SPPED_MPM = (RUN_SPPED_KMPH * 1000.0 / 60.0)
 RUN_SPPED_MPS = (RUN_SPPED_MPM / 60.0)
 RUN_SPPED_PPS = (RUN_SPPED_MPS * PIXEL_PER_METER)
 
-TIMER_PER_ACTION = 0.25
+TIMER_PER_ACTION = 0.5
 ACTION_PER_TIME = 1.0 / TIMER_PER_ACTION
 FRAME_PER_ACTION = 2
 
@@ -19,17 +19,14 @@ class Small_Jelly_lv1:
 
     def __init__(self):
         self.x, self.y = 640, 200
-        self.speed = 100
+        self.speed = 200
         self.frame = 0
-        self.disappear_frame = 0
-        self.disappeared_image = load_image('used_image/bullet_disappear.png')
         self.check = 0
 
         if Small_Jelly_lv1.image is None:
             Small_Jelly_lv1.image = load_image('used_image/Level1_jelly.png')
 
     def update(self):
-
         self.frame = (int(self.frame) + FRAME_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 2
 
         self.x -= self.speed * game_framework.frame_time
@@ -62,16 +59,15 @@ class Big_Jelly_lv1:
 
     def __init__(self):
         self.x, self.y = 1000, 90
-        self.speed = random.randint(5, 20)
+        self.speed = 200
         self.frame = 0
-        self.disappeared_image = load_image('used_image/bullet_disappear.png')
 
         if Big_Jelly_lv1.image is None:
             Big_Jelly_lv1.image = load_image('used_image/big_bullet2.png')
 
     def update(self):
-        self.frame = (self.frame + 1) % 2
-        self.x -= self.speed
+        self.frame = (int(self.frame) + FRAME_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 2
+        self.x -= self.speed * game_framework.frame_time
         if self.x <= 170:
             self.x = 1000
             if self.y == 90:
@@ -80,7 +76,7 @@ class Big_Jelly_lv1:
                 self.y = 90
 
     def draw(self):
-        self.image.clip_draw(self.frame * 160, 0, 160, 160, self.x, self.y)
+        self.image.clip_draw(int(self.frame) * 160, 0, 160, 160, self.x, self.y)
         draw_rectangle(*self.get_bb())
 
     def get_bb(self):
