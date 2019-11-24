@@ -61,12 +61,6 @@ class Big_Jelly_lv1:
         self.frame = (int(self.frame) + FRAME_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 2
         self.x -= self.speed * game_framework.frame_time
 
-        if self.x <= 170:
-            self.x = 1000
-            if self.y == 90:
-                self.y = 200
-            elif self.y == 200:
-                self.y = 90
 
     def draw(self):
         self.image.clip_draw(int(self.frame) * 160, 0, 160, 160, self.x, self.y, 110, 110)

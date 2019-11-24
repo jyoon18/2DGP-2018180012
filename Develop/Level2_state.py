@@ -29,11 +29,11 @@ boss_character = None
 Bjelly = None
 Sjelly = None
 
-level2_state_check = 1
+level2_state_check = 0
 
 def enter():
     global character1, character2, aim_up, aim_down, maps, boss_character, Bjelly, Sjelly, life
-    global small_jelly, big_jelly
+    global small_jelly, big_jelly, level2_state_check
     global life_location, checkk, bullet
 
     character1 = Character1()
@@ -69,12 +69,15 @@ def enter():
     for k in range(10):
         big_jelly[k].x = Bjelly.x
         Bjelly.x += random.randint(60, 65)
+    game_world.add_objects(big_jelly, 1)
 
     life_location = [Life() for k in range(5)]
     for l in range(5):
         life_location[l].x = life.x
         life.x += 65
     game_world.add_objects(life_location, 0)
+
+    level2_state_check = 1
 
 def exit():
     game_world.clear()

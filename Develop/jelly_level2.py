@@ -60,7 +60,6 @@ class Big_Jelly_lv2:
         self.frame = (self.frame + 1) % 2
         self.x -= self.speed * game_framework.frame_time
 
-
     def draw(self):
         self.image.clip_draw(self.frame * 160, 0, 160, 160, self.x, self.y, 110, 110)
         draw_rectangle(*self.get_bb())

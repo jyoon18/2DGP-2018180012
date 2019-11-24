@@ -25,6 +25,9 @@ class Bullet:
             Level1_state.boss_character.hp -= 10
             game_world.remove_object(self)
 
+        if Level2_state.level2_state_check == 1 and self.x > 1050 - 20:
+            Level2_state.boss_character.hp -= 3
+
 
     def get_bb(self):
         return self.x - 20, self.y - 20, self.x + 20, self.y + 20
