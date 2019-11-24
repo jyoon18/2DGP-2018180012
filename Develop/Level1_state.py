@@ -69,7 +69,7 @@ def enter():
 
     for k in range(5):
         big_jelly[k].x = Bjelly.x
-        Bjelly.x += random.randint(60, 65)
+        Bjelly.x += random.randint(65, 70)
     game_world.add_objects(big_jelly, 1)
 
     life_location = [Life() for k in range(5)]
@@ -106,7 +106,7 @@ def update():
         game_object.update()
 
     for Sjelly in small_jelly:
-        if Sjelly.x < 180:
+        if Sjelly.x < 190:
             for l in life_location:
                 life_location.remove(l)
                 game_world.remove_object(l)
@@ -124,7 +124,7 @@ def update():
                 Sjelly.disappear()
 
     for Bjelly in big_jelly:
-        if Bjelly.x < 180:
+        if Bjelly.x < 190:
             for l in life_location:
                 life_location.remove(l)
                 game_world.remove_object(l)
@@ -139,7 +139,7 @@ def update():
             if collide(character2, Bjelly):
                 Bjelly.disappear()
 
-    if boss_character.hp == 0:
+    if boss_character.hp <= 0:
         game_framework.change_state(success_state_Lv1)
 
 def draw():

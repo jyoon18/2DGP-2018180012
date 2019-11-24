@@ -26,7 +26,7 @@ class Bullet:
 
         if self.x < 25 or self.x > 1050 - 20:
             print("checking")
-            Level1_state.boss_character.hp -= 4
+            Level1_state.boss_character.hp -= 2
             print(Level1_state.boss_character.hp)
             game_world.remove_object(self)
 
