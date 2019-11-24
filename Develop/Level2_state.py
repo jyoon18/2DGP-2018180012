@@ -106,6 +106,14 @@ def update():
         game_object.update()
 
     for Sjelly in small_jelly:
+        if Sjelly.x < 190:
+            for l in life_location:
+                life_location.remove(l)
+                game_world.remove_object(l)
+                if len(life_location) == 0:
+                    game_framework.change_state(failure_state)
+                Sjelly.disappear()
+                break
         if character_select_state.character_select_number == 1:
             if collide(character1, Sjelly):
                 Sjelly.disappear()
@@ -114,17 +122,15 @@ def update():
             if collide(character2, Sjelly):
                 Sjelly.disappear()
 
-        if Sjelly.x < 180:
+    for Bjelly in big_jelly:
+        if Bjelly.x < 170:
             for l in life_location:
                 life_location.remove(l)
                 game_world.remove_object(l)
                 if len(life_location) == 0:
                     game_framework.change_state(failure_state)
+                Bjelly.disappear()
                 break
-
-
-
-    for Bjelly in big_jelly:
         if character_select_state.character_select_number == 1:
             if collide(character1, Bjelly):
                 Bjelly.disappear()
@@ -133,16 +139,8 @@ def update():
             if collide(character2, Sjelly):
                 Bjelly.disappear()
 
-        if Bjelly.x < 170:
-            for l in life_location:
-                life_location.remove(l)
-                game_world.remove_object(l)
-                if len(life_location) == 0:
-                    game_framework.change_state(failure_state)
-                break
-
-    if bullet.x > 600:
-        print("over")
+    if boss_character.hp <= 0:
+        game_framework.change_state(success_state_Lv2)
 
 def draw():
     global level2_total_time

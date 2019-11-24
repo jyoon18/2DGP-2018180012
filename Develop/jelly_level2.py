@@ -57,11 +57,11 @@ class Big_Jelly_lv2:
             Big_Jelly_lv2.image = load_image('used_image/big_bullet2.png')
 
     def update(self):
-        self.frame = (self.frame + 1) % 2
+        self.frame = (int(self.frame) + FRAME_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 2
         self.x -= self.speed * game_framework.frame_time
 
     def draw(self):
-        self.image.clip_draw(self.frame * 160, 0, 160, 160, self.x, self.y, 110, 110)
+        self.image.clip_draw(int(self.frame) * 160, 0, 160, 160, self.x, self.y, 110, 110)
         draw_rectangle(*self.get_bb())
 
     def get_bb(self):

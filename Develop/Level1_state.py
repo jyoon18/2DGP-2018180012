@@ -30,11 +30,12 @@ bullet = None
 Bjelly = None
 Sjelly = None
 
+level1_state_check = 0
 checkk = 0
 
 def enter():
     global character1, character2, aim_up, aim_down, maps, boss_character, Bjelly, Sjelly, life
-    global small_jelly, big_jelly
+    global small_jelly, big_jelly, level1_state_check
     global life_location, checkk
 
     character1 = Character1()
@@ -78,6 +79,7 @@ def enter():
     game_world.add_objects(life_location, 0)
 
     checkk = 0
+    level1_state_check = 1
 
 def exit():
     game_world.clear()
@@ -130,6 +132,7 @@ def update():
                 checkk = 1
                 if len(life_location) == 0:
                     game_framework.change_state(failure_state)
+                Bjelly.disappear()
                 break
         if character_select_state.character_select_number == 1:
             if collide(character1, Bjelly):
