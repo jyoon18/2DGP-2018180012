@@ -13,6 +13,8 @@ RUN_SPPED_PPS = (RUN_SPPED_MPS * PIXEL_PER_METER)
 TIMER_PER_ACTION = 0.5
 ACTION_PER_TIME = 1.0 / TIMER_PER_ACTION
 FRAME_PER_ACTION = 4
+
+
 F_DOWN, J_DOWN, F_UP, J_UP, SPACE = range(5)
 
 key_event_table =\
@@ -53,10 +55,8 @@ class IdleState:
         if Level1_state.checkk == 1:
             character1.damaged_image.draw(character1.x, character1.y, 160, 160)
             character1.damage_effect.draw(640, 300, 1300, 640)
-
         else:
             character1.image.clip_draw(int(character1.frame) * 160, 0, 160, 160, character1.x, character1.y)
-        character1.toggle = 0
 
 class AttackState:
     @staticmethod
@@ -89,17 +89,20 @@ class AttackState:
             character1.damaged_image.draw(character1.x, character1.y, 160, 160)
             character1.damage_effect.draw(640, 300, 1300, 640)
 
-        if character1.toggle == 1:
-            character1.image.clip_draw(int(character1.frame) * 160, 0, 160, 160, character1.x, character1.y)
-        elif character1.toggle == 2:
-            character1.image.clip_draw(int(character1.frame) * 160, 0, 160, 160, character1.x, character1.y)
+        if int(character1.toggle) == 1:
+            character1.image.clip_draw(int(character1.frame) * 0, 0, 160, 160, character1.x, character1.y)
+        elif int(character1.toggle) == 2:
+            character1.image.clip_draw(int(character1.frame) * 0, 0, 160, 160, character1.x, character1.y)
         else:
             character1.image.clip_draw(int(character1.frame) * 160, 0, 160, 160, character1.x, character1.y)
+
         character1.toggle = 0
+
+
 
 next_state_table = {
     IdleState: {F_DOWN: AttackState, J_DOWN: AttackState, F_UP: AttackState, J_UP: AttackState, SPACE: IdleState},
-    AttackState: {F_DOWN: IdleState, J_DOWN: IdleState, F_UP: IdleState, J_UP: IdleState, SPACE: IdleState},
+    AttackState: {F_DOWN: IdleState, J_DOWN: IdleState, F_UP: AttackState, J_UP: IdleState, SPACE: IdleState},
 }
 
 

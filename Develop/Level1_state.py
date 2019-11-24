@@ -61,13 +61,13 @@ def enter():
     game_world.add_object(boss_character, 1)
 
     small_jelly = [Small_Jelly_lv1() for i in range(1)]
-    big_jelly = [Big_Jelly_lv1() for n in range(10)]
+    big_jelly = [Big_Jelly_lv1() for n in range(0)]
     for o in range(1):
         small_jelly[o].x = Sjelly.x
         Sjelly.x += random.randint(50, 65)
     game_world.add_objects(small_jelly, 1)
 
-    for k in range(5):
+    for k in range(0):
         big_jelly[k].x = Bjelly.x
         Bjelly.x += random.randint(60, 65)
     game_world.add_objects(big_jelly, 1)
@@ -106,16 +106,25 @@ def update():
         game_object.update()
 
     for Sjelly in small_jelly:
+        if Sjelly.x < 180:
+            for l in life_location:
+                life_location.remove(l)
+                game_world.remove_object(l)
+                checkk = 1
+                if len(life_location) == 0:
+                    game_framework.change_state(failure_state)
+                Sjelly.disappear()
+                break
+
         if character_select_state.character_select_number == 1:
             if collide(character1, Sjelly):
                 Sjelly.disappear()
         elif character_select_state.character_select_number == 2:
             if collide(character2, Sjelly):
                 Sjelly.disappear()
-        print(aim_up.left, " ", aim_down.left)
-        print(Sjelly.left, " ", Bjelly.left)
 
-        if Sjelly.x < 200:
+    for Bjelly in big_jelly:
+        if Bjelly.x < 180:
             for l in life_location:
                 life_location.remove(l)
                 game_world.remove_object(l)
@@ -123,24 +132,13 @@ def update():
                 if len(life_location) == 0:
                     game_framework.change_state(failure_state)
                 break
-
-    for Bjelly in big_jelly:
         if character_select_state.character_select_number == 1:
             if collide(character1, Bjelly):
                 Bjelly.disappear()
-
         elif character_select_state.character_select_number == 2:
             if collide(character2, Bjelly):
                 Bjelly.disappear()
 
-        if Bjelly.left < aim_up.left or Bjelly.left < aim_down.left:
-            for l in life_location:
-                life_location.remove(l)
-                game_world.remove_object(l)
-                checkk = 1
-                if len(life_location) == 0:
-                    game_framework.change_state(failure_state)
-                break
     if boss_character.hp == 0:
         game_framework.change_state(success_state_Lv1)
 
