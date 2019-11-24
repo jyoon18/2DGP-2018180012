@@ -29,6 +29,7 @@ key_event_table =\
 
 
 class IdleState:
+
     @staticmethod
     def enter(character1, event):
         if event == F_DOWN:
@@ -47,19 +48,21 @@ class IdleState:
         character1.x, character1.y = 90, 90
         character1.frame = (character1.frame + FRAME_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 4
 
-        if Level1_state.checkk == 1:
+        if Level1_state.checkk == 1 or Level2_state.checkk2 == 1:
             print("ouch")
         Level1_state.checkk = 0
+        Level2_state.checkk2 = 0
 
     @staticmethod
     def draw(character1):
-        if Level1_state.checkk == 1:
+        if Level1_state.checkk == 1 or Level2_state.checkk2 == 1:
             character1.damaged_image.draw(character1.x, character1.y, 160, 160)
             character1.damage_effect.draw(640, 300, 1300, 640)
         else:
             character1.image.clip_draw(int(character1.frame) * 160, 0, 160, 160, character1.x, character1.y)
 
 class AttackState:
+
     @staticmethod
     def enter(character1, event):
         if event == F_DOWN:

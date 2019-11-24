@@ -25,7 +25,7 @@ class Level1_Boss:
 
     def draw(self):
         self.image.clip_draw(int(self.frame) * 316, 0, 290, 230, self.x, self.y)
-        self.font.draw(self.x - 45, self.y + 45, '(HP: %d)' % self.hp, (0, 0, 0))
+        self.font.draw(self.x - 90, self.y + 100, 'HP: %d' % self.hp, (255, 0, 0))
 
 class Level2_Boss:
 
@@ -41,4 +41,4 @@ class Level2_Boss:
 
     def draw(self):
         self.image.clip_draw(int(self.frame) * 316, 0, 290, 230, self.x, self.y)
-        self.font.draw(self.x - 45, self.y + 45, '(HP: %d)' % self.hp, (0, 0, 0))
+        self.font.draw(self.x - 90, self.y + 100, 'HP: %d' % self.hp, (255, 0, 0))

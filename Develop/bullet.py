@@ -20,8 +20,7 @@ class Bullet:
     def update(self):
         self.x += 1000 * game_framework.frame_time
 
-        if self.x > 1050 - 20:
-            print("checking")
+        if Level1_state.level1_state_check == 1 and self.x > 1050 - 20:
             Level1_state.boss_character.hp -= 10
             game_world.remove_object(self)
 
