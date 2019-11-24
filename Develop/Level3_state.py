@@ -60,15 +60,15 @@ def enter():
 
     game_world.add_object(boss_character, 1)
 
-    small_jelly = [Small_Jelly_lv3() for i in range(18)]
+    small_jelly = [Small_Jelly_lv3() for i in range(20)]
     big_jelly = [Big_Jelly_lv3() for n in range(15)]
 
-    for o in range(18):
+    for o in range(20):
         small_jelly[o].x = Sjelly.x
         Sjelly.x += random.randint(60, 75)
     game_world.add_objects(small_jelly, 1)
 
-    for k in range(10):
+    for k in range(15):
         big_jelly[k].x = Bjelly.x
         Bjelly.x += random.randint(60, 65)
     game_world.add_objects(big_jelly, 1)
@@ -93,7 +93,7 @@ def handle_events():
             game_framework.quit()
         elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
             game_framework.change_state(title_state)
-        elif event.type == SDL_KEYDOWN and (event.key == SDLK_f or event.key == SDLK_j):
+        else:
             if character_select_state.character_select_number == 1:
                 character1.handle_event(event)
             elif character_select_state.character_select_number == 2:
@@ -143,7 +143,8 @@ def update():
         elif character_select_state.character_select_number == 2:
             if collide(character2, Bjelly):
                 Bjelly.disappear()
-
+    if boss_character.hp <= 0:
+        game_framework.change_state(success_state_Lv3)
 
 def draw():
     global level3_total_time

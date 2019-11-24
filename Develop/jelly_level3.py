@@ -17,7 +17,7 @@ class Small_Jelly_lv3:
 
     def __init__(self):
         self.x, self.y = 640, 200
-        self.speed = random.randint(110, 120)
+        self.speed = random.randint(150, 200)
         self.frame = 0
         self.random = random.randint(0, 1)
 
@@ -48,7 +48,7 @@ class Big_Jelly_lv3:
 
     def __init__(self):
         self.x, self.y = 1000, 90
-        self.speed = random.randint(90, 100)
+        self.speed = random.randint(120, 150)
         self.frame = 0
         self.random = random.randint(0, 1)
 
@@ -60,7 +60,7 @@ class Big_Jelly_lv3:
         self.x -= self.speed * game_framework.frame_time
 
     def draw(self):
-        self.image.clip_draw(self.frame * 160, 0, 160, 160, self.x, self.y)
+        self.image.clip_draw(int(self.frame) * 160, 0, 160, 160, self.x, self.y)
         draw_rectangle(*self.get_bb())
 
     def get_bb(self):
