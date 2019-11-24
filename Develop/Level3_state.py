@@ -13,7 +13,7 @@ from character2 import Character2
 from aim_pty import Aim_Up
 from aim_pty import Aim_Down
 from map import Level3_Map
-from boss_moving import Level1_Boss
+from boss_moving import Level3_Boss
 
 from jelly_level3 import Small_Jelly_lv3
 from jelly_level3 import Big_Jelly_lv3
@@ -30,19 +30,20 @@ hit = None
 Bjelly = None
 Sjelly = None
 
-level3_total_time = None
+level3_state_check = 0
+checkk3 = 0
 
 def enter():
     global character1, character2, aim_up, aim_down, maps, boss_character, Bjelly, Sjelly, life
-    global jelly
-    global life_location
+    global small_jelly, big_jelly, level3_state_check
+    global life_location, checkk3
 
     character1 = Character1()
     character2 = Character2()
     aim_up = Aim_Up()
     aim_down = Aim_Down()
     maps = Level3_Map()
-    boss_character = Boss()
+    boss_character = Level3_Boss()
     Bjelly = Big_Jelly_lv3()
     Sjelly = Small_Jelly_lv3()
     life = Level3_Life()
@@ -66,6 +67,9 @@ def enter():
         life_location[l].x = life.x
         life.x += 65
     game_world.add_objects(life_location, 0)
+
+    checkk3 = 0
+    level3_state_check = 1
 
 def exit():
     game_world.clear()

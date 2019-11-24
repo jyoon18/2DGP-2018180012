@@ -42,3 +42,19 @@ class Level2_Boss:
     def draw(self):
         self.image.clip_draw(int(self.frame) * 316, 0, 290, 230, self.x, self.y)
         self.font.draw(self.x - 90, self.y + 100, 'HP: %d' % self.hp, (255, 0, 0))
+
+class Level3_Boss:
+
+    def __init__(self):
+        self.x, self.y = 1050, 150
+        self.frame = 0
+        self.hp = 600
+        self.font = load_font('ENCR10B.TTF', 35)
+        self.image = load_image('used_image/boss.png')
+
+    def update(self):
+        self.frame = (self.frame + FRAME_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 3
+
+    def draw(self):
+        self.image.clip_draw(int(self.frame) * 316, 0, 290, 230, self.x, self.y)
+        self.font.draw(self.x - 90, self.y + 100, 'HP: %d' % self.hp, (255, 0, 0))

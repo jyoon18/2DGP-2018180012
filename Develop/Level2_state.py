@@ -81,6 +81,7 @@ def enter():
     checkk2 = 0
     level2_state_check = 1
 
+
 def exit():
     game_world.clear()
     pass
