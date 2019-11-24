@@ -1,5 +1,6 @@
 from pico2d import *
 
+import random
 import game_framework
 import game_world
 import title_state
@@ -59,8 +60,18 @@ def enter():
 
     game_world.add_object(boss_character, 1)
 
-    jelly = [Small_Jelly_lv3() for i in range(25)] + [Big_Jelly_lv3() for n in range(20)]
-    game_world.add_objects(jelly, 1)
+    small_jelly = [Small_Jelly_lv3() for i in range(18)]
+    big_jelly = [Big_Jelly_lv3() for n in range(15)]
+
+    for o in range(18):
+        small_jelly[o].x = Sjelly.x
+        Sjelly.x += random.randint(60, 75)
+    game_world.add_objects(small_jelly, 1)
+
+    for k in range(10):
+        big_jelly[k].x = Bjelly.x
+        Bjelly.x += random.randint(60, 65)
+    game_world.add_objects(big_jelly, 1)
 
     life_location = [Level3_Life() for k in range(10)]
     for l in range(10):
@@ -95,20 +106,16 @@ def update():
     for game_object in game_world.all_objects():
         game_object.update()
 
-    # for Sjelly in jelly:
-    # if collide(aim_up, Sjelly):
-    #   print("으악")
-    # if collide(aim_down, Sjelly):
-    #   print("으악")
+    for Sjelly in small_jelly:
+        if Sjelly.x < 190:
+            for l in life_location:
+                life_location.remove(l)
+                game_world.remove_object(l)
+                if len(life_location) == 0:
+                    game_framework.change_state(failure_state)
+                Sjelly.disappear()
+                break
 
-    # for Bjelly in jelly:
-    # if collide(aim_up, Bjelly):
-    #   print("으윽")
-    # if collide(aim_down, Bjelly):
-    #   print("으윽")
-
-
-    for Sjelly in jelly:
         if character_select_state.character_select_number == 1:
             if collide(character1, Sjelly):
                 Sjelly.disappear()
@@ -117,36 +124,22 @@ def update():
             if collide(character2, Sjelly):
                 Sjelly.disappear()
 
-        if Sjelly.x < 180:
-            for l in life_location:
-                life_location.remove(l)
-                game_world.remove_object(l)
-                if len(life_location) == 0:
-                    game_framework.change_state(failure_state)
-                break
-
-
-
-    for Bjelly in jelly:
-        if character_select_state.character_select_number == 1:
-            if collide(character1, Bjelly):
-                Bjelly.disappear()
-
-        elif character_select_state.character_select_number == 2:
-            if collide(character2, Sjelly):
-                Bjelly.disappear()
-
+    for Bjelly in big_jelly:
         if Bjelly.x < 170:
             for l in life_location:
                 life_location.remove(l)
                 game_world.remove_object(l)
                 if len(life_location) == 0:
                     game_framework.change_state(failure_state)
+                Bjelly.disappear()
                 break
+        if character_select_state.character_select_number == 1:
+            if collide(character1, Bjelly):
+                Bjelly.disappear()
 
-    level3_total_time = pico2d.get_time() - Level2_state.level2_total_time - character_select_state.character_state_total_time
-    if level3_total_time > 20:
-        game_framework.change_state(success_state_Lv3)
+        elif character_select_state.character_select_number == 2:
+            if collide(character2, Bjelly):
+                Bjelly.disappear()
 
 
 def draw():
@@ -155,11 +148,6 @@ def draw():
     for game_object in game_world.all_objects():
         game_object.draw()
     update_canvas()
-
-    level3_total_time = pico2d.get_time() - Level2_state.level2_total_time - character_select_state.character_state_total_time
-    print("3단계 걸리는 시간: ", level3_total_time)
-
-    delay(0.1)
 
 def collide(a, b):
     left_a, bottom_a, right_a, top_a = a.get_bb()
