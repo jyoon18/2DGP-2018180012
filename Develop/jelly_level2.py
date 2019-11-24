@@ -18,7 +18,7 @@ class Small_Jelly_lv2:
 
     def __init__(self):
         self.x, self.y = 1000, 200
-        self.speed = random.randint(100, 110)
+        self.speed = random.randint(150, 200)
         self.frame = 0
         self.random = random.randint(0, 1)
 
@@ -49,7 +49,7 @@ class Big_Jelly_lv2:
 
     def __init__(self):
         self.x, self.y = 1000, 90
-        self.speed = random.randint(90, 100)
+        self.speed = random.randint(150, 160)
         self.frame = 0
         self.random = random.randint(0, 1)
 

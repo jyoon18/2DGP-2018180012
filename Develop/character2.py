@@ -56,7 +56,7 @@ class IdleState:
 
     @staticmethod
     def draw(character2):
-        if Level1_state.checkk == 1:
+        if Level1_state.checkk == 1 or Level2_state.checkk2 == 1:
             character2.damaged_image.draw(character2.x, character2.y)
             character2.damage_effect.draw(640, 300, 1300, 640)
         else:

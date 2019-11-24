@@ -7,16 +7,20 @@ class Level1_Map:
         self.image = load_image('used_image/map03_3.png')
         self.image2 = load_image('used_image/map03_3.png')
         self.x, self.y = 640, 300
+        self.x2, self.y2 = 1920, 300
         self.frame = 0
         self.velocity = 100
 
     def update(self):
         self.x -= self.velocity * game_framework.frame_time
-        if self.x <= 0:
-            self.x = 640
-
+        self.x2 -= self.velocity * game_framework.frame_time
+        if self.x <= -640:
+            self.x = 1920
+        if self.x2 <= -640:
+            self.x2 = 1920
     def draw(self):
         self.image.draw(self.x, self.y)
+        self.image2.draw(self.x2, self.y2)
 
 
 class Level2_Map:
@@ -25,27 +29,40 @@ class Level2_Map:
         self.image2 = load_image('used_image/map02_4.png')
 
         self.x, self.y = 640, 300
+        self.x2, self.y2 = 1920, 300
         self.frame = 0
+        self.velocity = 100
 
     def update(self):
-        self.x -= 1
-        if self.x == 0:
-            self.x = 640
+        self.x -= self.velocity * game_framework.frame_time
+        self.x2 -= self.velocity * game_framework.frame_time
+        if self.x < -640:
+            self.x = 1920
+        if self.x2 <= -640:
+            self.x2 = 1920
 
     def draw(self):
         self.image.draw(self.x, self.y)
+        self.image2.draw(self.x2, self.y2)
+
 
 class Level3_Map:
     def __init__(self):
         self.image = load_image('used_image/map04.png')
         self.image2 = load_image('used_image/map04.png')
         self.x, self.y = 640, 300
+        self.x2, self.y2 = 1920, 300
         self.frame = 0
+        self.velocity = 100
 
     def update(self):
-        self.x -= 1
-        if self.x == 0:
-            self.x = 640
+        self.x -= self.velocity * game_framework.frame_time
+        self.x2 -= self.velocity * game_framework.frame_time
+        if self.x <= -640:
+            self.x = 1920
+        if self.x2 <= -640:
+            self.x2 = 1920
 
     def draw(self):
         self.image.draw(self.x, self.y)
+        self.image2.draw(self.x2, self.y2)
