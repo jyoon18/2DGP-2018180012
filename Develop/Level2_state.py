@@ -30,11 +30,12 @@ Bjelly = None
 Sjelly = None
 
 level2_state_check = 0
+checkk2 = 0
 
 def enter():
     global character1, character2, aim_up, aim_down, maps, boss_character, Bjelly, Sjelly, life
     global small_jelly, big_jelly, level2_state_check
-    global life_location, checkk, bullet
+    global life_location, bullet, checkk2
 
     character1 = Character1()
     character2 = Character2()
@@ -77,6 +78,7 @@ def enter():
         life.x += 65
     game_world.add_objects(life_location, 0)
 
+    checkk2 = 0
     level2_state_check = 1
 
 def exit():
@@ -100,7 +102,7 @@ def handle_events():
 
 def update():
     global character1, character2, Sjelly, Bjelly
-    global level2_total_time, small_jelly, big_jelly
+    global level2_total_time, small_jelly, big_jelly, checkk2
 
     for game_object in game_world.all_objects():
         game_object.update()
@@ -110,6 +112,7 @@ def update():
             for l in life_location:
                 life_location.remove(l)
                 game_world.remove_object(l)
+                checkk2 = 1
                 if len(life_location) == 0:
                     game_framework.change_state(failure_state)
                 Sjelly.disappear()
@@ -127,6 +130,7 @@ def update():
             for l in life_location:
                 life_location.remove(l)
                 game_world.remove_object(l)
+                checkk2 = 1
                 if len(life_location) == 0:
                     game_framework.change_state(failure_state)
                 Bjelly.disappear()
