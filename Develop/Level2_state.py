@@ -103,7 +103,7 @@ def handle_events():
 
 def update():
     global character1, character2, Sjelly, Bjelly
-    global level2_total_time, small_jelly, big_jelly, checkk2
+    global small_jelly, big_jelly, checkk2
 
     for game_object in game_world.all_objects():
         game_object.update()

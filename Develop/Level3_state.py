@@ -101,7 +101,8 @@ def handle_events():
 
 
 def update():
-    global character1, character2, Sjelly
+    global character1, character2, Sjelly, Bjelly
+    global small_jelly, big_jelly, checkk3
 
     for game_object in game_world.all_objects():
         game_object.update()
@@ -109,6 +110,7 @@ def update():
     for Sjelly in small_jelly:
         if Sjelly.x < 190:
             for l in life_location:
+                checkk3 = 1
                 life_location.remove(l)
                 game_world.remove_object(l)
                 if len(life_location) == 0:
@@ -125,8 +127,9 @@ def update():
                 Sjelly.disappear()
 
     for Bjelly in big_jelly:
-        if Bjelly.x < 170:
+        if Bjelly.x < 190:
             for l in life_location:
+                checkk3 = 1
                 life_location.remove(l)
                 game_world.remove_object(l)
                 if len(life_location) == 0:

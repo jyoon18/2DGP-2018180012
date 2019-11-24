@@ -6,7 +6,7 @@ import Level3_state
 import game_framework
 
 class Bullet:
-    
+
     image = None
 
     def __init__(self, x=45, y=45, velocity=10):
@@ -20,7 +20,7 @@ class Bullet:
         draw_rectangle(*self.get_bb())
 
     def update(self):
-        self.x += 900* game_framework.frame_time
+        self.x += 900 * game_framework.frame_time
 
         if Level1_state.level1_state_check == 1 and self.x > 1050 - 20:
             Level1_state.boss_character.hp -= 20
