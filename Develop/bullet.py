@@ -1,13 +1,14 @@
 from pico2d import *
 import game_world
 import Level1_state
+import Level2_state
 import game_framework
 
 class Bullet:
     image = None
 
     def __init__(self, x=90, y=90, velocity=10):
-        if Bullet.image == None:
+        if Bullet.image is None:
             Bullet.image = load_image('used_image/bullet_candy.png')
 
         self.x, self.y, self.velocity = x, y, velocity
@@ -32,4 +33,3 @@ class Bullet:
 
     def get_bb(self):
         return self.x - 20, self.y - 20, self.x + 20, self.y + 20
-

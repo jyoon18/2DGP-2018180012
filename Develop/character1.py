@@ -1,6 +1,7 @@
 from pico2d import *
 import game_world
 import Level1_state
+import Level2_state
 from bullet import Bullet
 import game_framework
 

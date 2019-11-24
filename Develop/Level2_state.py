@@ -6,15 +6,15 @@ import game_world
 import title_state
 import character_select_state
 import failure_state
-import Level1_state
 import success_state_Lv2
+import random
 
 from character1 import Character1
 from character2 import Character2
 from aim_pty import Aim_Up
 from aim_pty import Aim_Down
 from map import Level2_Map
-from boss_moving import Level1_Boss
+from boss_moving import Level2_Boss
 
 from jelly_level2 import Small_Jelly_lv2
 from jelly_level2 import Big_Jelly_lv2
@@ -23,27 +23,25 @@ name = "Level2_state"
 
 character1 = None
 character2 = None
-aims = None
 maps = None
 boss_character = None
-hit = None
 
 Bjelly = None
 Sjelly = None
 
-level2_total_time = None
+level2_state_check = 1
 
 def enter():
     global character1, character2, aim_up, aim_down, maps, boss_character, Bjelly, Sjelly, life
-    global jelly
-    global life_location
+    global small_jelly, big_jelly
+    global life_location, checkk
 
     character1 = Character1()
     character2 = Character2()
     aim_up = Aim_Up()
     aim_down = Aim_Down()
     maps = Level2_Map()
-    boss_character = Level1_Boss()
+    boss_character = Level2_Boss()
     Bjelly = Big_Jelly_lv2()
     Sjelly = Small_Jelly_lv2()
     life = Life()
@@ -59,8 +57,17 @@ def enter():
 
     game_world.add_object(boss_character, 1)
 
-    jelly = [Small_Jelly_lv2() for i in range(20)] + [Big_Jelly_lv2() for n in range(15)]
-    game_world.add_objects(jelly, 1)
+    small_jelly = [Small_Jelly_lv2() for i in range(15)]
+    big_jelly = [Big_Jelly_lv2() for n in range(10)]
+
+    for o in range(15):
+        small_jelly[o].x = Sjelly.x
+        Sjelly.x += random.randint(70, 75)
+    game_world.add_objects(small_jelly, 1)
+
+    for k in range(10):
+        big_jelly[k].x = Bjelly.x
+        Bjelly.x += random.randint(60, 65)
 
     life_location = [Life() for k in range(5)]
     for l in range(5):
@@ -88,33 +95,19 @@ def handle_events():
 
 
 def update():
-    global character1, character2, Sjelly
-    global level2_total_time
+    global character1, character2, Sjelly, Bjelly
+    global level2_total_time, small_jelly, big_jelly
 
     for game_object in game_world.all_objects():
         game_object.update()
 
-    # for Sjelly in jelly:
-    # if collide(aim_up, Sjelly):
-    #   print("으악")
-    # if collide(aim_down, Sjelly):
-    #   print("으악")
-
-    # for Bjelly in jelly:
-    # if collide(aim_up, Bjelly):
-    #   print("으윽")
-    # if collide(aim_down, Bjelly):
-    #   print("으윽")
-
-    for Sjelly in jelly:
+    for Sjelly in small_jelly:
         if character_select_state.character_select_number == 1:
             if collide(character1, Sjelly):
-                print("체크쳋크")
                 Sjelly.disappear()
 
         elif character_select_state.character_select_number == 2:
             if collide(character2, Sjelly):
-                print("체크쳋크")
                 Sjelly.disappear()
 
         if Sjelly.x < 180:
@@ -123,20 +116,17 @@ def update():
                 game_world.remove_object(l)
                 if len(life_location) == 0:
                     game_framework.change_state(failure_state)
-                    print('꿱')
                 break
 
 
 
-    for Bjelly in jelly:
+    for Bjelly in big_jelly:
         if character_select_state.character_select_number == 1:
             if collide(character1, Bjelly):
-                print("체크체크")
                 Bjelly.disappear()
 
         elif character_select_state.character_select_number == 2:
             if collide(character2, Sjelly):
-                print("체크쳋크")
                 Bjelly.disappear()
 
         if Bjelly.x < 170:
@@ -145,7 +135,6 @@ def update():
                 game_world.remove_object(l)
                 if len(life_location) == 0:
                     game_framework.change_state(failure_state)
-                    print('꿱')
                 break
 
 
@@ -156,10 +145,6 @@ def draw():
     for game_object in game_world.all_objects():
         game_object.draw()
     update_canvas()
-
-
-
-    #delay(0.1)
 
 def collide(a, b):
     left_a, bottom_a, right_a, top_a = a.get_bb()

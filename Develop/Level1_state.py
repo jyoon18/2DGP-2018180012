@@ -23,7 +23,6 @@ name = "Level1_state"
 
 character1 = None
 character2 = None
-aims = None
 maps = None
 boss_character = None
 bullet = None
@@ -64,7 +63,7 @@ def enter():
     big_jelly = [Big_Jelly_lv1() for n in range(5)]
     for o in range(10):
         small_jelly[o].x = Sjelly.x
-        Sjelly.x += random.randint(50, 65)
+        Sjelly.x += random.randint(70, 80)
     game_world.add_objects(small_jelly, 1)
 
     for k in range(5):
