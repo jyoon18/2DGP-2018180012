@@ -13,11 +13,6 @@ class Bullet:
 
         self.x, self.y, self.velocity = x, y, velocity
 
-        self.left = self.x - 20
-        self.right = self.x + 20
-        self.top = self.y + 20
-        self.bottom = self.y - 20
-
     def draw(self):
         self.image.draw(self.x, self.y)
         draw_rectangle(*self.get_bb())
@@ -25,11 +20,11 @@ class Bullet:
     def update(self):
         self.x += 1000 * game_framework.frame_time
 
-        if self.x < 25 or self.x > 1050 - 20:
+        if self.x > 1050 - 20:
             print("checking")
-            Level1_state.boss_character.hp -= 2
-            print(Level1_state.boss_character.hp)
+            Level1_state.boss_character.hp -= 10
             game_world.remove_object(self)
+
 
     def get_bb(self):
         return self.x - 20, self.y - 20, self.x + 20, self.y + 20

@@ -30,7 +30,7 @@ class Small_Jelly_lv2:
         self.x -= self.speed * game_framework.frame_time
 
     def draw(self):
-        self.image.clip_draw(self.frame * 80, 0, 80, 80, self.x, self.y)
+        self.image.clip_draw(int(self.frame) * 80, 0, 80, 80, self.x, self.y)
         draw_rectangle(*self.get_bb())
 
     def get_bb(self):

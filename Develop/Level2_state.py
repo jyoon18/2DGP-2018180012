@@ -8,7 +8,7 @@ import character_select_state
 import failure_state
 import success_state_Lv2
 import random
-
+from bullet import Bullet
 from character1 import Character1
 from character2 import Character2
 from aim_pty import Aim_Up
@@ -34,7 +34,7 @@ level2_state_check = 1
 def enter():
     global character1, character2, aim_up, aim_down, maps, boss_character, Bjelly, Sjelly, life
     global small_jelly, big_jelly
-    global life_location, checkk
+    global life_location, checkk, bullet
 
     character1 = Character1()
     character2 = Character2()
@@ -45,6 +45,7 @@ def enter():
     Bjelly = Big_Jelly_lv2()
     Sjelly = Small_Jelly_lv2()
     life = Life()
+    bullet = Bullet()
 
     game_world.add_object(maps, 0)
     game_world.add_object(aim_up, 0)
@@ -137,7 +138,8 @@ def update():
                     game_framework.change_state(failure_state)
                 break
 
-
+    if bullet.x > 600:
+        print("over")
 
 def draw():
     global level2_total_time
