@@ -120,13 +120,12 @@ def update():
         if character_select_state.character_select_number == 1:
             if collide(character1, Sjelly):
                 Sjelly.disappear()
-
         elif character_select_state.character_select_number == 2:
             if collide(character2, Sjelly):
                 Sjelly.disappear()
 
     for Bjelly in big_jelly:
-        if Bjelly.x < 170:
+        if Bjelly.x < 190:
             for l in life_location:
                 life_location.remove(l)
                 game_world.remove_object(l)
@@ -138,9 +137,8 @@ def update():
         if character_select_state.character_select_number == 1:
             if collide(character1, Bjelly):
                 Bjelly.disappear()
-
         elif character_select_state.character_select_number == 2:
-            if collide(character2, Sjelly):
+            if collide(character2, Bjelly):
                 Bjelly.disappear()
 
     if boss_character.hp <= 0:

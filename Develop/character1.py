@@ -45,7 +45,7 @@ class IdleState:
 
     @staticmethod
     def do(character1):
-        character1.x, character1.y = 90, 90
+        character1.x, character1.y = 90, 145
         character1.frame = (character1.frame + FRAME_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 4
 
         if Level1_state.checkk == 1 or Level2_state.checkk2 == 1:
@@ -80,8 +80,8 @@ class AttackState:
 
     @staticmethod
     def do(character1):
-        character1.frame = character1.frame = (character1.frame + FRAME_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 4
-        character1.x, character1.y = 90, 90
+        character1.frame = (character1.frame + FRAME_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 4
+        character1.x, character1.y = 90, 145
 
         if Level1_state.checkk == 1 or Level2_state.checkk2 == 1:
             print("ouch")
@@ -129,8 +129,6 @@ class Character1:
     def fire(self):
         bullet = Bullet(self.x, self.y, self.velocity)
         game_world.add_object(bullet, 1)
-        if bullet.x > 1050:
-            print(bullet.x)
 
     def add_event(self, event):
         self.event_que.insert(0, event)
