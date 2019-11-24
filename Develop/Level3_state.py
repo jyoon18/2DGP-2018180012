@@ -110,9 +110,9 @@ def update():
     for Sjelly in small_jelly:
         if Sjelly.x < 190:
             for l in life_location:
-                checkk3 = 1
                 life_location.remove(l)
                 game_world.remove_object(l)
+                checkk3 = 1
                 if len(life_location) == 0:
                     game_framework.change_state(failure_state)
                 Sjelly.disappear()
@@ -129,9 +129,9 @@ def update():
     for Bjelly in big_jelly:
         if Bjelly.x < 190:
             for l in life_location:
-                checkk3 = 1
                 life_location.remove(l)
                 game_world.remove_object(l)
+                checkk3 = 1
                 if len(life_location) == 0:
                     game_framework.change_state(failure_state)
                 Bjelly.disappear()

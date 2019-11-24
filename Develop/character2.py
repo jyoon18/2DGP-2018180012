@@ -50,14 +50,15 @@ class IdleState:
         character2.x, character2.y = 90, 240
         character2.frame = (character2.frame + FRAME_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 8
 
-        if (Level1_state.checkk or Level2_state.checkk2 or Level3_state.level3_state_check) == 1:
+        if (Level1_state.checkk or Level2_state.checkk2 or Level3_state.checkk3) == 1:
             print("ouch")
         Level1_state.checkk = 0
         Level2_state.checkk2 = 0
+        Level3_state.checkk3 = 0
 
     @staticmethod
     def draw(character2):
-        if (Level1_state.checkk or Level2_state.checkk2 or Level3_state.level3_state_check) == 1:
+        if (Level1_state.checkk or Level2_state.checkk2 or Level3_state.checkk3) == 1:
             character2.damaged_image.draw(character2.x, character2.y)
             character2.damage_effect.draw(640, 300, 1300, 640)
         else:
@@ -87,10 +88,13 @@ class AttackState:
        character2.frame = (character2.frame + FRAME_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 8
        character2.x, character2.y = 90, 240
 
+       Level1_state.checkk = 0
+       Level2_state.checkk2 = 0
+       Level3_state.checkk3 = 0
 
     @staticmethod
     def draw(character2):
-        if (Level1_state.checkk or Level2_state.checkk2 or Level3_state.level3_state_check) == 1:
+        if (Level1_state.checkk or Level2_state.checkk2 or Level3_state.checkk3) == 1:
             character2.damaged_image.draw(character2.x, character2.y, 160, 160)
             character2.damage_effect.draw(640, 300, 1300, 640)
 
