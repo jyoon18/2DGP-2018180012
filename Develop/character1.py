@@ -56,8 +56,10 @@ class IdleState:
     @staticmethod
     def draw(character1):
         if (Level1_state.checkk or Level2_state.checkk2 or Level3_state.checkk3) == 1:
-            character1.damaged_image.draw(character1.x, character1.y, 160, 160)
-            character1.damage_effect.draw(640, 300, 1300, 640)
+            while character1.timer > 0:
+                character1.damage_effect.draw(640, 300, 1300, 640)
+                character1.timer -= 1
+                update_canvas()
 
         if character1.toggle == 1:
             character1.image.clip_draw(int(character1.frame) * 160, 0, 160, 160, character1.x, character1.y)
@@ -67,6 +69,7 @@ class IdleState:
             character1.image.clip_draw(int(character1.frame) * 160, 0, 160, 160, character1.x, character1.y)
 
         character1.toggle = 0
+        character1.timer = 3
 
 class AttackState:
 
@@ -98,8 +101,11 @@ class AttackState:
     @staticmethod
     def draw(character1):
         if (Level1_state.checkk or Level2_state.checkk2 or Level3_state.checkk3) == 1:
-            character1.damaged_image.draw(character1.x, character1.y, 160, 160)
-            character1.damage_effect.draw(640, 300, 1300, 640)
+            #character1.damaged_image.draw(character1.x, character1.y, 160, 160)
+            while character1.timer > 0:
+                character1.damage_effect.draw(640, 300, 1300, 640)
+                character1.timer -= 1
+                update_canvas()
 
         if character1.toggle == 1:
             character1.image.clip_draw(int(character1.frame) * 160, 0, 160, 160, character1.x, character1.y)
@@ -109,6 +115,8 @@ class AttackState:
             character1.image.clip_draw(int(character1.frame) * 160, 0, 160, 160, character1.x, character1.y)
 
         character1.toggle = 0
+        character1.timer = 3
+
 
 
 
@@ -122,7 +130,7 @@ class Character1:
     def __init__(self):
         self.x, self.y = 90, 145
         self.frame = 0
-        self.explosion_frame = 0
+        self.timer = 3
         self.velocity = 5
         self.toggle = 0
         self.image = load_image('used_image/running1.png')
