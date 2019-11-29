@@ -46,11 +46,9 @@ class IdleState:
 
     @staticmethod
     def do(character1):
-        character1.x, character1.y = 90, 145
         character1.frame = (character1.frame + FRAME_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 4
+        #character1.x, character1.y = 90, 145
 
-        if (Level1_state.checkk or Level2_state.checkk2 or Level3_state.checkk3) == 1:
-            print("ouch")
         Level1_state.checkk = 0
         Level2_state.checkk2 = 0
         Level3_state.checkk3 = 0
@@ -60,8 +58,15 @@ class IdleState:
         if (Level1_state.checkk or Level2_state.checkk2 or Level3_state.checkk3) == 1:
             character1.damaged_image.draw(character1.x, character1.y, 160, 160)
             character1.damage_effect.draw(640, 300, 1300, 640)
+
+        if character1.toggle == 1:
+            character1.image.clip_draw(int(character1.frame) * 160, 0, 160, 160, character1.x, character1.y)
+        elif character1.toggle == 2:
+            character1.image.clip_draw(int(character1.frame) * 160, 0, 160, 160, character1.x, character1.y)
         else:
             character1.image.clip_draw(int(character1.frame) * 160, 0, 160, 160, character1.x, character1.y)
+
+        character1.toggle = 0
 
 class AttackState:
 
@@ -82,11 +87,9 @@ class AttackState:
 
     @staticmethod
     def do(character1):
+
         character1.frame = (character1.frame + FRAME_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 4
         character1.x, character1.y = 90, 145
-
-        if (Level1_state.checkk or Level2_state.checkk2 or Level3_state.checkk3) == 1:
-            print("ouch")
 
         Level1_state.checkk = 0
         Level2_state.checkk2 = 0
@@ -98,10 +101,10 @@ class AttackState:
             character1.damaged_image.draw(character1.x, character1.y, 160, 160)
             character1.damage_effect.draw(640, 300, 1300, 640)
 
-        if int(character1.toggle) == 1:
-            character1.image.clip_draw(int(character1.frame) * 0, 0, 160, 160, character1.x, character1.y)
-        elif int(character1.toggle) == 2:
-            character1.image.clip_draw(int(character1.frame) * 0, 0, 160, 160, character1.x, character1.y)
+        if character1.toggle == 1:
+            character1.image.clip_draw(int(character1.frame) * 160, 0, 160, 160, character1.x, character1.y)
+        elif character1.toggle == 2:
+            character1.image.clip_draw(int(character1.frame) * 160, 0, 160, 160, character1.x, character1.y)
         else:
             character1.image.clip_draw(int(character1.frame) * 160, 0, 160, 160, character1.x, character1.y)
 
@@ -119,9 +122,9 @@ class Character1:
     def __init__(self):
         self.x, self.y = 90, 90
         self.frame = 0
+        self.explosion_frame = 0
         self.velocity = 5
         self.toggle = 0
-        self.attack_image = load_image('used_image/up_attack.png')
         self.image = load_image('used_image/running1.png')
         self.damaged_image = load_image('used_image/character1_hit_by_jelly.png')
         self.damage_effect = load_image('used_image/damaged_screen_effect.png')
