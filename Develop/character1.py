@@ -114,13 +114,13 @@ class AttackState:
 
 next_state_table = {
     IdleState: {F_DOWN: AttackState, J_DOWN: AttackState, F_UP: AttackState, J_UP: AttackState, SPACE: IdleState},
-    AttackState: {F_DOWN: IdleState, J_DOWN: IdleState, F_UP: AttackState, J_UP: IdleState, SPACE: IdleState},
+    AttackState: {F_DOWN: IdleState, J_DOWN: IdleState, F_UP: AttackState, J_UP: AttackState, SPACE: IdleState},
 }
 
 
 class Character1:
     def __init__(self):
-        self.x, self.y = 90, 90
+        self.x, self.y = 90, 145
         self.frame = 0
         self.explosion_frame = 0
         self.velocity = 5

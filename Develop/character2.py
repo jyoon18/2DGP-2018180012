@@ -33,10 +33,8 @@ class IdleState:
     @staticmethod
     def enter(character2, event):
         if event == F_DOWN:
-            character2.toggle = 1
             character2.x, character2.y = 180, 320
         elif event == J_DOWN:
-            character2.toggle = 2
             character2.x, character2.y = 180, 160
 
     @staticmethod
@@ -47,11 +45,9 @@ class IdleState:
 
     @staticmethod
     def do(character2):
-        character2.x, character2.y = 90, 240
+        #character2.x, character2.y = 90, 240
         character2.frame = (character2.frame + FRAME_PER_ACTION * ACTION_PER_TIME * game_framework.frame_time) % 8
 
-        if (Level1_state.checkk or Level2_state.checkk2 or Level3_state.checkk3) == 1:
-            print("ouch")
         Level1_state.checkk = 0
         Level2_state.checkk2 = 0
         Level3_state.checkk3 = 0
@@ -61,6 +57,11 @@ class IdleState:
         if (Level1_state.checkk or Level2_state.checkk2 or Level3_state.checkk3) == 1:
             character2.damaged_image.draw(character2.x, character2.y)
             character2.damage_effect.draw(640, 300, 1300, 640)
+
+        if character2.toggle == 1:
+            character2.image.clip_draw(int(character2.frame) * 320, 0, 320, 320, character2.x, character2.y)
+        elif character2.toggle == 2:
+            character2.image.clip_draw(int(character2.frame) * 320, 0, 320, 320, character2.x, character2.y)
         else:
             character2.image.clip_draw(int(character2.frame) * 320, 0, 320, 320, character2.x, character2.y)
 
@@ -110,15 +111,16 @@ class AttackState:
 
 next_state_table = {
     IdleState: {F_DOWN: AttackState, J_DOWN: AttackState, F_UP: AttackState, J_UP: AttackState, SPACE: IdleState},
-    AttackState: {F_DOWN: IdleState, J_DOWN: IdleState, F_UP: IdleState, J_UP: IdleState, SPACE: AttackState}
+    AttackState: {F_DOWN: IdleState, J_DOWN: IdleState, F_UP: AttackState, J_UP: AttackState, SPACE: AttackState}
 }
 
 
 class Character2:
     def __init__(self):
-        self.x, self.y = 90, 0
+        self.x, self.y = 90, 240
         self.frame = 0
         self.velocity = 5
+        self.toggle = 0
         self.attack_image = load_image('used_image/character2_up_attack.png')
         self.image = load_image('used_image/character02_4.png')
         self.damaged_image = load_image('used_image/character2_hit_by_jelly2.png')
