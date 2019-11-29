@@ -55,8 +55,10 @@ class IdleState:
     @staticmethod
     def draw(character2):
         if (Level1_state.checkk or Level2_state.checkk2 or Level3_state.checkk3) == 1:
-            character2.damaged_image.draw(character2.x, character2.y)
-            character2.damage_effect.draw(640, 300, 1300, 640)
+            while character2.timer > 0:
+                character2.damage_effect.draw(640, 300, 1300, 640)
+                character2.timer -= 1
+                update_canvas()
 
         if character2.toggle == 1:
             character2.image.clip_draw(int(character2.frame) * 320, 0, 320, 320, character2.x, character2.y)
@@ -65,6 +67,8 @@ class IdleState:
         else:
             character2.image.clip_draw(int(character2.frame) * 320, 0, 320, 320, character2.x, character2.y)
 
+        character2.toggle = 0
+        character2.timer = 5
 
 class AttackState:
     @staticmethod
@@ -96,8 +100,10 @@ class AttackState:
     @staticmethod
     def draw(character2):
         if (Level1_state.checkk or Level2_state.checkk2 or Level3_state.checkk3) == 1:
-            character2.damaged_image.draw(character2.x, character2.y, 160, 160)
-            character2.damage_effect.draw(640, 300, 1300, 640)
+            while character2.timer > 0:
+                character2.damage_effect.draw(640, 300, 1300, 640)
+                character2.timer -= 1
+                update_canvas()
 
         if character2.toggle == 1:
             character2.image.clip_draw(int(character2.frame) * 320, 0, 320, 320, character2.x, character2.y)
@@ -106,6 +112,7 @@ class AttackState:
         else:
             character2.image.clip_draw(int(character2.frame) * 320, 0, 320, 320, character2.x, character2.y)
         character2.toggle = 0
+        character2.timer = 5
 
 
 
@@ -121,6 +128,7 @@ class Character2:
         self.frame = 0
         self.velocity = 5
         self.toggle = 0
+        self.timer = 5
         self.attack_image = load_image('used_image/character2_up_attack.png')
         self.image = load_image('used_image/character02_4.png')
         self.damaged_image = load_image('used_image/character2_hit_by_jelly2.png')

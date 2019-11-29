@@ -69,7 +69,7 @@ class IdleState:
             character1.image.clip_draw(int(character1.frame) * 160, 0, 160, 160, character1.x, character1.y)
 
         character1.toggle = 0
-        character1.timer = 3
+        character1.timer = 5
 
 class AttackState:
 
@@ -115,7 +115,7 @@ class AttackState:
             character1.image.clip_draw(int(character1.frame) * 160, 0, 160, 160, character1.x, character1.y)
 
         character1.toggle = 0
-        character1.timer = 3
+        character1.timer = 5
 
 
 
@@ -130,7 +130,7 @@ class Character1:
     def __init__(self):
         self.x, self.y = 90, 145
         self.frame = 0
-        self.timer = 3
+        self.timer = 5
         self.velocity = 5
         self.toggle = 0
         self.image = load_image('used_image/running1.png')
