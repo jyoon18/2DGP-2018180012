@@ -14,8 +14,10 @@ class Level1_Map:
         self.bgm.set_volume(64)
         self.bgm.repeat_play()
 
-        self.sbgm = load_music('success_effect.mp3')
-        self.sbgm.set_volume(32)
+        self.sbgm = load_wav('success_effect.wav')
+        self.sbgm.set_volume(64)
+        self.fbgm = load_wav('fate2.wav')
+        self.fbgm.set_volume(64)
 
     def update(self):
         self.x -= self.velocity * game_framework.frame_time
@@ -39,6 +41,15 @@ class Level2_Map:
         self.frame = 0
         self.velocity = 100
 
+        self.bgm = load_music('Level2.mp3')
+        self.bgm.set_volume(64)
+        self.bgm.repeat_play()
+
+        self.sbgm = load_wav('success_effect.wav')
+        self.sbgm.set_volume(64)
+        self.fbgm = load_wav('fate2.wav')
+        self.fbgm.set_volume(64)
+
     def update(self):
         self.x -= self.velocity * game_framework.frame_time
         self.x2 -= self.velocity * game_framework.frame_time
@@ -60,6 +71,15 @@ class Level3_Map:
         self.x2, self.y2 = 1920, 300
         self.frame = 0
         self.velocity = 100
+
+        self.bgm = load_music('Level3.mp3')
+        self.bgm.set_volume(64)
+        self.bgm.repeat_play()
+
+        self.sbgm = load_wav('success_effect.wav')
+        self.sbgm.set_volume(64)
+        self.fbgm = load_wav('fate2.wav')
+        self.fbgm.set_volume(64)
 
     def update(self):
         self.x -= self.velocity * game_framework.frame_time

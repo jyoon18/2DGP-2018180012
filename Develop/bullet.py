@@ -23,7 +23,7 @@ class Bullet:
         self.x += 900 * game_framework.frame_time
 
         if Level1_state.level1_state_check == 1 and self.x > 1050 - 20:
-            Level1_state.boss_character.hp -= 20
+            Level1_state.boss_character.hp -= 100
             game_world.remove_object(self)
 
         if Level2_state.level2_state_check == 1 and self.x > 1050 - 20:
