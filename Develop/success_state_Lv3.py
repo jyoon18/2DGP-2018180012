@@ -2,11 +2,14 @@ import game_framework
 from pico2d import *
 import character_select_state
 import Level3_state
+from map import Level3_Map
 
 
 state_image = None
-character1 = None
-character2 = None
+character14 = None
+character25 = None
+
+map_lv3 = None
 
 class Success_Character1_State:
     def __init__(self):
@@ -40,17 +43,21 @@ class Success_Character2_State:
 
 def enter():
 
-    global character1, character2, state_image
+    global character14, character25, state_image, map_lv3
 
-    character1 = Success_Character1_State()
-    character2 = Success_Character2_State()
+    character14 = Success_Character1_State()
+    character25 = Success_Character2_State()
     state_image = load_image('used_image/success_state_window_Lv3.png')
 
+    map_lv3 = Level3_Map()
+    map_lv3.sbgm.play()
+
 def exit():
-    global character1, character2, state_image
-    del character1
-    del character2
+    global character14, character25, state_image, map_lv3
+    del character14
+    del character25
     del state_image
+    del map_lv3
 
 
 def handle_events():
@@ -65,9 +72,10 @@ def handle_events():
     pass
 
 def update():
-    global character1, character2
-    character1.update()
-    character2.update()
+    global character14, character2, map_lv3
+    character14.update()
+    character25.update()
+    map_lv3.bgm.stop()
 
     pass
 
@@ -76,9 +84,9 @@ def draw():
 
     state_image.draw(640, 300)
     if character_select_state.character_select_number == 1:
-        character1.draw()
+        character14.draw()
     elif character_select_state.character_select_number == 2:
-        character2.draw()
+        character25.draw()
 
     update_canvas()
     delay(0.1)

@@ -80,8 +80,6 @@ def draw():
     character1.draw()
     character2.draw()
 
-    character_state_total_time = pico2d.get_time() - title_state.title_state_total_time
-    #print("캐릭터 선택하는데 걸리는 시간: ", character_state_total_time)
     update_canvas()
     delay(0.1)
     pass
