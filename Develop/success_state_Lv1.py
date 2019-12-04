@@ -4,11 +4,10 @@ import character_select_state
 import Level2_state
 from map import Level1_Map
 
-
 state_image = None
 
-character1 = None
-character2 = None
+character11 = None
+character22 = None
 
 class Success_Character1_State:
     def __init__(self):
@@ -27,7 +26,6 @@ class Success_Character1_State:
         self.image.clip_draw(self.frame * 370, 0, 370, 370, self.x, self.y, 200, 200)
         self.boss_disappear.clip_draw(self.frame2 * 300, 0, 300, 300, self.x2, self.y2)
 
-
 class Success_Character2_State:
     def __init__(self):
         self.x, self.y = 300, 350
@@ -36,6 +34,7 @@ class Success_Character2_State:
         self.frame2 = 0
         self.image = load_image('used_image/character2_success.png')
         self.boss_disappear = load_image('used_image/boss_disappear.png')
+
 
     def update(self):
         self.frame = (self.frame + 1) % 5
@@ -46,24 +45,24 @@ class Success_Character2_State:
         self.image.clip_draw(self.frame * 370, 0, 370, 370, self.x, self.y)
         self.boss_disappear.clip_draw(self.frame2 * 300, 0, 300, 300, self.x2, self.y2)
 
-class Success_Sound:
-    def __init__(self):
-        self.bgm = load_music('success_effect.mp3')
+
 
 def enter():
 
-    global character1, character2, state_image, maps
+    global character11, character22, state_image, maps
 
-    character1 = Success_Character1_State()
-    character2 = Success_Character2_State()
+    character11 = Success_Character1_State()
+    character22 = Success_Character2_State()
     state_image = load_image('used_image/success_state_window_Lv1.png')
     maps = Level1_Map()
+    maps.sbgm.play()
 
 def exit():
-    global character1, character2, state_image
-    del character1
-    del character2
+    global character11, character22, state_image, maps
+    del character11
+    del character22
     del state_image
+    del maps
 
 
 def handle_events():
@@ -78,11 +77,10 @@ def handle_events():
     pass
 
 def update():
-    global character1, character2, maps
+    global character11, character22, maps
     maps.bgm.stop()
-
-    character1.update()
-    character2.update()
+    character11.update()
+    character22.update()
 
     pass
 
@@ -90,10 +88,11 @@ def draw():
     clear_canvas()
 
     state_image.draw(640, 300)
+
     if character_select_state.character_select_number == 1:
-        character1.draw()
+        character11.draw()
     elif character_select_state.character_select_number == 2:
-        character2.draw()
+        character22.draw()
 
     update_canvas()
     delay(0.1)

@@ -37,6 +37,7 @@ class Success_Character2_State:
         self.image.clip_draw(self.frame * 370, 0, 370, 370, self.x, self.y)
 
 
+
 def enter():
 
     global character1, character2, state_image

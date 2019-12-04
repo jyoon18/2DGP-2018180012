@@ -14,6 +14,9 @@ class Level1_Map:
         self.bgm.set_volume(64)
         self.bgm.repeat_play()
 
+        self.sbgm = load_music('success_effect.mp3')
+        self.sbgm.set_volume(32)
+
     def update(self):
         self.x -= self.velocity * game_framework.frame_time
         self.x2 -= self.velocity * game_framework.frame_time
