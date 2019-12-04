@@ -37,7 +37,7 @@ class Success_Character2_State:
 
 
     def update(self):
-        self.frame = (self.frame + 1) % 10
+        self.frame = (self.frame + 1) % 5
         self.frame2 = (self.frame2 + 1) % 8
 
     def draw(self):

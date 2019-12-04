@@ -12,14 +12,18 @@ character2 = None
 class Success_Character1_State:
     def __init__(self):
         self.x, self.y = 640, 350
+        self.x2, self.y2 = 900, 300
         self.frame = 0
+        self.frame2 = 0
         self.image = load_image('used_image/success.png')
 
     def update(self):
         self.frame = (self.frame + 1) % 10
 
+
     def draw(self):
         self.image.clip_draw(self.frame * 370, 0, 370, 370, self.x, self.y, 200, 200)
+
 
 class Success_Character2_State:
     def __init__(self):
@@ -32,6 +36,7 @@ class Success_Character2_State:
 
     def draw(self):
         self.image.clip_draw(self.frame * 370, 0, 370, 370, self.x, self.y)
+
 
 def enter():
 
