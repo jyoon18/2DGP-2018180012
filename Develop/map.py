@@ -10,6 +10,9 @@ class Level1_Map:
         self.x2, self.y2 = 1920, 300
         self.frame = 0
         self.velocity = 100
+        self.bgm = load_music('Level1.mp3')
+        self.bgm.set_volume(64)
+        self.bgm.repeat_play()
 
     def update(self):
         self.x -= self.velocity * game_framework.frame_time

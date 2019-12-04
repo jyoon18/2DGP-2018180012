@@ -5,7 +5,6 @@ import Level3_state
 
 
 state_image = None
-
 character1 = None
 character2 = None
 

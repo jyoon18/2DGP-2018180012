@@ -2,6 +2,7 @@ import game_framework
 from pico2d import *
 import character_select_state
 import Level2_state
+from map import Level1_Map
 
 
 state_image = None
@@ -45,14 +46,18 @@ class Success_Character2_State:
         self.image.clip_draw(self.frame * 370, 0, 370, 370, self.x, self.y)
         self.boss_disappear.clip_draw(self.frame2 * 300, 0, 300, 300, self.x2, self.y2)
 
+class Success_Sound:
+    def __init__(self):
+        self.bgm = load_music('success_effect.mp3')
 
 def enter():
 
-    global character1, character2, state_image
+    global character1, character2, state_image, maps
 
     character1 = Success_Character1_State()
     character2 = Success_Character2_State()
     state_image = load_image('used_image/success_state_window_Lv1.png')
+    maps = Level1_Map()
 
 def exit():
     global character1, character2, state_image
@@ -73,7 +78,9 @@ def handle_events():
     pass
 
 def update():
-    global character1, character2
+    global character1, character2, maps
+    maps.bgm.stop()
+
     character1.update()
     character2.update()
 
