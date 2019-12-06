@@ -143,7 +143,7 @@ class Character1:
         self.cur_state.enter(self, None)
 
         self.jump_sound = load_wav('attack.wav')
-        self.jump_sound.set_volume(32)
+        self.jump_sound.set_volume(20)
         self.damaged_sound = load_wav('damaged.wav')
         self.damaged_sound.set_volume(20)
 
