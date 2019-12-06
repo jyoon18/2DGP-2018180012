@@ -1,6 +1,11 @@
 from pico2d import *
 import game_framework
 
+class Ready:
+    def __init__(self):
+        self.tbgm = load_music('title_character.mp3')
+        self.tbgm.set_volume(64)
+        self.tbgm.repeat_play()
 
 class Level1_Map:
     def __init__(self):
