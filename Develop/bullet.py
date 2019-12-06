@@ -14,6 +14,8 @@ class Bullet:
             Bullet.image = load_image('used_image/bullet_candy.png')
 
         self.x, self.y, self.velocity = x, y, velocity
+        self.fire_sound = load_wav('bulletfire.wav')
+        self.fire_sound.set_volume(64)
 
     def draw(self):
         self.image.draw(self.x, self.y)

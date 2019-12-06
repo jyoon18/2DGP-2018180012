@@ -137,8 +137,12 @@ class Character2:
         self.cur_state = IdleState
         self.cur_state.enter(self, None)
 
+        self.jump_sound = load_wav('nyu1.wav')
+        self.jump_sound.set_volume(32)
+
     def fire(self):
         bullet = Bullet(self.x, 160, self.velocity)
+        bullet.fire_sound.play()
         game_world.add_object(bullet, 1)
 
     def add_event(self, event):
@@ -160,6 +164,7 @@ class Character2:
         if (event.type, event.key) in key_event_table:
             key_event = key_event_table[(event.type, event.key)]
             self.add_event(key_event)
+            self.jump_sound.play()
 
     def get_bb(self):
         return self.x - 40, self.y - 140, self.x + 40, self.y - 40

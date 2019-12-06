@@ -62,8 +62,10 @@ class IdleState:
                 update_canvas()
 
         if character1.toggle == 1:
+            character1.jump_sound.play()
             character1.image.clip_draw(int(character1.frame) * 160, 0, 160, 160, character1.x, character1.y)
         elif character1.toggle == 2:
+            character1.jump_sound.play()
             character1.image.clip_draw(int(character1.frame) * 160, 0, 160, 160, character1.x, character1.y)
         else:
             character1.image.clip_draw(int(character1.frame) * 160, 0, 160, 160, character1.x, character1.y)
@@ -108,8 +110,10 @@ class AttackState:
                 update_canvas()
 
         if character1.toggle == 1:
+
             character1.image.clip_draw(int(character1.frame) * 160, 0, 160, 160, character1.x, character1.y)
         elif character1.toggle == 2:
+            character1.jump_sound.play()
             character1.image.clip_draw(int(character1.frame) * 160, 0, 160, 160, character1.x, character1.y)
         else:
             character1.image.clip_draw(int(character1.frame) * 160, 0, 160, 160, character1.x, character1.y)
@@ -140,9 +144,13 @@ class Character1:
         self.cur_state = IdleState
         self.cur_state.enter(self, None)
 
+        self.jump_sound = load_wav('attack.wav')
+        self.jump_sound.set_volume(32)
+
     def fire(self):
         bullet = Bullet(self.x, self.y, self.velocity)
         game_world.add_object(bullet, 1)
+        bullet.fire_sound.play()
 
     def add_event(self, event):
         self.event_que.insert(0, event)
@@ -163,6 +171,7 @@ class Character1:
         if (event.type, event.key) in key_event_table:
             key_event = key_event_table[(event.type, event.key)]
             self.add_event(key_event)
+            self.jump_sound.play()
 
     def get_bb(self):
         return self.x - 40, self.y - 40, self.x + 40, self.y + 40
