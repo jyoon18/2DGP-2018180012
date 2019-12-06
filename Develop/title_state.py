@@ -2,6 +2,9 @@ import game_framework               # game_framework와 main_state를 받아온�
 from pico2d import *
 import character_select_state
 import start_state
+from map import Level3_Map
+from map import Level2_Map
+from map import Level1_Map
 
 name = "TitleState"
 image = None
@@ -12,12 +15,25 @@ title_state_total_time = None
 def enter():
     global image
     image = load_image('used_image/title.png')
+
+    global lv1, lv2, lv3
+    lv1 = Level1_Map()
+    lv2 = Level2_Map()
+    lv3 = Level3_Map()
+
+    lv1.bgm.stop()
+    lv2.bgm.stop()
+    lv3.bgm.stop()
     pass
 
 # 게임을 종료할 때, image를 삭제해줌
 def exit():
     global image
+    global lv1, lv2, lv3
     del image
+    del lv1
+    del lv2
+    del lv3
     pass
 
 # 사용자 입력을 받아오는 함수
