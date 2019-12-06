@@ -59,7 +59,7 @@ class IdleState:
                 character2.damage_effect.draw(640, 300, 1300, 640)
                 character2.timer -= 1
                 update_canvas()
-
+            character2.damaged_sound.play()
         if character2.toggle == 1:
             character2.image.clip_draw(int(character2.frame) * 320, 0, 320, 320, character2.x, character2.y)
         elif character2.toggle == 2:
@@ -104,6 +104,7 @@ class AttackState:
                 character2.damage_effect.draw(640, 300, 1300, 640)
                 character2.timer -= 1
                 update_canvas()
+            character2.damaged_sound.play()
 
         if character2.toggle == 1:
             character2.image.clip_draw(int(character2.frame) * 320, 0, 320, 320, character2.x, character2.y)
@@ -139,6 +140,8 @@ class Character2:
 
         self.jump_sound = load_wav('nyu1.wav')
         self.jump_sound.set_volume(32)
+        self.damaged_sound = load_wav('damaged.wav')
+        self.damaged_sound.set_volume(20)
 
     def fire(self):
         bullet = Bullet(self.x, 160, self.velocity)
