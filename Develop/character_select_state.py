@@ -3,14 +3,14 @@ from pico2d import *
 import game_framework
 import Level1_state
 import title_state
-
+from map import Ready
 
 image = None
 character1 = None
 character2 = None
 
 character_select_number = 0
-character_state_total_time = None
+Cbgm = None
 
 class Select_Character1:
     def __init__(self):
@@ -38,16 +38,19 @@ class Select_Character2:
 
 
 def enter():
-    global image, character1, character2
+    global image, character1, character2, Cbgm
     image = load_image('used_image/character_select_window.png')
     character1 = Select_Character1()
     character2 = Select_Character2()
+    Cbgm = Ready()
+    Cbgm.tbgm.play()
 
 def exit():
-    global image, character1, character2
+    global image, character1, character2, Cbgm
     del character1
     del character2
     del image
+    del Cbgm
 
 
 def handle_events():

@@ -3,9 +3,9 @@ import game_framework
 
 class Ready:
     def __init__(self):
-        self.tbgm = load_music('title_character.mp3')
+        self.tbgm = load_wav('tc.wav')
         self.tbgm.set_volume(64)
-        self.tbgm.repeat_play()
+        #self.tbgm.repeat_play()
 
 class Level1_Map:
     def __init__(self):

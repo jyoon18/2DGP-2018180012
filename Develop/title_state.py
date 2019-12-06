@@ -11,13 +11,11 @@ from map import Ready
 name = "TitleState"
 image = None
 
-# title_state상태에 접어들 때, 맨 처음 해줄 것들을 초기화 하는 함수
-# title의 이미지를 보여줌
-
 def enter():
     global image, Tbgm
     image = load_image('used_image/title.png')
-
+    Tbgm = Ready()
+    Tbgm.tbgm.play()
 
     global lv1, lv2, lv3
     lv1 = Level1_Map()
