@@ -14,7 +14,7 @@ class Level1_Map:
         self.bgm.set_volume(64)
         self.bgm.repeat_play()
 
-        self.sbgm = load_wav('success_effect.wav')
+        self.sbgm = load_wav('trumpet1.wav')
         self.sbgm.set_volume(64)
         self.fbgm = load_wav('fate2.wav')
         self.fbgm.set_volume(64)
@@ -45,7 +45,7 @@ class Level2_Map:
         self.bgm.set_volume(64)
         self.bgm.repeat_play()
 
-        self.sbgm = load_wav('success_effect.wav')
+        self.sbgm = load_wav('trumpet1.wav')
         self.sbgm.set_volume(64)
         self.fbgm = load_wav('fate2.wav')
         self.fbgm.set_volume(64)
