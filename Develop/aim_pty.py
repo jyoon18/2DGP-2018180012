@@ -9,7 +9,6 @@ class Aim_Up:
 
     def draw(self):
         self.image.draw(self.x, self.y)
-        draw_rectangle(*self.get_bb())
 
     def update(self):
         pass
@@ -25,7 +24,6 @@ class Aim_Down:
 
     def draw(self):
         self.image.draw(self.x, self.y)
-        draw_rectangle(*self.get_bb())
 
     def update(self):
         pass
