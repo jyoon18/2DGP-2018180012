@@ -1,6 +1,6 @@
 ('C:\\Users\\user\\Desktop\\19-2학기 '
  '과제\\2d_game_programming\\2d_game_develop\\developing\\2DGP-2018180012\\Develop\\dist\\mygame.exe',
- True,
+ False,
  False,
  False,
  None,
@@ -195,8 +195,8 @@
  [],
  False,
  False,
- 1575881210,
- [('run.exe',
+ 1575883414,
+ [('runw.exe',
    'c:\\program '
-   'files\\python37\\lib\\site-packages\\PyInstaller\\bootloader\\Windows-64bit\\run.exe',
+   'files\\python37\\lib\\site-packages\\PyInstaller\\bootloader\\Windows-64bit\\runw.exe',
    'EXECUTABLE')])
